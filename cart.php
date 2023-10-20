@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="cart.css">
     <title>In Cart Products</title>
 </head>
@@ -19,11 +20,11 @@
             
             <div class="caption">
                 <p class="rate">
-                    <i class="star"><span>&#9733;</span></i>
-                    <i class="star"><span>&#9733;</span></i>                                                                 
-                    <i class="star"><span>&#9733;</span></i>
-                    <i class="star"><span>&#9733;</span></i>
-                    <i class="star"><span>&#9733;</span></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>                                                                 
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
                 </p>
                 <p class="product_name">Product Name</p>
                 <p class="price"><b>$3</b></p>
