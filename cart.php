@@ -26,8 +26,8 @@
                     <i class="star"><span>&#9733;</span></i>
                 </p>
                 <p class="product_name">Product Name</p>
-                <p class="price"><b>$300</b></p>
-                <p class="discount"><b><del>450$</del></b></p>
+                <p class="price"><b>$3</b></p>
+                <p class="discount"><b><del>$4</del></b></p>
                 <button class="remove">Remove From Cart</button>
             </div>
         </div>
