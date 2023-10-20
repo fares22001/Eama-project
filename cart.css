@@ -63,3 +63,22 @@ main .card .caption .rate i{
     color: gold;
     margin-left: 2px;
 }
+
+main .card .caption .price{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+
+main .card .caption button{
+    background-color: red;
+    color: white;
+    padding: 1em;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 2em;
+    font-weight: bold;
+    width: 30%;
+}
