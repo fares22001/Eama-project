@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beauty Products</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="user/assets/css/index.css">
     <script src="https://kit.fontawesome.com/a98ac1f71c.js" crossorigin="anonymous"></script>
 </head>
 

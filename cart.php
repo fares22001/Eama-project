@@ -1,14 +1,16 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="user/assets/css/cart.css">
     <title>In Cart Products</title>
 </head>
+
 <body>
     <?php
-        include 'header.php'; 
+    include 'header.php';
     ?>
     <main>
         <h1>0 Items</h1>
@@ -17,11 +19,11 @@
             <div class="images">
                 <img src="image.jpg" alt="">
             </div>
-            
+
             <div class="caption">
                 <p class="rate">
                     <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>                                                                 
+                    <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -34,4 +36,5 @@
         </div>
     </main>
 </body>
+
 </html>
