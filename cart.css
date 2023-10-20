@@ -82,3 +82,8 @@ main .card .caption button{
     font-weight: bold;
     width: 30%;
 }
+
+main .card .caption button:hover{
+    background-color: green;
+    border-radius: 10px;
+}
