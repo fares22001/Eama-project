@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration: none;
+    color: black;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+main{
+    max-width: 1500px;
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column; 
+}
+
+main .card{
+    height: 150px;
+    border: 1px solid lightgray;
+    margin: 20px;
+    display: flex;
+}
