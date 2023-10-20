@@ -12,6 +12,25 @@
     <main>
         <h1>0 Items</h1>
         <hr>
+        <div class="card">
+            <div class="images">
+                <img src="image.jpg" alt="">
+            </div>
+            
+            <div class="caption">
+                <p class="rate">
+                    <i class="star"><span>&#9733;</span></i>
+                    <i class="star"><span>&#9733;</span></i>                                                                 
+                    <i class="star"><span>&#9733;</span></i>
+                    <i class="star"><span>&#9733;</span></i>
+                    <i class="star"><span>&#9733;</span></i>
+                </p>
+                <p class="product_name">Product Name</p>
+                <p class="price"><b>$300</b></p>
+                <p class="discount"><b><del>450$</del></b></p>
+                <button class="remove">Remove From Cart</button>
+            </div>
+        </div>
     </main>
 </body>
 </html>
