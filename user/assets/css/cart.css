@@ -12,7 +12,7 @@ html{
 }
 
 main{
-    max-width: 1500px;
+    max-width: 1000px;
     width: 80%;
     margin: 30px;
     display: flex;
