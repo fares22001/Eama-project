@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'user/includes/header.php'; ?>
 
     <section aria-label="Newest Photos">
         <div class="carousel" data-carousel>
@@ -46,25 +46,25 @@
 
     <div class="product-container">
         <div class="product-card">
-            <img src="image.jpg" alt="Product 1" class="images">
+            <img src="user/assets/img/image.jpg" alt="Product 1" class="images">
             <h3>Product 1</h3>
             <p>Description of Product 1.</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
-            <img src="image2.avif" alt="Product 2" class="images">
+            <img src="user/assets/img/image2.avif" alt="Product 2" class="images">
             <h3>Product 2</h3>
             <p>Description of Product 2.</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
-            <img src="image3.webp" alt="Product 3" class="images">
+            <img src="user/assets/img/image3.webp" alt="Product 3" class="images">
             <h3>Product 3</h3>
             <p>Description of Product 3.</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
-            <img src="image4.webp" alt="Product 4" class="images">
+            <img src="user/assets/img/image4.webp" alt="Product 4" class="images">
             <h3>Product 4</h3>
             <p>Description of Product 4.</p>
             <a href="#" class="btn">Buy Now</a>
@@ -101,7 +101,7 @@
         <a href="about.php" class="btn">Read More</a>
     </section>
 
-    <?php include 'footer.php'; ?>
+    <?php include 'user/includes/footer.php'; ?>
     <script src="slideshow.js"></script>
     <script src="scroll.js"></script>
 </body>
