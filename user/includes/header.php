@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="user/assets/css/header.css">
+    <link rel="stylesheet" href="../../user/assets/css/header.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
             <div class="user-actions">
                 <a href="#">Login</a>
                 <a href="#">Register</a>
-                <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+                <a href="user/views/cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
             </div>
         </div>
         <nav class="main-menu">
