@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../user/assets/css/footer.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 
 <body>
+<div class="page-wrapper">
     <footer class="ecommerce-footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -36,6 +37,7 @@
             &copy; 2023 YourStore. All rights reserved.
         </div>
     </footer>
+    </div>
 </body>
 
 </html>
