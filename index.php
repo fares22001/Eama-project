@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php include 'user/includes/header.php'; ?>
+    <?php include 'header.php'; ?>
 
     <section aria-label="Newest Photos">
         <div class="carousel" data-carousel>
@@ -101,7 +101,7 @@
         <a href="about.php" class="btn">Read More</a>
     </section>
 
-    <?php include 'user/includes/footer.php'; ?>
+    <?php include 'footer.php'; ?>
     <script src="slideshow.js"></script>
     <script src="scroll.js"></script>
 </body>
