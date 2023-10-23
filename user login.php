@@ -6,7 +6,7 @@
     <title>user Login</title>
     <!-- <link rel="stylesheet" href="user\assets\css\header.css">
     <link rel="stylesheet" href="user\assets\css\footer.css"> -->
-    <link rel="stylesheet" href="user\assets\css\user login.css">
+    <link rel="stylesheet" href=" user login.css">
     <script src="user\assets\js\user login.js"></script>
 </head> 
 <body>   
@@ -17,7 +17,9 @@
  <form action="" method="post" onsubmit="return validateForm()">
      <input type="text" id="username" name="username" placeholder="Enter your username" required>
      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+     
      <b> <button type="submit"  >Login </button></b> <br><br>
+    
      <div id="error" class="error"></div>
  </form>
 </div>
