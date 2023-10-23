@@ -1,0 +1,75 @@
+body{
+    background-image: url(Images/back3.jpg);
+     background-repeat: no-repeat;
+     background-size:cover;
+     background-position:center;
+     font-family: 'Courier New';
+ }
+ .container{
+     width: 600px;
+     height: 350px;
+     margin-right:100px;
+     margin-left:500px;
+     margin-top: 250px;
+     background-color: rgb(183, 195, 205);
+     border-radius: 20px;
+     opacity: 90%;
+  }
+  h2{
+     color: black;
+     text-align:center;
+     padding-right: 100px;
+     padding-left: 100px;
+     padding-top: 25px;
+     border-bottom: solid 1px black;
+     padding-bottom: 6px;
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+ 
+  }
+ form{
+     width: 300px;
+     margin-left: 70px;
+     margin-right: 50px;
+  }
+  
+  
+  form input{
+     width: 130%;
+     height: 40px;
+     padding: 5px;
+     border:none;
+     border-radius: 15px;
+     outline: none;
+     margin-top: 10px;
+     margin-bottom: 20px;
+     border-bottom: 1px solid black;
+ }
+ 
+  form textarea:focus{
+     border: none;
+    
+  }
+  form textarea{
+     
+     width: 100%;
+     border: none;
+     border-bottom: 1px solid black;
+     outline: none;
+     margin-top: 10px;
+     margin-bottom: 10px;
+ 
+ }
+  button{
+     width: 320px;
+     height: 35px;
+     margin-left: 50px;
+     margin-right: 100px;
+     margin-top: 20px;
+     border: none;
+     background-color:blue;
+     color: aliceblue;
+     font-size: 18px;
+     border-radius: 10px;
+     font-family: 'Times New Roman', Times, serif;
+     
+     }
