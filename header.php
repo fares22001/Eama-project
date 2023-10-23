@@ -26,7 +26,7 @@
         <nav class="main-menu">
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="#">Shop</a></li>
+                <li><a href="products.php">Shop</a></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>

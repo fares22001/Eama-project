@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<div class="page-wrapper">
     <footer class="ecommerce-footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -36,6 +37,7 @@
             &copy; 2023 YourStore. All rights reserved.
         </div>
     </footer>
+    </div>
 </body>
 
 </html>
