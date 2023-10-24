@@ -1,76 +1,92 @@
-.ecommerce-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    margin-top: 100px;
 }
 
-.header-top {
+/* Animated Header Styling */
+.animated-header {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    animation: slideIn 1s ease-in;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
 }
 
-.logo a {
-    font-size: 24px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
+.logo img {
+    max-width: 100px;
 }
 
-
-.search {
-    display: flex;
-    align-items: center;
-}
-
-input[type="text"] {
-    padding: 5px;
-    border: none;
-    border-radius: 3px;
-}
-
-.search button {
-    background-color: #fff;
-    border: none;
-    padding: 5px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    cursor: pointer;
-}
-
-.user-actions a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-}
-.user-actions a:hover{
-    color:#ff3366;
-}
-
-.user-actions i {
-    margin-right: 5px;
-}
-
-.main-menu ul {
+.navigation .nav-links {
     list-style: none;
     padding: 0;
     display: flex;
-    justify-content: center;
-    background-color: #333;
 }
 
-.main-menu li {
-    margin: 0 10px;
+.nav-links li {
+    margin-right: 20px;
 }
 
-.main-menu a {
+.nav-links a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
-    font-size: 16px;
-
+    transition: color 0.2s, transform 0.2s;
+    /* Add transition for color and transform */
 }
-.main-menu a:hover {
-    color: #ff3366;
+
+/* Add hover animation for the navigation buttons */
+.nav-links a:hover {
+    color: #ff9900;
+    /* Change color on hover */
+    transform: scale(1.1);
+    /* Scale the button on hover */
+}
+/* Text Logo Animation */
+.animated-text {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Additional Text Logo Styling */
+.text-logo {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
 }
