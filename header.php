@@ -5,32 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="header.css">
+    <title>YourStore - Online Shopping</title>
 </head>
 
 <body>
-    <header class="ecommerce-header">
-        <div class="header-top">
+    <header class="animated-header">
+        <div class="header-content">
             <div class="logo">
-                <a href="index.php">Eama Group</a>
+                <a href="index.php" class="text-logo animated-text">Eama Group</a>
             </div>
-            <div class="search">
-                <input type="text" placeholder="Search products...">
-                <button><i class="fas fa-search"></i></button>
-            </div>
-            <div class="user-actions">
-                <a href="user login.php"><i class="fas fa-login"></i> login</a>
-                <a href="Register.php"><i class="fas fa-Register"></i> Register</a>
-                <a href="user/views/cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
-            </div>
+            <nav class="navigation">
+                <ul class="nav-links">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="user login.php">Login</a></li>
+                    <li><a href="Register.php">Register</a></li>
+                    <li><a href="products.php">Products</a></li>
+                    <li><a href="cart.php">Cart</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav class="main-menu">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="products.php">Shop</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 </body>
 

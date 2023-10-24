@@ -5,29 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beauty Products</title>
-    <link rel="stylesheet" href="user/assets/css/index.css">
+    <link rel="stylesheet" href="index.css">
     <script src="https://kit.fontawesome.com/a98ac1f71c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <?php include 'header.php'; ?>
 
-    <section aria-label="Newest Photos">
+    <section aria-label="Newest Photos" class="slideshow">
         <div class="carousel" data-carousel>
             <button class="carousel-button prev" data-carousel-button="prev">&#8656;</button>
             <button class="carousel-button next" data-carousel-button="next">&#8658;</button>
             <ul data-slides>
                 <li class="slide" data-active>
                     <div class="slide-text">
-                        <p>Beautiful Scenery</p>
+                        <p></p>
                     </div>
-                    <img src="https://source.unsplash.com/78A265wPiO4" alt="Nature Image #1">
+                    <img src="homeimage6.jpg" alt="Nature Image #2">
+
                 </li>
                 <li class="slide">
                     <div class="slide-text">
                         <p>Nature's Beauty</p>
                     </div>
-                    <img src="https://source.unsplash.com/eOpewngf68w" alt="Nature Image #2">
+                    <img src="cotoneve2.png" alt="Nature Image #1">
                 </li>
                 <li class="slide">
                     <div class="slide-text">
@@ -69,6 +70,12 @@
             <p>Description of Product 4.</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
+        <div class="product-card">
+            <img src="user/assets/img/image4.webp" alt="Product 4" class="images">
+            <h3>Product 4</h3>
+            <p>Description of Product 4.</p>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
     </div>
 
 
@@ -78,22 +85,6 @@
 
 
 
-    <!-- <section class="featured-products">
-        <h2>Featured Products</h2>
-        <?php
-        // Connect to your database or data source
-        // Query to fetch featured products
-        // Example: $products = getFeaturedProducts();
-        // foreach ($products as $product) {
-        //     echo '<div class="product">';
-        //     echo '<img src="' . $product['image'] . '" alt="' . $product['name'] . '">';
-        //     echo '<h3>' . $product['name'] . '</h3>';
-        //     echo '<p>' . $product['description'] . '</p>';
-        //     echo '<a href="#">Shop Now</a>';
-        //     echo '</div>';
-        // }
-        ?>
-    </section> -->
 
     <section class="about">
         <h2>About Us</h2>

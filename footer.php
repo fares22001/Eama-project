@@ -8,8 +8,7 @@
 </head>
 
 <body>
-<div class="page-wrapper">
-    <footer class="ecommerce-footer">
+    <footer class="animated-footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Contact Us</h3>
@@ -21,7 +20,8 @@
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Shop</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>
@@ -37,7 +37,7 @@
             &copy; 2023 YourStore. All rights reserved.
         </div>
     </footer>
-    </div>
+
 </body>
 
 </html>
