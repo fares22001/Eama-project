@@ -1,7 +1,7 @@
 <?php
-// require_once '';
-// $sql_cart = "SELECT * FROM cart";
-// $all_cart = $conn->query($sql_cart);
+require_once 'connection.php';
+$sql_cart = "SELECT * FROM cart";
+$all_cart = $conn->query($sql_cart);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +18,7 @@
 <body>
     <?php
     include 'header.php';
+    include 'header.php';
     ?>
     <main>
         <?php //echo mysqli_num_rows($all_cart);
@@ -25,11 +26,38 @@
         <h1>0 Items</h1>
         <hr>
         <?php
-        // while($row_cart = mysqli_fetch_assco($all_cart)){
+        // while($row_cart = mysqli_fetch_assoc($all_cart)){
         //     $sql = "SELECT * FROM products WHERE product_id=".$row_cart["product_id"];
         //     $all_product = $conn->query($sql);
-        //     while($row = mysqli_fetch_assco($all_product)){
+        //     while($row = mysqli_fetch_assoc($all_product)){
         ?>
+        <div class="card">
+            <div class="images">
+                <?php //echo $row["product_image"]; 
+                ?>
+                <img src="user/assets/img/image.jpg" alt="">
+            </div>
+
+            <div class="caption">
+                <p class="rate">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </p>
+                <?php //echo $row["name"]; 
+                ?>
+                <p class="product_name">Product Name</p>
+                <?php //echo $row["price"]; 
+                ?>
+                <p class="price"><b>$3</b></p>
+                <?php //echo $row["dicount"]; 
+                ?>
+                <p class="discount"><b><del>$4</del></b></p>
+                <button class="remove" data-id="<?php echo $row["product_id"]; ?>">Remove From Cart</button>
+            </div>
+        </div>
         <div class="card">
             <div class="images">
                 "<?php //echo $row["product_image"]; 
@@ -85,7 +113,7 @@
             </div>
         </div>
         <?php
-        //     }
+        //}
         // }
         ?>
     </main>
@@ -108,6 +136,7 @@
         }
     </script>
     <?php
+    include 'footer.php';
     include 'footer.php';
     ?>
 </body>

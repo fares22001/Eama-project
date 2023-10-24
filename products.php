@@ -1,3 +1,9 @@
+<?php
+require_once 'connection.php';
+$sql = "SELECT * FROM products";
+$all_product = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -173,6 +179,10 @@
 
     <?php include 'footer.php'; ?>
 
+    <?php
+    // }
+    // }
+    ?>
 </body>
 
 
