@@ -1,7 +1,7 @@
 <?php
-// require_once 'connection.php';
-// $sql = "SELECT * FROM products";
-// $all_product = $conn->query($sql_cart);
+require_once 'connection.php';
+$sql = "SELECT * FROM products";
+$all_product = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,13 @@
 
 <body>
 <?php include 'header.php'; ?>
-    <?php //while($row = mysqli_fetch_assoc($all_product)){ ?>
+    <?php //while($row = mysqli_fetch_assoc($all_product)){ 
+        //  $sql = "SELECT * FROM products ORDER BY ptoduct_id DESC";
+        //  $res = mysqli_query($conn,  $sql);
+
+        //  if (mysqli_num_rows($res) > 0) {
+        //      while ($images = mysqli_fetch_assoc($res)) { 
+        ?>
 
     <div id ="menubody" onclick="favorites(event.target)">
 
@@ -171,6 +177,7 @@
 
   <?php 
    // }
+// }
   ?>
 </body>
 
