@@ -25,10 +25,10 @@ $all_cart = $conn->query($sql_cart);
         <h1>0 Items</h1>
         <hr>
         <?php
-        // while($row_cart = mysqli_fetch_assco($all_cart)){
+        // while($row_cart = mysqli_fetch_assoc($all_cart)){
         //     $sql = "SELECT * FROM products WHERE product_id=".$row_cart["product_id"];
         //     $all_product = $conn->query($sql);
-        //     while($row = mysqli_fetch_assco($all_product)){
+        //     while($row = mysqli_fetch_assoc($all_product)){
         ?>
         <div class="card">
             <div class="images">
@@ -58,8 +58,8 @@ $all_cart = $conn->query($sql_cart);
             </div>
         </div>
         <?php
-        //     }
-        // }
+            //}
+       // }
         ?>
     </main>
     <script>
