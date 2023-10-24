@@ -20,7 +20,7 @@
             <div class="user-actions">
                 <a href="user login.php"><i class="fas fa-login"></i> login</a>
                 <a href="Register.php"><i class="fas fa-Register"></i> Register</a>
-                <a href="user/views/cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
+                <a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
             </div>
         </div>
         <nav class="main-menu">

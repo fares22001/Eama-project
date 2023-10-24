@@ -1,3 +1,9 @@
+<?php
+// require_once 'connection.php';
+// $sql = "SELECT * FROM products";
+// $all_product = $conn->query($sql_cart);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,19 +17,24 @@
 
 <body>
 <?php include 'header.php'; ?>
+    <?php //while($row = mysqli_fetch_assoc($all_product)){ ?>
 
     <div id ="menubody" onclick="favorites(event.target)">
 
+    <?php //echo $row["image"] ?>
     <div class="menu_items" ><img src="user/assets/img/image.jpg" alt="" width="100%" height="100%" class="menu_img">
         <div class="descr_and_add">
             <img src="user/assets/img/favourite.png" class="favrs" alt=""title="remove from favourite">
             <img src="user/assets/img/love.png" class="favs" alt=""title="add to favourite">
             <img src="user/assets/img/add.png" alt="" 
              class="icons">
-        <div class="description"> 
+        <div class="description">
+        <?php //echo $row["name"] ?> 
             <span class="names"> Signal</span>
             <br>
+            <?php //echo $row["description"] ?>
             <p class="ingred">Our Recommended World Wide Teeth Brushs</p>
+            <?php //echo $row["price"] ?>
             <span class="prices">Price : 20$</span>
         </div></div>
     
@@ -158,6 +169,9 @@
        
   <?php include 'footer.php'; ?>
 
+  <?php 
+   // }
+  ?>
 </body>
 
 
