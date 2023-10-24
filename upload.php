@@ -2,7 +2,7 @@
 
 require_once 'connection.php';
 
-if(isset($_POST["submit"])){
+if(isset($_POST["submit"]) && isset($_FILES['imageUpload'])){
   $productname = $_POST["name"];
   $price = $_POST["price"];
   $discount = $_POST["discount"];
@@ -38,11 +38,10 @@ if(isset($_POST["submit"])){
      echo '<script>alert("sorry your file is doesn\'t uploaded. Please try again")</script>';
   }else{
       if($productname != "" && $price !=""){
-          move_uploaded_file($_FILES["imageUpload"]["tmp_name"],$upload_file);
+            move_uploaded_file($_FILES["imageUpload"]["tmp_name"],$upload_file);
 
-          $sql = "INSERT INTO product(product_name,price,discount,product_image)
-          VALUES('$productname',$price,$discount,'$product_image')";
-
+            $sql = "INSERT INTO products(name,price,discount,product_image)
+            VALUES('$productname',$price,$discount,'$product_image')";
         //   if($conn->query($sql) === TRUE){
         //       echo "<script>alert('your product uploaded successfully')</script>";
         //   }
