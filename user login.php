@@ -18,7 +18,6 @@
 include('dbh.php');  
 session_start();
 
-   //grab data from user and see if it exists in database
    if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $Email=$_POST["email"];
