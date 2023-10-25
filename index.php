@@ -32,9 +32,9 @@
                 </li>
                 <li class="slide">
                     <div class="slide-text">
-                        <p>Beautiful Scenery</p>
+                        <p>Beautiful Designs</p>
                     </div>
-                    <img src="https://source.unsplash.com/ndN00KmbJ1c" alt="Nature Image #3">
+                    <img src="maxresdefault.jpg" alt="Nature Image #3">
                 </li>
             </ul>
         </div>
@@ -47,41 +47,37 @@
 
     <div class="product-container">
         <div class="product-card">
-            <img src="user/assets/img/image.jpg" alt="Product 1" class="images">
-            <h3>Product 1</h3>
-            <p>Description of Product 1.</p>
+            <img src="firstbrush.jpg" alt="Product 1" class="images">
+            <h3>Silvercare brush</h3>
+            <p>Silver Care System Hard Toothbrush. The head is coated with 999 silver, which provides activation of silver ions and a natural antibacterial process during brushing of teeth upon contact with water</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
-            <img src="user/assets/img/image2.avif" alt="Product 2" class="images">
-            <h3>Product 2</h3>
-            <p>Description of Product 2.</p>
+            <img src="secbrush.jpg" alt="Product 2" class="images">
+            <h3>Banat brush</h3>
+            <p>Special cut whitening bristles for nicotine, coffee and tea stains,Special teeth polisher helps to brighten teeth surface,Round tip bristles prevents teeth and gums from injuring,Timer cap helps to keep track</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
-            <img src="user/assets/img/image3.webp" alt="Product 3" class="images">
-            <h3>Product 3</h3>
-            <p>Description of Product 3.</p>
+            <img src="thirdimg.jpg" alt="Product 3" class="images">
+            <h3>Cotoneve</h3>
+            <p>Make-up remover cotton pads with Aloe Vera and Vitamin B5, ingredients especially appreciated for their soothing properties,Soft, super absorbent and resistant,make-up removal cotton pads</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
-            <img src="user/assets/img/image4.webp" alt="Product 4" class="images">
-            <h3>Product 4</h3>
-            <p>Description of Product 4.</p>
+            <img src="forthimg.jpeg" alt="Product 4" class="images">
+            <h3>Cotoneve cotton buds</h3>
+            <p>Cotton buds ideal for everyday personal hygiene of the entire family, in full safety.
+                Protector special safety shape, softer and more delicate, is perfect for children hygiene</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
-            <img src="user/assets/img/image4.webp" alt="Product 4" class="images">
-            <h3>Product 4</h3>
-            <p>Description of Product 4.</p>
+            <img src="fifthimg.jpg" alt="Product 4" class="images">
+            <h3>Sunbright wet wipes</h3>
+            <p>100% cotton wipes with the best quality and best fragrance </p>
             <a href="#" class="btn">Buy Now</a>
         </div>
     </div>
-
-
-
-
-
 
 
 
