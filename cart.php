@@ -1,8 +1,3 @@
-<?php
-require_once 'connection.php';
-$sql_cart = "SELECT * FROM cart";
-$all_cart = $conn->query($sql_cart);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,18 +13,17 @@ $all_cart = $conn->query($sql_cart);
 <body>
     <?php
     include 'header.php';
-    include 'header.php';
     ?>
     <main>
         <?php //echo mysqli_num_rows($all_cart);
         ?>
-        <h1>0 Items</h1>
+        <h1>3 Items</h1>
         <hr>
         <?php
-        // while($row_cart = mysqli_fetch_assoc($all_cart)){
+        // while($row_cart = mysqli_fetch_assco($all_cart)){
         //     $sql = "SELECT * FROM products WHERE product_id=".$row_cart["product_id"];
         //     $all_product = $conn->query($sql);
-        //     while($row = mysqli_fetch_assoc($all_product)){
+        //     while($row = mysqli_fetch_assco($all_product)){
         ?>
         <div class="card">
             <div class="images">
@@ -48,7 +42,7 @@ $all_cart = $conn->query($sql_cart);
                 </p>
                 <?php //echo $row["name"]; 
                 ?>
-                <p class="product_name">Product Name</p>
+                <p class="product_name">Signal</p>
                 <?php //echo $row["price"]; 
                 ?>
                 <p class="price"><b>$3</b></p>
@@ -58,11 +52,15 @@ $all_cart = $conn->query($sql_cart);
                 <button class="remove" data-id="<?php echo $row["product_id"]; ?>">Remove From Cart</button>
             </div>
         </div>
+
+
+
+
         <div class="card">
             <div class="images">
-                "<?php //echo $row["product_image"]; 
-                    ?>"
-                <img src="../../user/" alt="">
+                <?php
+                ?>
+                <img src="user/assets/img/electronic.jpg" alt="">
             </div>
 
             <div class="caption">
@@ -73,23 +71,21 @@ $all_cart = $conn->query($sql_cart);
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                 </p>
-                <?php //echo $row["name"]; 
-                ?>
-                <p class="product_name">Product Name</p>
-                <?php //echo $row["price"]; 
-                ?>
-                <p class="price"><b>$3</b></p>
-                <?php //echo $row["dicount"]; 
-                ?>
-                <p class="discount"><b><del>$4</del></b></p>
+                <p class="product_name">Oral</p>
+
+                <p class="price"><b>$9</b></p>
+
+                <p class="discount"><b><del>$10</del></b></p>
                 <button class="remove" data-id="<?php echo $row["product_id"]; ?>">Remove From Cart</button>
             </div>
         </div>
+
+
         <div class="card">
             <div class="images">
-                "<?php //echo $row["product_image"]; 
-                    ?>"
-                <img src="../../user/" alt="">
+                <?php
+                ?>
+                <img src="user/assets/img/image3.webp" alt="">
             </div>
 
             <div class="caption">
@@ -100,24 +96,34 @@ $all_cart = $conn->query($sql_cart);
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                 </p>
-                <?php //echo $row["name"]; 
-                ?>
-                <p class="product_name">Product Name</p>
-                <?php //echo $row["price"]; 
-                ?>
-                <p class="price"><b>$3</b></p>
-                <?php //echo $row["dicount"]; 
-                ?>
-                <p class="discount"><b><del>$4</del></b></p>
+                <p class="product_name">Oral</p>
+
+                <p class="price"><b>$2</b></p>
+
+                <p class="discount"><b><del>$3</del></b></p>
                 <button class="remove" data-id="<?php echo $row["product_id"]; ?>">Remove From Cart</button>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <?php
-        //}
+        //     }
         // }
         ?>
     </main>
-    <script>
+    <!-- <script>
         var remove = document.getElementsByClassName("remove");
         for (var i = 0; i < remove.length; i++) {
             remove[i].addEventListener("click", function(event) {
@@ -134,9 +140,8 @@ $all_cart = $conn->query($sql_cart);
                 xml.send();
             })
         }
-    </script>
+    </script> -->
     <?php
-    include 'footer.php';
     include 'footer.php';
     ?>
 </body>
