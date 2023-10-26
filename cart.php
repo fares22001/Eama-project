@@ -33,13 +33,6 @@
             </div>
 
             <div class="caption">
-                <p class="rate">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </p>
                 <?php //echo $row["name"]; 
                 ?>
                 <p class="product_name">Signal</p>
@@ -64,13 +57,6 @@
             </div>
 
             <div class="caption">
-                <p class="rate">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </p>
                 <p class="product_name">Oral</p>
 
                 <p class="price"><b>$9</b></p>
@@ -89,13 +75,6 @@
             </div>
 
             <div class="caption">
-                <p class="rate">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </p>
                 <p class="product_name">Oral</p>
 
                 <p class="price"><b>$2</b></p>
