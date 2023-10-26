@@ -12,6 +12,8 @@
                 </h4>
             </div>
             <div class="card-body">
+                <?= alertmessage() ?>
+
                 <table class="table table-borderedo table-striped">
                     <thead>
                         <tr>
@@ -24,17 +26,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>id</td>
-                            <td>name</td>
-                            <td>email</td>
-                            <td>address</td>
-                            <td>role</td>
-                            <td>
-                                <a class="btn btn-success btn-sm" href="user-edit.php">edit</a>
-                                <a class="btn btn-danger btn-sm" href="user-delete.php">delete</a>
-                            </td>
-                        </tr>
+                        <?PHP
+                        $users = getall('user');
+
+                        if (mysqli_num_rows($users) > 0) {
+
+
+                            foreach ($users as $userItem) {
+                        ?>
+                                <tr>
+                                    <td><?= $userItem['id']; ?></td>
+                                    <td><?= $userItem['name']; ?></td>
+                                    <td><?= $userItem['email']; ?></td>
+                                    <td><?= $userItem['address']; ?></td>
+                                    <td><?= $userItem['role']; ?></td>
+                                    <td>
+                                        <a class="btn btn-success btn-sm" href="user-edit.php?id=<?= $userItem['id']; ?>">edit</a>
+                                        <a class="btn btn-danger btn-sm" href="user-delete.php?id=<?= $userItem['id']; ?>" onclick="return confirm('are you want to delete data ')">
+
+                                            delete</a>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="7">no record found</td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+
                     </tbody>
                 </table>
             </div>

@@ -12,42 +12,43 @@
                 </h4>
             </div>
             <div class="card-body">
-                <form action="">
+                <form action="code.php" method="post">
+                    <?= alertmessage() ?>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>name</label>
-                                <input type="text" name=username class="form-control">
+                                <input type="text" name="name" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>email</label>
-                                <input type="email" name=username class="form-control">
+                                <input type="email" name="email" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>password</label>
-                                <input type="password" name=password class="form-control">
+                                <input type="password" name="password" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>confirm password</label>
-                                <input type="confirmpassword" name=confirmpassword class="form-control">
+                                <input type="confirmpassword" name="confirmpassword" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>address</label>
-                                <input type="text" name=username class="form-control">
+                                <input type="text" name="address" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>phone number</label>
-                                <input type="text" name=username class="form-control">
+                                <input type="text" name="mobile" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -55,9 +56,9 @@
                                 <label>select role </label>
                                 <select name="role" class="form-select" id="">
                                     <option value="">Select Role</option>
-                                    <option value="">Regular Customr</option>
-                                    <option value="">Reseller</option>
-                                    <option value="">Phrmacy</option>
+                                    <option value="regular">Regular Customr</option>
+                                    <option value="reseller">Reseller</option>
+                                    <option value="pharmcy">Phrmacy</option>
                                 </select>
                             </div>
 
@@ -65,7 +66,7 @@
 
                         <div class="col-md-6">
                             <div class="mb-3 text-end">
-                                <br> <button class="btn btn-primary">save</button>
+                                <br> <button type="submit" name="saveuser" class="btn btn-primary">save</button>
                             </div>
                         </div>
                     </div>
