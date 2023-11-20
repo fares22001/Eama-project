@@ -7,8 +7,8 @@
         <div class="card">
             <div class="card-header">
                 <h4>
-                    user list
-                    <a href="user-create.php" class="btn btn-primary float-end">Add user</a>
+                    products list
+                    <a href="product-create.php" class="btn btn-primary float-end">Add product</a>
                 </h4>
             </div>
             <div class="card-body">
@@ -17,17 +17,18 @@
                 <table class="table table-borderedo table-striped">
                     <thead>
                         <tr>
-                            <th>id</th>
+                            <!-- <th>image</th> -->
+                            <th>image</th>
                             <th>name</th>
-                            <th>email</th>
-                            <th>address</th>
-                            <th>role</th>
+                            <th>brand</th>
+                            <th>price</th>
+                            <th>quantity</th>
                             <th>action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?PHP
-                        $users = getall('user');
+                        $users = getall('products');
 
                         if (mysqli_num_rows($users) > 0) {
 
@@ -35,14 +36,16 @@
                             foreach ($users as $userItem) {
                         ?>
                                 <tr>
-                                    <td><?= $userItem['id']; ?></td>
+                                    <td><img src="../uploades/1698279757.jpeg" alt=""></td>
                                     <td><?= $userItem['name']; ?></td>
-                                    <td><?= $userItem['email']; ?></td>
-                                    <td><?= $userItem['address']; ?></td>
-                                    <td><?= $userItem['role']; ?></td>
+                                    <td><?= $userItem['brand']; ?></td>
+                                    <td><?= $userItem['price']; ?></td>
+                                    <td><?= $userItem['quantity']; ?></td>
+
+
                                     <td>
-                                        <a class="btn btn-success btn-sm" href="user-edit.php?id=<?= $userItem['id']; ?>">edit</a>
-                                        <a class="btn btn-danger btn-sm" href="user-delete.php?id=<?= $userItem['id']; ?>" onclick="return confirm('are you want to delete data ')">
+                                        <a class="btn btn-success btn-sm" href="product-edit.php?id=<?= $userItem['id']; ?>">edit</a>
+                                        <a class="btn btn-danger btn-sm" href="product-delete.php?id=<?= $userItem['id']; ?>" onclick="return confirm('are you want to delete data ')">
 
                                             delete</a>
                                     </td>

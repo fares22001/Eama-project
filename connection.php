@@ -1,11 +1,11 @@
-<?php 
+<!-- <?php
 
-$server_name = "localhost";
-$user_name = "root";
-$password = "";
-$db_name = "eama_project";
+        $server_name = "localhost";
+        $user_name = "root";
+        $password = "";
+        $db_name = "eamma";
 
-$conn = new mysqli($server_name,$user_name,$password,$db_name);
+        $con = new mysqli($server_name, $user_name, $password, $db_name);
 
 if(isset($_GET["id"])){
     $product_id = $_GET["id"];
@@ -15,6 +15,7 @@ if(isset($_GET["id"])){
     $total_cart_result = $conn->query($total_cart);
     $cart_num = mysqli_num_rows($total_cart_result);
 
+<<<<<<< HEAD
     if(mysqli_num_rows($result) > 0){
         $in_cart = "already In cart";
 
@@ -39,3 +40,6 @@ if(isset($_GET["cart_id"])){
     }
 }
 ?>
+=======
+        ?> -->
+>>>>>>> 5a4f7c808b5181a096c247df6dae5b99a7951bab

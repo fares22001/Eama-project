@@ -1,8 +1,3 @@
-<?php
-require_once 'connection.php';
-$sql_cart = "SELECT * FROM cart";
-$all_cart = $conn->query($sql_cart);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,13 +33,6 @@ $all_cart = $conn->query($sql_cart);
             </div>
 
             <div class="caption">
-                <p class="rate">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </p>
                 <?php //echo $row["name"]; 
                 ?>
                 <p class="product_name">Signal</p>
@@ -63,12 +51,18 @@ $all_cart = $conn->query($sql_cart);
 
         <div class="card">
             <div class="images">
+<<<<<<< HEAD
                 <?php 
                     ?>
+=======
+                <?php
+                ?>
+>>>>>>> 5a4f7c808b5181a096c247df6dae5b99a7951bab
                 <img src="user/assets/img/electronic.jpg" alt="">
             </div>
 
             <div class="caption">
+<<<<<<< HEAD
                 <p class="rate">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -80,6 +74,12 @@ $all_cart = $conn->query($sql_cart);
                 
                 <p class="price"><b>$9</b></p>
                 
+=======
+                <p class="product_name">Oral</p>
+
+                <p class="price"><b>$9</b></p>
+
+>>>>>>> 5a4f7c808b5181a096c247df6dae5b99a7951bab
                 <p class="discount"><b><del>$10</del></b></p>
                 <button class="remove" data-id="<?php echo $row["product_id"]; ?>">Remove From Cart</button>
             </div>
@@ -88,12 +88,18 @@ $all_cart = $conn->query($sql_cart);
 
         <div class="card">
             <div class="images">
+<<<<<<< HEAD
                 <?php 
                     ?>
+=======
+                <?php
+                ?>
+>>>>>>> 5a4f7c808b5181a096c247df6dae5b99a7951bab
                 <img src="user/assets/img/image3.webp" alt="">
             </div>
 
             <div class="caption">
+<<<<<<< HEAD
                 <p class="rate">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -105,6 +111,12 @@ $all_cart = $conn->query($sql_cart);
                 
                 <p class="price"><b>$2</b></p>
                 
+=======
+                <p class="product_name">Oral</p>
+
+                <p class="price"><b>$2</b></p>
+
+>>>>>>> 5a4f7c808b5181a096c247df6dae5b99a7951bab
                 <p class="discount"><b><del>$3</del></b></p>
                 <button class="remove" data-id="<?php echo $row["product_id"]; ?>">Remove From Cart</button>
             </div>

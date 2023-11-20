@@ -1,9 +1,3 @@
-<?php
-require_once 'connection.php';
-$sql = "SELECT * FROM products";
-$all_product = $conn->query($sql);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -196,6 +190,7 @@ if (mysqli_num_rows($res) > 0) {
 }
 ?>
 
+<<<<<<< HEAD
     
     <!-- <div class="menu_items"><img src="user/assets/img/electronic.jpg" alt="" width="100%" height="100%" class="menu_img">
         <div class="descr_and_add">
@@ -296,9 +291,14 @@ if (mysqli_num_rows($res) > 0) {
     
 ?> -->
 <?php include 'footer.php'; ?>
+=======
+
+
+
+
+
+    <?php include 'footer.php'; ?>
+>>>>>>> 5a4f7c808b5181a096c247df6dae5b99a7951bab
 </body>
-
-
-
 
 </html>

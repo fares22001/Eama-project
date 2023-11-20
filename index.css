@@ -238,7 +238,7 @@ body {
 .slide-text p{
     position: relative;
     bottom: -350px;
-    color: white;
+    color: transparent;
     font-weight: bold;
     text-align: center;
     font-size: 50px;

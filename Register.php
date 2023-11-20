@@ -1,3 +1,7 @@
+<?php
+  include_once "dbh.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,13 +31,13 @@
         <input type="tel" id="inputphone" name="phone" placeholder="Enter 11-digit phone number" pattern="[0-9]{11}" required>
        
         
-        <input type="email" id="inputmail" placeholder="Enter your email" name="Enter your email" required>
+        <input type="email" id="inputmail" placeholder="Enter your email" name="email" required>
        
         
         <input type="password"name="psw" id="inputpass" placeholder="Enter your Password"required>
        
         
-        <input type="password" name="psw-confirmt" id="inputcpass" placeholder="Confirm your Password"required>
+        <input type="password" name="pswconfirmt" id="inputcpass" placeholder="Confirm your Password"required>
         <div class="role">
         <label for="role">Role:</label>
         </div>
@@ -43,8 +47,9 @@
     <option value="pharmacy">Pharmacy</option>
     <option value="user">User</option>
   </select>
-        
-        
+
+
+  
     
         
           <a href="user login.html"></a>
@@ -59,6 +64,30 @@
         </div>
         
     </form>
+    <?php
+ //grap data from user if form was submitted 
+
+  if($_SERVER["REQUEST_METHOD"]=="POST"){ //check if form was submitted
+	$firstname=htmlspecialchars($_POST["firstname"]);
+	$lastname=htmlspecialchars($_POST["lastname"]);
+	$phone=htmlspecialchars($_POST["phone"]);
+	$email=htmlspecialchars($_POST["email"]);
+	$psw=htmlspecialchars($_POST["psw"]);
+    $pswconfirmt=htmlspecialchars($_POST["pswconfirmt"]);
+
+    //insert it to database 
+	$sql="insert into user(firstname,lastname,phone,email,password,confirmpassword) 
+	values('$firstname','$lastname','$phone','$email','$psw','$pswconfirmt')";
+	$result=mysqli_query($conn,$sql);
+
+    //redirect the user back to index.php 
+	if($result)	{
+		header("Location:index.php");
+	}
+}
+
+?>
+
     
     <?php include 'footer.php'; ?>
 </body>
