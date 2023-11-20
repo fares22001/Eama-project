@@ -12,7 +12,7 @@
 <body>
     <!-- <?php //include 'header.php'; ?> -->
 
-    <!-- <div id="menubody" onclick="favorites(event.target)">
+    <div id="menubody" onclick="favorites(event.target)">
 
         <div class="menu_items"><img src="user/assets/img/image.jpg" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
@@ -163,34 +163,33 @@
                 </div>
             </div>
         </div>
-    </div>  -->
-<?php include 'header.php'; ?>
+    </div> 
+<?php //include 'header.php'; ?>
 <?php 
-$sql = "SELECT * FROM products ORDER BY product_id DESC";
-$res = mysqli_query($conn, $sql);
+// $sql = "SELECT * FROM products ORDER BY product_id DESC";
+// $res = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($res) > 0) {
-    while ($row = mysqli_fetch_assoc($res)) {
-        echo '<div id="menu_items" onclick="favorites(event.target)">
-        <div class="menu_items">
-            <img src="' . $row["image"] . '" alt="" width="100%" height="100%" class="menu_img">
-            <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favorite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favorite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
-                <div class="description">
-                    <span class="names">' . $row["name"] . '</span><br>
-                    <p class="ingred">' . $row["description"] . '</p>
-                    <span class="prices">Price: ' . $row["price"] . ' $</span>
-                </div>
-            </div>
-        </div>
-    </div>';
-    }
-}
+// if (mysqli_num_rows($res) > 0) {
+//     while ($row = mysqli_fetch_assoc($res)) {
+//         echo '<div id="menu_items" onclick="favorites(event.target)">
+//         <div class="menu_items">
+//             <img src="' . $row["image"] . '" alt="" width="100%" height="100%" class="menu_img">
+//             <div class="descr_and_add">
+//                 <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favorite">
+//                 <img src="user/assets/img/love.png" class="favs" alt="" title="add to favorite">
+//                 <img src="user/assets/img/add.png" alt="" class="icons">
+//                 <div class="description">
+//                     <span class="names">' . $row["name"] . '</span><br>
+//                     <p class="ingred">' . $row["description"] . '</p>
+//                     <span class="prices">Price: ' . $row["price"] . ' $</span>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>';
+//     }
+// }
 ?>
 
-<<<<<<< HEAD
     
     <!-- <div class="menu_items"><img src="user/assets/img/electronic.jpg" alt="" width="100%" height="100%" class="menu_img">
         <div class="descr_and_add">
@@ -291,14 +290,12 @@ if (mysqli_num_rows($res) > 0) {
     
 ?> -->
 <?php include 'footer.php'; ?>
-=======
 
 
 
 
 
     <?php include 'footer.php'; ?>
->>>>>>> 5a4f7c808b5181a096c247df6dae5b99a7951bab
 </body>
 
 </html>
