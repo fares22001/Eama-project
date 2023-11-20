@@ -40,8 +40,10 @@ if(isset($_POST["submit"]) && isset($_FILES['imageUpload'])){
       if($productname != "" && $price !=""){
             move_uploaded_file($_FILES["imageUpload"]["tmp_name"],$upload_file);
 
-            $sql = "INSERT INTO products(name,price,discount,product_image)
-            VALUES('$productname',$price,$discount,'$product_image')";
+            $sql = "INSERT INTO products(name,price)
+            VALUES('$productname',$price)";
+            mysqli_query($conn,$sql);
+
         //   if($conn->query($sql) === TRUE){
         //       echo "<script>alert('your product uploaded successfully')</script>";
         //   }
