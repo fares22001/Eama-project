@@ -15,7 +15,6 @@ if(isset($_GET["id"])){
     $total_cart_result = $conn->query($total_cart);
     $cart_num = mysqli_num_rows($total_cart_result);
 
-<<<<<<< HEAD
     if(mysqli_num_rows($result) > 0){
         $in_cart = "already In cart";
 
@@ -40,6 +39,5 @@ if(isset($_GET["cart_id"])){
     }
 }
 ?>
-=======
+
         ?> -->
->>>>>>> 5a4f7c808b5181a096c247df6dae5b99a7951bab
