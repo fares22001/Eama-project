@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <!-- <?php //include 'header.php'; ?> -->
+     <?php include 'header.php'; ?> 
 
     <div id="menubody" onclick="favorites(event.target)">
 
