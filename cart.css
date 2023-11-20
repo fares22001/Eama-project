@@ -1,3 +1,15 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration: none;
+    color: black;
+}
+
+html{
+    font-size: 62.5%;
+}
 main {
     max-width: 1000px;
     width: 80%;
@@ -24,7 +36,7 @@ main .card .images img {
 }
 
 main .card .caption {
-    line-height: 1.7em;
+    line-height: 3em;
     margin-left: 30px;
     position: relative;
     width: 75%;
@@ -35,7 +47,7 @@ main .card .caption {
 }
 
 main .card .caption p {
-    font-size: 1.0rem;
+    font-size: 1.5rem;
 }
 
 del {

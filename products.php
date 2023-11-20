@@ -1,3 +1,9 @@
+<?php
+
+require_once 'connection.php';
+
+
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -295,7 +301,6 @@
 
 
 
-    <?php include 'footer.php'; ?>
 </body>
 
 </html>

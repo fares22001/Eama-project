@@ -1,11 +1,11 @@
-<!-- <?php
+<?php
 
-        $server_name = "localhost";
-        $user_name = "root";
-        $password = "";
-        $db_name = "eamma";
+    $server_name = "localhost";
+    $user_name = "root";
+    $password = "";
+    $db_name = "eama_project";
 
-        $con = new mysqli($server_name, $user_name, $password, $db_name);
+    $conn = new mysqli($server_name, $user_name, $password, $db_name);
 
 if(isset($_GET["id"])){
     $product_id = $_GET["id"];
@@ -40,4 +40,3 @@ if(isset($_GET["cart_id"])){
 }
 ?>
 
-        ?> -->

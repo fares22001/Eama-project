@@ -1,3 +1,6 @@
+<?php
+require_once 'connection.php';
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +20,7 @@
     <main>
         <?php //echo mysqli_num_rows($all_cart);
         ?>
-        <h1>3 Items</h1>
+        <h1>1 Items</h1>
         <hr>
         <?php
         // while($row_cart = mysqli_fetch_assco($all_cart)){
@@ -33,6 +36,13 @@
             </div>
 
             <div class="caption">
+            <p class="rate">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </p>
                 <?php //echo $row["name"]; 
                 ?>
                 <p class="product_name">Signal</p>
@@ -47,73 +57,35 @@
         </div>
 
 
-
-
         <div class="card">
             <div class="images">
-
-                <?php 
+                <?php //echo $row["product_image"]; 
                     ?>
-
-                <?php
-                ?>
-
-                <img src="user/assets/img/electronic.jpg" alt="">
+                <img src="user/assets/img/doctor.webp" alt="">
             </div>
 
             <div class="caption">
-
-                <p class="rate">
+            <p class="rate">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                 </p>
-                <p class="product_name">Oral</p>
-                
-                <p class="price"><b>$9</b></p>
-                
-
-                <p class="product_name">Oral</p>
-
-                <p class="price"><b>$9</b></p>
-
-                <p class="discount"><b><del>$10</del></b></p>
-                <button class="remove" data-id="<?php echo $row["product_id"]; ?>">Remove From Cart</button>
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div class="images">
-                <?php 
-                    ?>
-                <?php
+                <?php //echo $row["name"]; 
                 ?>
-                <img src="user/assets/img/image3.webp" alt="">
-            </div>
-
-            <div class="caption">
-                <p class="rate">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </p>
-                <p class="product_name">Oral</p>
-                
-                <p class="price"><b>$2</b></p>
-                
-                <p class="product_name">Oral</p>
-
-                <p class="price"><b>$2</b></p>
-
-                <p class="discount"><b><del>$3</del></b></p>
+                <p class="product_name">Signal</p>
+                <?php //echo $row["price"]; 
+                ?>
+                <p class="price"><b>$3</b></p>
+                <?php //echo $row["dicount"]; 
+                ?>
+                <p class="discount"><b><del>$4</del></b></p>
                 <button class="remove" data-id="<?php echo $row["product_id"]; ?>">Remove From Cart</button>
             </div>
         </div>
+
+        
 
 
 
