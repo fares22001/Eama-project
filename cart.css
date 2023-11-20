@@ -23,11 +23,7 @@ main .card .images img {
     object-fit: fill;
 }
 
-<<<<<<< HEAD
-main .card .caption{
-=======
 main .card .caption {
->>>>>>> 5a4f7c808b5181a096c247df6dae5b99a7951bab
     line-height: 1.7em;
     margin-left: 30px;
     position: relative;
@@ -38,11 +34,7 @@ main .card .caption {
     justify-content: center;
 }
 
-<<<<<<< HEAD
-main .card .caption p{
-=======
 main .card .caption p {
->>>>>>> 5a4f7c808b5181a096c247df6dae5b99a7951bab
     font-size: 1.0rem;
 }
 
