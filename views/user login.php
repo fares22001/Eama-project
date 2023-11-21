@@ -7,7 +7,7 @@
     <title>user Login</title>
     <!-- <link rel="stylesheet" href="user\assets\css\header.css">
     <link rel="stylesheet" href="user\assets\css\footer.css"> -->
-    <link rel="stylesheet" href=" user login.css">
+    <link rel="stylesheet" href="../public/css/user login.css">
     <!-- <script src="user\assets\js\user login.js"></script> -->
 </head>
 

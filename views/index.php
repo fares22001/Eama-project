@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beauty Products</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../public/css/index.css">
     <script src="https://kit.fontawesome.com/a98ac1f71c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include '../views/header.php'; ?>
 
     <section aria-label="Newest Photos" class="slideshow">
         <div class="carousel" data-carousel>
@@ -21,20 +21,20 @@
                     <div class="slide-text">
                         <p></p>
                     </div>
-                    <img src="homeimage6.jpg" alt="Nature Image #2">
+                    <img src="../public/img/homeimage6.jpg" alt="Nature Image #2">
 
                 </li>
                 <li class="slide">
                     <div class="slide-text">
                         <p>Nature's Beauty</p>
                     </div>
-                    <img src="cotoneve2.png" alt="Nature Image #1">
+                    <img src="../public/img/cotoneve2.png" alt="Nature Image #1">
                 </li>
                 <li class="slide">
                     <div class="slide-text">
                         <p>Beautiful Designs</p>
                     </div>
-                    <img src="maxresdefault.jpg" alt="Nature Image #3">
+                    <img src="../public/img/maxresdefault.jpg " alt="Nature Image #3">
                 </li>
             </ul>
         </div>
@@ -47,32 +47,32 @@
 
     <div class="product-container">
         <div class="product-card">
-            <img src="firstbrush.jpg" alt="Product 1" class="images">
+            <img src="../public/img/firstbrush.jpg" alt="Product 1" class="images">
             <h3>Silvercare brush</h3>
             <p>Silver Care System Hard Toothbrush. The head is coated with 999 silver, which provides activation of silver ions and a natural antibacterial process during brushing of teeth upon contact with water</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
-            <img src="secbrush.jpg" alt="Product 2" class="images">
+            <img src="../public/img/secbrush.jpg" alt="Product 2" class="images">
             <h3>Banat brush</h3>
             <p>Special cut whitening bristles for nicotine, coffee and tea stains,Special teeth polisher helps to brighten teeth surface,Round tip bristles prevents teeth and gums from injuring,Timer cap helps to keep track</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
-            <img src="thirdimg.jpg" alt="Product 3" class="images">
+            <img src="../public/img/thirdimg.jpg" alt="Product 3" class="images">
             <h3>Cotoneve</h3>
             <p>Make-up remover cotton pads with Aloe Vera and Vitamin B5, ingredients especially appreciated for their soothing properties,Soft, super absorbent and resistant,make-up removal cotton pads</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
-            <img src="forthimg.jpeg" alt="Product 4" class="images">
+            <img src="../public/img/forthimg.jpeg" alt="Product 4" class="images">
             <h3>Cotoneve cotton buds</h3>
             <p>Cotton buds ideal for everyday personal hygiene of the entire family, in full safety.
                 Protector special safety shape, softer and more delicate, is perfect for children hygiene</p>
             <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
-            <img src="fifthimg.jpg" alt="Product 4" class="images">
+            <img src="../public/img/fifthimg.jpg" alt="Product 4" class="images">
             <h3>Sunbright wet wipes</h3>
             <p>100% cotton wipes with the best quality and best fragrance </p>
             <a href="#" class="btn">Buy Now</a>
@@ -88,9 +88,8 @@
         <a href="about.php" class="btn">Read More</a>
     </section>
 
-    <?php include 'footer.php'; ?>
-    <script src="slideshow.js"></script>
-    <script src="scroll.js"></script>
+    <?php include '../views/footer.php'; ?>
+    <script src="../public/js/scroll.js"></script>
 </body>
 
 </html>

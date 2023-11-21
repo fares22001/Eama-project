@@ -1,9 +1,3 @@
-<?php
-
-require_once 'connection.php';
-
-
-?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,20 +5,20 @@ require_once 'connection.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - Beauty Products</title>
-    <link rel="stylesheet" href="products.css">
-    <script src="user/assets/js/products.js"></script>
+    <link rel="stylesheet" href="../public/css/products.css">
+    <script src="../public/js/products.js"></script>
 </head>
 
 <body>
-     <?php include 'header.php'; ?> 
+    <?php include '../views/header.php'; ?>
 
     <div id="menubody" onclick="favorites(event.target)">
 
-        <div class="menu_items"><img src="user/assets/img/image.jpg" alt="" width="100%" height="100%" class="menu_img">
+        <div class="menu_items"><img src="../public/img/image.jpg" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
+                <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
+                <img src="../public/img/add.png" alt="" class="icons">
                 <div class="description">
                     <span class="names"> Signal</span>
                     <br>
@@ -36,11 +30,11 @@ require_once 'connection.php';
         </div>
 
 
-        <div class="menu_items"><img src="user/assets/img/electronic.jpg" alt="" width="100%" height="100%" class="menu_img">
+        <div class="menu_items"><img src="../public/img/electronic.jpg" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
+                <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
+                <img src="../public/img/add.png" alt="" class="icons">
                 <div class="description">
                     <span class="names">Oral B </span>
                     <br>
@@ -54,11 +48,11 @@ require_once 'connection.php';
 
         <div class="menu_items">
 
-            <img src="user/assets/img/babies.webp" alt="" width="100%" height="100%" class="menu_img">
+            <img src="../public/img/babies.webp" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
+                <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
+                <img src="../public/img/add.png" alt="" class="icons">
                 <div class="description">
                     <span class="names">Oral B</span>
                     <br>
@@ -69,11 +63,11 @@ require_once 'connection.php';
         </div>
         <div class="menu_items">
 
-            <img src="user/assets/img/teeth.jpg" alt="" width="100%" height="100%" class="menu_img">
+            <img src="../public/img/teeth.jpg" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
+                <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
+                <img src="../public/img/add.png" alt="" class="icons">
                 <div class="description">
                     <span class="names">Oral B</span>
                     <br>
@@ -84,11 +78,11 @@ require_once 'connection.php';
         </div>
         <div class="menu_items">
 
-            <img src="user/assets/img/doctor.webp" alt="" width="100%" height="100%" class="menu_img">
+            <img src="../public/img/doctor.webp" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
+                <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
+                <img src="../public/img/add.png" alt="" class="icons">
                 <div class="description">
                     <span class="names"> Oral B</span>
                     <br>
@@ -99,11 +93,11 @@ require_once 'connection.php';
         </div>
         <div class="menu_items">
 
-            <img src="user/assets/img/kids.jpg" alt="" width="100%" height="100%" class="menu_img">
+            <img src="../public/img/kids.jpg" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
+                <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
+                <img src="../public/img/add.png" alt="" class="icons">
                 <div class="description">
                     <span class="names">Oral B</span>
                     <br>
@@ -114,11 +108,11 @@ require_once 'connection.php';
         </div>
         <div class="menu_items">
 
-            <img src="user/assets/img/oral.jpg" alt="" width="100%" height="100%" class="menu_img">
+            <img src="../public/img/oral.jpg" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
+                <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
+                <img src="../public/img/add.png" alt="" class="icons">
                 <div class="description">
                     <span class="names">Oral B</span>
                     <br>
@@ -129,11 +123,11 @@ require_once 'connection.php';
         </div>
         <div class="menu_items">
 
-            <img src="user/assets/img/sens.jpg" alt="" width="100%" height="100%" class="menu_img">
+            <img src="../public/img/sens.jpg" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
+                <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
+                <img src="../public/img/add.png" alt="" class="icons">
                 <div class="description">
                     <span class="names">Sensodyne</span>
                     <br>
@@ -143,11 +137,11 @@ require_once 'connection.php';
             </div>
         </div>
 
-        <div class="menu_items"><img src="user/assets/img/philips.webp" alt="" width="100%" height="100%" class="menu_img">
+        <div class="menu_items"><img src="../public/img/philips.webp" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
+                <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
+                <img src="../public/img/add.png" alt="" class="icons">
                 <div class="description">
                     <span class="names">Oral B </span>
                     <br>
@@ -156,11 +150,11 @@ require_once 'connection.php';
                 </div>
             </div>
         </div>
-        <div class="menu_items"><img src="user/assets/img/pick.jpg" alt="" width="100%" height="100%" class="menu_img">
+        <div class="menu_items"><img src="../public/img/pick.jpg" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
+                <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
+                <img src="../public/img/add.png" alt="" class="icons">
                 <div class="description">
                     <span class="names">Oral B </span>
                     <br>
@@ -169,34 +163,35 @@ require_once 'connection.php';
                 </div>
             </div>
         </div>
-    </div> 
-<?php //include 'header.php'; ?>
-<?php 
-// $sql = "SELECT * FROM products ORDER BY product_id DESC";
-// $res = mysqli_query($conn, $sql);
+    </div>
+    <?php //include 'header.php'; 
+    ?>
+    <?php
+    // $sql = "SELECT * FROM products ORDER BY product_id DESC";
+    // $res = mysqli_query($conn, $sql);
 
-// if (mysqli_num_rows($res) > 0) {
-//     while ($row = mysqli_fetch_assoc($res)) {
-//         echo '<div id="menu_items" onclick="favorites(event.target)">
-//         <div class="menu_items">
-//             <img src="' . $row["image"] . '" alt="" width="100%" height="100%" class="menu_img">
-//             <div class="descr_and_add">
-//                 <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favorite">
-//                 <img src="user/assets/img/love.png" class="favs" alt="" title="add to favorite">
-//                 <img src="user/assets/img/add.png" alt="" class="icons">
-//                 <div class="description">
-//                     <span class="names">' . $row["name"] . '</span><br>
-//                     <p class="ingred">' . $row["description"] . '</p>
-//                     <span class="prices">Price: ' . $row["price"] . ' $</span>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>';
-//     }
-// }
-?>
+    // if (mysqli_num_rows($res) > 0) {
+    //     while ($row = mysqli_fetch_assoc($res)) {
+    //         echo '<div id="menu_items" onclick="favorites(event.target)">
+    //         <div class="menu_items">
+    //             <img src="' . $row["image"] . '" alt="" width="100%" height="100%" class="menu_img">
+    //             <div class="descr_and_add">
+    //                 <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favorite">
+    //                 <img src="user/assets/img/love.png" class="favs" alt="" title="add to favorite">
+    //                 <img src="user/assets/img/add.png" alt="" class="icons">
+    //                 <div class="description">
+    //                     <span class="names">' . $row["name"] . '</span><br>
+    //                     <p class="ingred">' . $row["description"] . '</p>
+    //                     <span class="prices">Price: ' . $row["price"] . ' $</span>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </div>';
+    //     }
+    // }
+    ?>
 
-    
+
     <!-- <div class="menu_items"><img src="user/assets/img/electronic.jpg" alt="" width="100%" height="100%" class="menu_img">
         <div class="descr_and_add">
             <img src="user/assets/img/favourite.png" class="favrs" alt=""title="remove from favourite">
@@ -292,10 +287,10 @@ require_once 'connection.php';
        </div></div></div>
   
        
-       <?php 
-    
-?> -->
-<?php include 'footer.php'; ?>
+       <?php
+
+        ?> -->
+    <?php include '../views/footer.php'; ?>
 
 
 
