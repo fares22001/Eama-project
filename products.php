@@ -20,7 +20,7 @@ require_once 'connection.php';
 
     <div id="menubody" onclick="favorites(event.target)">
 
-        <div class="menu_items"><img src="user/assets/img/image.jpg" alt="" width="100%" height="100%" class="menu_img">
+        <!-- <div class="menu_items"><img src="user/assets/img/image.jpg" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
                 <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
                 <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
@@ -169,31 +169,31 @@ require_once 'connection.php';
                 </div>
             </div>
         </div>
-    </div> 
+    </div>  -->
 <?php //include 'header.php'; ?>
 <?php 
-// $sql = "SELECT * FROM products ORDER BY product_id DESC";
-// $res = mysqli_query($conn, $sql);
+$sql = "SELECT * FROM products ORDER BY product_id DESC";
+$res = mysqli_query($conn, $sql);
 
-// if (mysqli_num_rows($res) > 0) {
-//     while ($row = mysqli_fetch_assoc($res)) {
-//         echo '<div id="menu_items" onclick="favorites(event.target)">
-//         <div class="menu_items">
-//             <img src="' . $row["image"] . '" alt="" width="100%" height="100%" class="menu_img">
-//             <div class="descr_and_add">
-//                 <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favorite">
-//                 <img src="user/assets/img/love.png" class="favs" alt="" title="add to favorite">
-//                 <img src="user/assets/img/add.png" alt="" class="icons">
-//                 <div class="description">
-//                     <span class="names">' . $row["name"] . '</span><br>
-//                     <p class="ingred">' . $row["description"] . '</p>
-//                     <span class="prices">Price: ' . $row["price"] . ' $</span>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>';
-//     }
-// }
+if (mysqli_num_rows($res) > 0) {
+    while ($row = mysqli_fetch_assoc($res)) {
+        echo '<div id="menu_items" onclick="favorites(event.target)">
+        <div class="menu_items">
+            <img src="' . $row["name"] . '" alt="" width="100%" height="100%" class="menu_img">
+            <div class="descr_and_add">
+                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favorite">
+                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favorite">
+                <img src="user/assets/img/add.png" alt="" class="icons">
+                <div class="description">
+                    <span class="names">' . $row["name"] . '</span><br>
+                    <p class="ingred">' . $row["description"] . '</p>
+                    <span class="prices">Price: ' . $row["price"] . ' $</span>
+                </div>
+            </div>
+        </div>
+    </div>';
+    }
+}
 ?>
 
     
@@ -295,12 +295,33 @@ require_once 'connection.php';
        <?php 
     
 ?> -->
-<?php include 'footer.php'; ?>
+<script>
+       var product_id = document.getElementsByClassName("icons");
+       for(var i = 0; i<product_id.length; i++){
+           product_id[i].addEventListener("click",function(event){
+               var target = event.target;
+               var id = target.getAttribute("data-id");
+               var xml = new XMLHttpRequest();
+               xml.onreadystatechange = function(){
+                   if(this.readyState == 4 && this.status == 200){
+                       var data = JSON.parse(this.responseText);
+                       target.innerHTML = data.in_cart;
+                       document.getElementById("badge").innerHTML = data.num_cart + 1;
+                   }
+               }
 
+               xml.open("GET","connection.php?id="+id,true);
+               xml.send();
+            
+           })
+       }
+
+   </script>
 
 
 
 
 </body>
+<?php include 'footer.php'; ?>
 
 </html>
