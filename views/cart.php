@@ -1,6 +1,3 @@
-<?php
-require_once 'connection.php';
-?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,14 +5,14 @@ require_once 'connection.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="../public/css/cart.css">
     <title>In Cart Products</title>
     <script src="https://kit.fontawesome.com/a98ac1f71c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <?php
-    include 'header.php';
+    include '../views/header.php';
     ?>
     <main>
         <?php //echo mysqli_num_rows($all_cart);
@@ -31,12 +28,12 @@ require_once 'connection.php';
         <div class="card">
             <div class="images">
                 <?php //echo $row["product_image"]; 
-                    ?>
+                ?>
                 <img src="user/assets/img/image.jpg" alt="">
             </div>
 
             <div class="caption">
-            <p class="rate">
+                <p class="rate">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -60,12 +57,12 @@ require_once 'connection.php';
         <div class="card">
             <div class="images">
                 <?php //echo $row["product_image"]; 
-                    ?>
+                ?>
                 <img src="user/assets/img/doctor.webp" alt="">
             </div>
 
             <div class="caption">
-            <p class="rate">
+                <p class="rate">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -85,7 +82,7 @@ require_once 'connection.php';
             </div>
         </div>
 
-        
+
 
 
 
@@ -124,7 +121,7 @@ require_once 'connection.php';
         }
     </script> -->
     <?php
-    include 'footer.php';
+    include '../views/footer.php';
     ?>
 </body>
 
