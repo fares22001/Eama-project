@@ -11,7 +11,7 @@ class Database
     private $host = 'localhost';
     private $user = 'root';
     private $pass = '';
-    private $dbname = 'login-system-yt';
+    private $dbname = 'eama-project';
 
     //Will be the PDO object
     private $dbh;
