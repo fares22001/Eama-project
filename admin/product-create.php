@@ -14,7 +14,7 @@
             <div class="card-body">
                 <form action="../controllers/products-controller.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="type" value="addproducts">
-                    <?= alertmessage() ?>
+
 
                     <div class="row">
                         <div class="col-md-6">
