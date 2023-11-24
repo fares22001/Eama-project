@@ -1,3 +1,9 @@
+<?php
+// require_once 'connection.php';
+// $sql_cart = "SELECT * FROM cart "; 
+// $res = mysqli_query($conn, $sql_cart);
+
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,19 +21,23 @@
     include '../views/header.php';
     ?>
     <main>
-        <?php //echo mysqli_num_rows($all_cart);
+        <?php //echo mysqli_num_rows($res);
         ?>
         <h1>1 Items</h1>
         <hr>
         <?php
-        // while($row_cart = mysqli_fetch_assco($all_cart)){
-        //     $sql = "SELECT * FROM products WHERE product_id=".$row_cart["product_id"];
-        //     $all_product = $conn->query($sql);
-        //     while($row = mysqli_fetch_assco($all_product)){
+        // while ($row_cart = mysqli_fetch_assoc($res)) {
+            // $product_id = $row_cart["product_id"];
+            // $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
+            // $stmt->bind_param("i", $product_id);
+            // $stmt->execute();
+            // $result = $stmt->get_result();
+        
+            // while ($row = $result->fetch_assoc()) {
         ?>
         <div class="card">
             <div class="images">
-                <?php //echo $row["product_image"]; 
+                <?php //echo $row["image"]; 
                 ?>
                 <img src="user/assets/img/image.jpg" alt="">
             </div>
@@ -54,51 +64,11 @@
         </div>
 
 
-        <div class="card">
-            <div class="images">
-                <?php //echo $row["product_image"]; 
-                ?>
-                <img src="user/assets/img/doctor.webp" alt="">
-            </div>
-
-            <div class="caption">
-                <p class="rate">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </p>
-                <?php //echo $row["name"]; 
-                ?>
-                <p class="product_name">Signal</p>
-                <?php //echo $row["price"]; 
-                ?>
-                <p class="price"><b>$3</b></p>
-                <?php //echo $row["dicount"]; 
-                ?>
-                <p class="discount"><b><del>$4</del></b></p>
-                <button class="remove" data-id="<?php echo $row["product_id"]; ?>">Remove From Cart</button>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         <?php
         //     }
+            //$stmt->close();
         // }
         ?>
     </main>
