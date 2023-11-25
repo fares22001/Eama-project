@@ -11,6 +11,15 @@
 
 <body>
     <?php include '../views/header.php'; ?>
+    <?php
+
+require_once '../controllers/products-controller.php';
+require_once '../helpers/session-helper.php';
+
+$productController = new ProductController();
+$productController->getAllProducts();
+
+?>
 
     <div id="menubody" onclick="favorites(event.target)">
 
