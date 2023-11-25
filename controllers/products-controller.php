@@ -18,8 +18,8 @@ class products
             'pbrand' => trim($_POST['pbrand']),
             'pcategory' => trim($_POST['pcategory']),
             'pprice' => trim($_POST['pprice']),
-            'psize' => trim($_POST['psize'])
-            // 'pimage' => trim($_POST['image'])
+            'psize' => trim($_POST['psize']),
+            'pimage' => trim($_POST['pimage'])
         ];
         if ($this->userModel->addproducts($data)) {
             redirect("../admin/product-create.php");
@@ -36,3 +36,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
     }
 }
+
+
+class ProductController {
+    private $productModel;
+
+    public function __construct() {
+        require_once '../controllers/products-controller.php';
+                $this->productModel = new ProductModel();
+    }
+
+    public function getAllProducts() {
+        $products = $this->productModel->getAllProducts();
+
+        if ($products) {
+            require_once('ProductView.php');
+            ProductView::showProducts($products);
+        } else {
+            echo 'Error retrieving products.';
+        }
+    }
+}
+
+?>
+

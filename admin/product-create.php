@@ -32,9 +32,11 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>select category </label>
-                                <select name="pcategory" class="form-select" id="">
+                                <select name="pcategory"  class="form-select" id="pcategory">
                                     <option value="">Select category</option>
-                                    <option value="">tooth prush</option>
+                                    <option value="">tooth brush</option>
+                                    <option value="">skin care</option>
+
                                 </select>
                             </div>
 
@@ -63,12 +65,12 @@
                                 <input type="textbox" name="pdescription" class="form-control">
                             </div>
                         </div>
-                        <!-- <div class="col-md-6">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label>image</label>
-                                <input type="file" name="image" class="form-control">
+                                <input type="file" name="pimage" class="form-control">
                             </div>
-                        </div> -->
+                        </div>
 
 
                         <div class="col-md-6">
