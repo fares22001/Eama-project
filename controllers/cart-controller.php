@@ -2,7 +2,7 @@
 require_once '../models/cart-model.php';
 require_once '../helpers/session-helper.php';
 
-class Carts{
+class CartController{
     private $userModel;
 
     public function __construct()
@@ -12,10 +12,13 @@ class Carts{
 
     public function orders(){
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        
+        $data = [
+            'id' => trim($_POST['id']),
+            'user_id' => trim($_POST['user_id']),
+        ];
     }
 }
-$init = new Carts;
+$init = new CartController;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     switch ($_POST['type']) {
