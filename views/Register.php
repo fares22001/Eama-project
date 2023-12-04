@@ -1,6 +1,4 @@
-<?php
-include_once "dbh.php";
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,44 +16,39 @@ include_once "dbh.php";
 
 <body>
 
-    <?php include 'header.php'; ?>
+    <?php include 'header.php';
+    include_once '../helpers/session-helper.php';
+    ?>
+        <?php flash('register') ?>
+
     <div class="container">
 
         <h1>Sign Up Now</h1>
-        <form action='#' method='post' onsubmit='return validateForm()'>
-
-            <input type="text" id="inputfname" name="firstname" placeholder="Enter your first name" size="15" required>
-
-
-            <input type="text" id="inputlname" name="lastname" placeholder="Enter your last name" size="15" required>
+        <form action='../controllers/Users-controller.php' method='post' enctype="multipart/form-data">
+        <input type="hidden" name="type" value="register">
 
 
-            <input type="tel" id="inputphone" name="phone" placeholder="Enter 11-digit phone number" pattern="[0-9]{11}" required>
-
-
-            <input type="email" id="inputmail" placeholder="Enter your email" name="email" required>
-
-
-            <input type="password" name="psw" id="inputpass" placeholder="Enter your Password" required>
-
-
-            <input type="password" name="pswconfirmt" id="inputcpass" placeholder="Confirm your Password" required>
+            <input type="text" id="UsersName" name="UsersName" placeholder="Enter your Full Name" size="15" required>
+            <!-- <input type="tel" id="inputphone" name="phone" placeholder="Enter 11-digit phone number" pattern="[0-9]{11}" required> -->
+            <input type="email" id="UsersEmail" placeholder="Enter your email" name="UsersEmail" required>
+            <input type="text" id="UsersUid" placeholder="Enter your Username" name="UsersUid" required>
+            <input type="password" name="UsersPwd" id="UsersPwd" placeholder="Enter your Password" required>
+            <input type="password" name="pwdRepeat" id="pwdRepeat" placeholder="Confirm your Password" required>
             <div class="role">
                 <label for="role">Role:</label>
             </div>
-            <select id="role" name="role" required>
+            <select id="role" name="UsersRole" required>
                 <option value="">Select Role</option>
                 <option value="company">Company</option>
                 <option value="pharmacy">Pharmacy</option>
                 <option value="user">User</option>
-                  
+            
             </select>
 
 
 
 
 
-            <a href="user login.html"></a>
             <b> <button type="submit">Sign Up </button></b> <br><br>
             <div class="account">
                 <div class="aa">
@@ -68,26 +61,28 @@ include_once "dbh.php";
 
     </form>
     <?php
+
     //grap data from user if form was submitted 
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") { //check if form was submitted
-        $firstname = htmlspecialchars($_POST["firstname"]);
-        $lastname = htmlspecialchars($_POST["lastname"]);
-        $phone = htmlspecialchars($_POST["phone"]);
-        $email = htmlspecialchars($_POST["email"]);
-        $psw = htmlspecialchars($_POST["psw"]);
-        $pswconfirmt = htmlspecialchars($_POST["pswconfirmt"]);
+    // if ($_SERVER["REQUEST_METHOD"] == "POST") { //check if form was submitted
+    //     $firstname = htmlspecialchars($_POST["firstname"]);
+    //     $lastname = htmlspecialchars($_POST["lastname"]);
+    //     $phone = htmlspecialchars($_POST["phone"]);
+    //     $email = htmlspecialchars($_POST["email"]);
+    //     $psw = htmlspecialchars($_POST["psw"]);
+    //     $pswconfirmt = htmlspecialchars($_POST["pswconfirmt"]);
 
-        //insert it to database 
-        $sql = "insert into user(firstname,lastname,phone,email,password,confirmpassword) 
-	values('$firstname','$lastname','$phone','$email','$psw','$pswconfirmt')";
-        $result = mysqli_query($conn, $sql);
+    //     //insert it to database 
+    //     $sql = "insert into user(firstname,lastname,phone,email,password,confirmpassword) 
+	// values('$firstname','$lastname','$phone','$email','$psw','$pswconfirmt')";
+    //     $result = mysqli_query($conn, $sql);
 
-        //redirect the user back to index.php 
-        if ($result) {
-            header("Location:index.php");
-        }
-    }
+    //     //redirect the user back to index.php 
+    //     if ($result) {
+    //         header("Location:index.php");
+    //     }
+    // }
+
 
     ?>
 

@@ -11,7 +11,9 @@ class products
     public function addproducts()
     {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $selectedCategory = $_POST['pcategory'];
         $data = [
+           
             'pname' => trim($_POST['pname']),
             'pquantity' => trim($_POST['pquantity']),
             'pdescription' => trim($_POST['pdescription']),
@@ -21,6 +23,17 @@ class products
             'psize' => trim($_POST['psize']),
             'pimage' => trim($_POST['pimage'])
         ];
+        if (
+            empty($data['pname']) || empty($data['pquantity']) || empty($data['pdescription']) || empty($data['pbrand']) ||
+            empty($data['pcategory']) || empty($data['pprice']) || empty($data['psize'])
+        ) {
+            flash("addproducts", "please fill out all inputs");
+            redirect("../admin/product-create.php");
+        }
+        if ($data['pquantity'] > 50) {
+            flash("addproducts", "Max 10 products");
+            redirect("../admin/product-create.php");
+        }
         if ($this->userModel->addproducts($data)) {
             redirect("../admin/product-create.php");
         } else {
@@ -38,15 +51,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 
-class ProductController {
+class ProductController
+{
     private $productModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         require_once '../controllers/products-controller.php';
-                $this->productModel = new ProductModel();
+        $this->productModel = new ProductModel();
     }
 
-    public function getAllProducts() {
+    public function getAllProducts()
+    {
         $products = $this->productModel->getAllProducts();
 
         if ($products) {
@@ -57,6 +73,3 @@ class ProductController {
         }
     }
 }
-
-?>
-

@@ -26,13 +26,15 @@ class product
         }
     }
 }
-class ProductModel {
+class ProductModel
+{
     private $db;
     public function __construct()
     {
         $this->db = new Database();
     }
-    public function getAllProducts() {
+    public function getAllProducts()
+    {
         try {
             $this->db->query('SELECT * FROM products');
             return $this->db->resultSet();

@@ -1,4 +1,7 @@
-<?php include('includes/header.php'); ?>
+<?php
+include_once '../helpers/session-helper.php';
+include('includes/header.php');
+?>
 
 
 <div class="row">
@@ -12,6 +15,7 @@
                 </h4>
             </div>
             <div class="card-body">
+                <?php flash('addproducts') ?>
                 <form action="../controllers/products-controller.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="type" value="addproducts">
 
@@ -32,10 +36,11 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>select category </label>
-                                <select name="pcategory"  class="form-select" id="pcategory">
-                                    <option value="">Select category</option>
-                                    <option value="">tooth brush</option>
-                                    <option value="">skin care</option>
+                                <select name="pcategory" class="form-select" id="pcategory">
+                                    <option value="Tooth brush">Tooth brush</option>
+                                    <option value="Wipes">Wipes</option>
+                                    <option value="Cotton buds">Cotton buds</option>
+                                    <option value="Makeup remover">Makeup remover</option>
 
                                 </select>
                             </div>
@@ -67,8 +72,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label>image</label>
-                                <input type="file" name="pimage" class="form-control">
+                                <label for="pimage">image</label>
+                                <input type="file" name="pimage" accept=".jpg, .jpeg ,.png" class="form-control">
                             </div>
                         </div>
 
