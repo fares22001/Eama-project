@@ -32,10 +32,9 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>select category </label>
-                                <select name="pcategory"  class="form-select" id="pcategory">
-                                    <option value="">Select category</option>
-                                    <option value="">tooth brush</option>
-                                    <option value="">skin care</option>
+                                <select name="pcategory" placeholder="Select Category"  class="form-select" id="pcategory">
+                                    <option value="tooth brush">tooth brush</option>
+                                    <option value="skin care">skin care</option>
 
                                 </select>
                             </div>
