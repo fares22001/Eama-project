@@ -1,12 +1,16 @@
 <?php 
-require_once '../libraries/Database.php';
+require_once ('../libraries/Database.php');
+require_once ("../models/model.php");
 
-class Cart{
-    private $db;
+class Cart extends Model{
+    private $id;
+    private $user_id;
 
-    public function __construct()
+    public function __construct($id,$user_id="")
     {
-        $this->db = new Database();
+        $this->id = $id;
+        $this->db = $this->connect();
+        $this->user_id=$user_id;
     }
 
     public function addcart($data){
@@ -22,8 +26,13 @@ class Cart{
         }
     }
 
-    public function remove($data){
-        
+    public function delete($data){
+        $sql="delete from cart where id=$this->id;";
+	  if($this->db->query($sql) === true){
+      echo "deletet successfully.";
+    } else{
+    //   echo "ERROR: Could not able to execute $sql. " . $conn->error;
+    }
     }
 
     public function checkout($data){
@@ -31,4 +40,19 @@ class Cart{
     }
 }
 
+class CartModel {
+    private $db;
+    public function __construct()
+    {
+        $this->db = new Database();
+    }
+    public function getAllCarts() {
+        try {
+            $this->db->query('SELECT * FROM cart');
+            return $this->db->resultSet();
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+}
 ?>
