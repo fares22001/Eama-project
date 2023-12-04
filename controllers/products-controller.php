@@ -11,7 +11,9 @@ class products
     public function addproducts()
     {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $selectedCategory = $_POST['pcategory'];
         $data = [
+           
             'pname' => trim($_POST['pname']),
             'pquantity' => trim($_POST['pquantity']),
             'pdescription' => trim($_POST['pdescription']),
