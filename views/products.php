@@ -16,27 +16,26 @@
     require_once '../controllers/products-controller.php';
     require_once '../helpers/session-helper.php';
 
-    $productController = new ProductController();
+    $productController = new products();
     $productController->getAllProducts();
 
     ?>
     <div id="menubody" onclick="favorites(event.target)">
-
-        <div class="menu_items"><img src="user/assets/img/image.jpg" alt="" width="100%" height="100%" class="menu_img">
-            <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
-                <div class="description">
-                    <span class="names"> Signal</span>
-                    <br>
-                    <p class="ingred">Our Recommended World Wide Teeth Brushs</p>
-                    <span class="prices">Price : 20$</span>
+        <?php foreach ($products as $product) { ?>
+            <div class="menu_items"><img src="user/assets/img/image.jpg" alt="" width="100%" height="100%" class="menu_img">
+                <div class="descr_and_add">
+                    <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                    <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
+                    <img src="user/assets/img/add.png" alt="" class="icons">
+                    <div class="description">
+                        <span class="names">echo '<td>' . $product['pname'] . '</td>';</span>
+                        <br>
+                        <p class="ingred">Our Recommended World Wide Teeth Brushs</p>
+                        <span class="prices">Price : 20$</span>
+                    </div>
                 </div>
             </div>
-
-        </div>
-
+        <?php } ?>
 
         <div class="menu_items"><img src="user/assets/img/electronic.jpg" alt="" width="100%" height="100%" class="menu_img">
             <div class="descr_and_add">
