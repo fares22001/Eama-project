@@ -16,12 +16,6 @@
     include_once '../helpers/session-helper.php';
     ?>
         <?php flash('login') ?>
-      
-
-
-   
-   
-
 
 </html>
 <div class="container">
@@ -31,7 +25,7 @@
     <form action="../controllers/Users-controller.php" method="post">
     <input type="hidden" name="type" value="login">
 
-        <input type="text" id="UserUid/UsersName" name="UserUid/UsersName" placeholder="Username / Email" required>
+        <input type="text" id="UsersUid/UsersEmail" name="UsersUid/UsersEmail" placeholder="Username / Email" required>
         <input type="password" id="UsersPwd" name="UsersPwd" placeholder="Enter your password" required>
 
         <b> <button type="submit">Login </button></b> <br><br>

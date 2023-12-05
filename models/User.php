@@ -51,7 +51,7 @@ class User {
 
         if($row == false) return false;
 
-        $hashedPassword = $row->usersPwd;
+        $hashedPassword = $row->UsersPwd;
         if(password_verify($password, $hashedPassword)){
             return $row;
         }else{
@@ -59,17 +59,5 @@ class User {
         }
     }
 
-    //Reset Password
-    // public function resetPassword($newPwdHash, $tokenEmail){
-    //     $this->db->query('UPDATE users SET usersPwd=:pwd WHERE usersEmail=:email');
-    //     $this->db->bind(':pwd', $newPwdHash);
-    //     $this->db->bind(':email', $tokenEmail);
-
-    //     //Execute
-    //     if($this->db->execute()){
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
-    // }
+    
 }

@@ -87,20 +87,20 @@
 
         //Init data
         $data=[
-            'UserUid/UsersName' => trim($_POST['UserUid/UsersName']),
+            'UsersUid/UsersEmail' => trim($_POST['UsersUid/UsersEmail']),
             'UsersPwd' => trim($_POST['UsersPwd'])
         ];
 
-        if(empty($data['UserUid/UsersName']) || empty($data['UsersPwd'])){
+        if(empty($data['UsersUid/UsersEmail']) || empty($data['UsersPwd'])){
             flash("login", "Please fill out all inputs");
             header("location: ../views/user login.php");
             exit();
         }
 
         //Check for user/email
-        if($this->userModel->findUserByEmailOrUsername($data['UserUid/UsersName'], $data['UserUid/UsersName'])){
+        if($this->userModel->findUserByEmailOrUsername($data['UsersUid/UsersEmail'], $data['UsersUid/UsersEmail'])){
             //User Found
-            $loggedInUser = $this->userModel->login($data['UserUid/UsersName'], $data['UsersPwd']);
+            $loggedInUser = $this->userModel->login($data['UsersUid/UsersEmail'], $data['UsersPwd']);
             if($loggedInUser){
                 //Create session
                 $this->createUserSession($loggedInUser);
