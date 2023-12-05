@@ -1,32 +1,36 @@
 <?php
 require_once '../libraries/Database.php';
 
-class User {
+class User
+{
 
     private $db;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->db = new Database;
     }
 
     //Find user by email or username
-    public function findUserByEmailOrUsername($email, $username){
+    public function findUserByEmailOrUsername($email, $username)
+    {
         $this->db->query('SELECT * FROM users WHERE UsersUid = :username OR UsersEmail = :email');
         $this->db->bind(':username', $username);
         $this->db->bind(':email', $email);
-
+        $_SESSION['UsersName'] = $username;
         $row = $this->db->single();
 
         //Check row
-        if($this->db->rowCount() > 0){
+        if ($this->db->rowCount() > 0) {
             return $row;
-        }else{
+        } else {
             return false;
         }
     }
 
     //Register User
-    public function register($data){
+    public function register($data)
+    {
         $this->db->query('INSERT INTO users (UsersName, UsersEmail, UsersUid, UsersPwd,UsersRole) 
         VALUES (:name, :email, :Uid, :password,:role)');
         //Bind values
@@ -38,26 +42,25 @@ class User {
 
 
         //Execute
-        if($this->db->execute()){
+        if ($this->db->execute()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
     //Login user
-    public function login($nameOrEmail, $password){
+    public function login($nameOrEmail, $password)
+    {
         $row = $this->findUserByEmailOrUsername($nameOrEmail, $nameOrEmail);
 
-        if($row == false) return false;
+        if ($row == false) return false;
 
         $hashedPassword = $row->UsersPwd;
-        if(password_verify($password, $hashedPassword)){
+        if (password_verify($password, $hashedPassword)) {
             return $row;
-        }else{
+        } else {
             return false;
         }
     }
-
-    
 }
