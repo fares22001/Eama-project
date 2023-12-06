@@ -3,11 +3,11 @@ require_once '../models/cart-model.php';
 require_once '../helpers/session-helper.php';
 
 class CartController{
-    private $userModel;
+    private $cart;
 
     public function __construct()
     {
-        $this->userModel = new cart();
+        $this->cart = new Cart();
     }
 
     public function orders(){
@@ -16,6 +16,11 @@ class CartController{
             'id' => trim($_POST['id']),
             'user_id' => trim($_POST['user_id']),
         ];
+    }
+
+    public function displayCart() {
+        $carts = $this->cart->getAllCarts();
+        include '../views/cart.php';
     }
 }
 $init = new CartController;
