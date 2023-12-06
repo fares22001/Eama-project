@@ -27,25 +27,20 @@ class Cart extends Model{
     }
 
     public function delete($data){
-        $sql="delete from cart where id=$this->id;";
-	  if($this->db->query($sql) === true){
-      echo "deletet successfully.";
+        $sql="DELETE FROM cart WHERE id=$this->id;";
+        $this->db->query($sql);
+        $this->db->bind(':id', $this->id);
+	  if($this->db->execute()){
+      echo "deleted successfully.";
     } else{
-    //   echo "ERROR: Could not able to execute $sql. " . $conn->error;
+        echo "ERROR: Could not able to execute" . $this->db->error();
     }
     }
 
     public function checkout($data){
 
     }
-}
 
-class CartModel {
-    private $db;
-    public function __construct()
-    {
-        $this->db = new Database();
-    }
     public function getAllCarts() {
         try {
             $this->db->query('SELECT * FROM cart');
@@ -55,4 +50,4 @@ class CartModel {
         }
     }
 }
-?>
+
