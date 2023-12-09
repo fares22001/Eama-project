@@ -1,9 +1,3 @@
-<?php
-// require_once 'connection.php';
-// $sql_cart = "SELECT * FROM cart "; 
-// $res = mysqli_query($conn, $sql_cart);
-
-?> 
 <!DOCTYPE html>
 <html lang="en">
 
