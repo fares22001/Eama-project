@@ -71,14 +71,7 @@ class products
     }
     public function getAllProducts()
     {
-        $products = $this->productModel->getAllProducts();
-
-        if ($products) {
-            require_once('ProductView.php');
-            ProductView::showProducts($products);
-        } else {
-            echo 'Error retrieving products.';
-        }
+        return $this->productModel->getAllProducts();
     }
 }
 
