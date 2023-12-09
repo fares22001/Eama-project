@@ -3,10 +3,10 @@ require_once ('../libraries/Database.php');
 require_once ("../models/model.php");
 
 class Cart extends Model{
-    private $id;
-    private $user_id;
+    protected $id;
+    protected $user_id;
 
-    public function __construct($id,$user_id="")
+    public function __construct($id=null,$user_id="")
     {
         $this->id = $id;
         $this->db = $this->connect();
@@ -45,6 +45,7 @@ class Cart extends Model{
         try {
             $this->db->query('SELECT * FROM cart');
             return $this->db->resultSet();
+            return $this->db->result();
         } catch (PDOException $e) {
             return false;
         }
