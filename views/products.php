@@ -24,7 +24,7 @@ $productController = new products;
                     <div class="descr_and_add">
                         <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
                         <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
-                        <img src="../public/img/add.png" alt="" class="icons">
+                        <img src="../public/img/add.png" alt="" class="icons" data-id="<?php echo $product->id; ?>">>
                         <div class="description">
                             <span class="names"><?php echo $product->Pname ?></span>
                             <br>
@@ -45,5 +45,23 @@ $productController = new products;
 
 
 </body>
+<script>
+    var addToCartButtons = document.querySelectorAll('.icons');
 
+    addToCartButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+        var id = event.target.getAttribute('data-id');
+        var xml = new XMLHttpRequest();
+        xml.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                console.log(data);
+            }
+        };
+
+            xml.open("GET", "cart-controller.php?action=addToCart&id=" + id, true);
+            xml.send();
+        });
+    });
+   </script>
 </html>
