@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once 'config.php';
 require_once("../libraries/Database.php");
 abstract class Model{
     protected $db;

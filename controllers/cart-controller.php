@@ -20,7 +20,16 @@ class CartController{
 
     public function displayCart() {
         $carts = $this->cart->getAllCarts();
-        include '../views/cart.php';
+        if (is_array($carts)) {
+            include '../views/cart.php';
+        } else {
+            echo "Error fetching cart data.";
+        }
+    }
+
+    public function getAllCarts()
+    {
+        return $this->cart->getAllcarts();
     }
 }
 $init = new CartController;
@@ -32,5 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
     }
 }
+
+    
+
 
 ?>

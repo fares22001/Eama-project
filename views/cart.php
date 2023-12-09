@@ -20,59 +20,53 @@
     <?php
     include '../views/header.php';
     ?>
-    <main>
-        <?php //echo mysqli_num_rows($res);
-        ?>
-        <h1>1 Items</h1>
+    <?php
+
+    require_once '../controllers/cart-controller.php';
+    require_once '../helpers/session-helper.php';
+
+   $cartController = new CartController();
+   $carts = $cartController->getAllCarts();
+    ?>
+    <main>  
+    <?php if (!empty($carts)) : ?>     
+        <h1><?php echo count($carts); ?> Items</h1>
         <hr>
-        <?php
-        // while ($row_cart = mysqli_fetch_assoc($res)) {
-            // $product_id = $row_cart["product_id"];
-            // $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
-            // $stmt->bind_param("i", $product_id);
-            // $stmt->execute();
-            // $result = $stmt->get_result();
-        
-            // while ($row = $result->fetch_assoc()) {
-        ?>
-        <div class="card">
-            <div class="images">
-                <?php //echo $row["image"]; 
-                ?>
-                <img src="user/assets/img/image.jpg" alt="">
+        <?php foreach ($carts as $cart) { ?>
+            <div class="card">
+                <div class="images">
+                    <img src="<?php //echo $row_cart["pimage"]; ?>" alt="">
+                </div>
+                <div class="caption">
+                    <p class="rate">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </p>
+                    <p class="product_name"><?php //echo $row_cart["Pname"]; ?></p>
+                    <p class="price"><b>$<?php //echo $row_cart["pprice"]; ?></b></p>
+                    <p class="discount"><b><del>$<?php //echo $row_cart["discount"]; ?></del></b></p>
+                    <button class="remove" data-id="<?php echo $row_cart["id"]; ?>">Remove From Cart</button>
+                </div>
             </div>
-
-            <div class="caption">
-                <p class="rate">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </p>
-                <?php //echo $row["name"]; 
-                ?>
-                <p class="product_name">Signal</p>
-                <?php //echo $row["price"]; 
-                ?>
-                <p class="price"><b>$3</b></p>
-                <?php //echo $row["dicount"]; 
-                ?>
-                <p class="discount"><b><del>$4</del></b></p>
-                <button class="remove" data-id="<?php echo $row["product_id"]; ?>">Remove From Cart</button>
-            </div>
-        </div>
-
-
-
-
-        <?php
-        //     }
-            //$stmt->close();
-        // }
-        ?>
+         <?php } ?>
+         <?php else : ?>
+        <p>No items in the cart.</p>
+    <?php endif; ?>
     </main>
-    <!-- <script>
+
+
+
+
+
+
+
+
+
+
+     <script>
         var remove = document.getElementsByClassName("remove");
         for (var i = 0; i < remove.length; i++) {
             remove[i].addEventListener("click", function(event) {
@@ -89,7 +83,7 @@
                 xml.send();
             })
         }
-    </script> -->
+    </script> 
     <?php
     include '../views/footer.php';
     ?>
