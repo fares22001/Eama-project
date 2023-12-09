@@ -14,7 +14,7 @@ class CartController{
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $data = [
             'id' => trim($_POST['id']),
-            'user_id' => trim($_POST['user_id']),
+            'Usersid' => trim($_POST['Usersid']),
         ];
     }
 
