@@ -4,7 +4,7 @@ include_once '../models/User.php';
 ?>
 
 
-<h1 id="index-text">Welcome, <?php if (isset($_SESSION['UsersId'])) {
+<h1 id="index-text">Welcome, <?php if (isset($_SESSION['UsersUid'])) {
                                     echo explode(" ", $_SESSION['UsersName'])[0];
                                 } else {
                                     echo 'Guest';
