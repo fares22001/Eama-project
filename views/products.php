@@ -8,172 +8,37 @@
     <link rel="stylesheet" href="../public/css/products.css">
     <script src="../public/js/products.js"></script>
 </head>
+<?php
+include '../views/header.php';
+include_once('../controllers/products-controller.php');
+include_once('../models/products-model.php');
+$productController = new products;
+?>
 
 <body>
-    <?php include '../views/header.php'; ?>
-    <?php
-
-    require_once '../controllers/products-controller.php';
-    require_once '../helpers/session-helper.php';
-
-    $productController = new products();
-    $productController->getAllProducts();
-
-    ?>
     <div id="menubody" onclick="favorites(event.target)">
-        <?php foreach ($products as $product) { ?>
-            <div class="menu_items"><img src="user/assets/img/image.jpg" alt="" width="100%" height="100%" class="menu_img">
-                <div class="descr_and_add">
-                    <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                    <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                    <img src="user/assets/img/add.png" alt="" class="icons">
-                    <div class="description">
-                        <span class="names">echo '<td>' . $product['pname'] . '</td>';</span>
-                        <br>
-                        <p class="ingred">Our Recommended World Wide Teeth Brushs</p>
-                        <span class="prices">Price : 20$</span>
+        <?php $products = $productController->getAllProducts(); ?>
+        <?php if (!empty($products)) : ?>
+            <?php foreach ($products as $product) : ?>
+                <div class="menu_items"><img src="<?php echo $product->pimage ?>" alt="" width="100%" height="100%" class="menu_img">
+                    <div class="descr_and_add">
+                        <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
+                        <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
+                        <img src="../public/img/add.png" alt="" class="icons">
+                        <div class="description">
+                            <span class="names"><?php echo $product->Pname ?></span>
+                            <br>
+                            <p class="ingred"><?php echo $product->pdescription ?></p>
+                            <span class="prices"><?php echo $product->pprice ?></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php } ?>
-
-        <div class="menu_items"><img src="user/assets/img/electronic.jpg" alt="" width="100%" height="100%" class="menu_img">
-            <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
-                <div class="description">
-                    <span class="names">Oral B </span>
-                    <br>
-                    <p class="ingred">Our Recommended World Wide Teeth Brushs </p>
-                    <span class="prices">Price : 24$</span>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="menu_items">
-
-            <img src="user/assets/img/babies.webp" alt="" width="100%" height="100%" class="menu_img">
-            <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
-                <div class="description">
-                    <span class="names">Oral B</span>
-                    <br>
-                    <p class="ingred">Our Recommended World Wide Teeth Brushs </p>
-                    <span class="prices">Price : 20$</span>
-                </div>
-            </div>
-        </div>
-        <div class="menu_items">
-
-            <img src="user/assets/img/teeth.jpg" alt="" width="100%" height="100%" class="menu_img">
-            <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
-                <div class="description">
-                    <span class="names">Oral B</span>
-                    <br>
-                    <p class="ingred">Our Recommended World Wide Teeth Brushs</p>
-                    <span class="prices">Price : 24$</span>
-                </div>
-            </div>
-        </div>
-        <div class="menu_items">
-
-            <img src="user/assets/img/doctor.webp" alt="" width="100%" height="100%" class="menu_img">
-            <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
-                <div class="description">
-                    <span class="names"> Oral B</span>
-                    <br>
-                    <p class="ingred">Our Recommended World Wide Teeth Brushs </p>
-                    <span class="prices">Price : 200$</span>
-                </div>
-            </div>
-        </div>
-        <div class="menu_items">
-
-            <img src="user/assets/img/kids.jpg" alt="" width="100%" height="100%" class="menu_img">
-            <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
-                <div class="description">
-                    <span class="names">Oral B</span>
-                    <br>
-                    <p class="ingred">Our Recommended World Wide Teeth Brushs </p>
-                    <span class="prices">Price : 20$</span>
-                </div>
-            </div>
-        </div>
-        <div class="menu_items">
-
-            <img src="user/assets/img/oral.jpg" alt="" width="100%" height="100%" class="menu_img">
-            <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
-                <div class="description">
-                    <span class="names">Oral B</span>
-                    <br>
-                    <p class="ingred">Our Recommended World Wide Teeth Brushs </p>
-                    <span class="prices">Price : 20$</span>
-                </div>
-            </div>
-        </div>
-        <div class="menu_items">
-
-            <img src="user/assets/img/sens.jpg" alt="" width="100%" height="100%" class="menu_img">
-            <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
-                <div class="description">
-                    <span class="names">Sensodyne</span>
-                    <br>
-                    <p class="ingred">Our Recommended World Wide Teeth Brushs </p>
-                    <span class="prices">Price : 20$</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="menu_items"><img src="user/assets/img/philips.webp" alt="" width="100%" height="100%" class="menu_img">
-            <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
-                <div class="description">
-                    <span class="names">Oral B </span>
-                    <br>
-                    <p class="ingred">Our Recommended World Wide Teeth Brushs </p>
-                    <span class="prices">Price : 24$</span>
-                </div>
-            </div>
-        </div>
-        <div class="menu_items"><img src="user/assets/img/pick.jpg" alt="" width="100%" height="100%" class="menu_img">
-            <div class="descr_and_add">
-                <img src="user/assets/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                <img src="user/assets/img/love.png" class="favs" alt="" title="add to favourite">
-                <img src="user/assets/img/add.png" alt="" class="icons">
-                <div class="description">
-                    <span class="names">Oral B </span>
-                    <br>
-                    <p class="ingred">Our Recommended World Wide Teeth picks </p>
-                    <span class="prices">Price : 10$</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <?php include '../views/footer.php'; ?>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <p>No products available.</p>
+        <?php endif; ?>
+        <script src="../public/js/products.js"></script>
+        <?php include '../views/footer.php'; ?>
 
 
 
