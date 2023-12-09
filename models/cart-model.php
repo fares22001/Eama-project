@@ -4,20 +4,20 @@ require_once ("../models/model.php");
 
 class Cart extends Model{
     protected $id;
-    protected $user_id;
+    protected $Usersid;
 
-    public function __construct($id=null,$user_id="")
+    public function __construct($id=null,$Usersid="")
     {
         $this->id = $id;
         $this->db = $this->connect();
-        $this->user_id=$user_id;
+        $this->Usersid=$Usersid;
     }
 
     public function addcart($data){
-        $this->db->query('INSERT INTO cart(id, user_id)
-        VALUES(:id, :user_id)');
+        $this->db->query('INSERT INTO cart(id, Usersid)
+        VALUES(:id, :Usersid)');
         $this->db->bind(':id', $data['id']);
-        $this->db->bind(':user_id', $data['user_id']);
+        $this->db->bind(':Usersid', $data['Usersid']);
 
         if ($this->db->execute()) {
             return true;
