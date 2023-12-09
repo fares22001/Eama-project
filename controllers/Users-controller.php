@@ -1,7 +1,6 @@
 <?php
-
-require_once '../models/User.php';
 require_once '../helpers/session-helper.php';
+require_once '../models/User.php';
 require_once '../libraries/Database.php';
 
 
@@ -33,11 +32,7 @@ class Users
         ];
 
 
-        // if ($this->userModel->register($data)) {
-        //     redirect("../views/Register.php");
-        // } else {
-        //     die("something went wrong");
-        // }
+      
 
         //Validate inputs
         if (
@@ -108,6 +103,8 @@ class Users
             $loggedInUser = $this->userModel->login($data['UsersUid/UsersEmail'], $data['UsersPwd']);
             if ($loggedInUser) {
                 //Create session
+                session_start();
+
                 $this->createUserSession($loggedInUser);
             } else {
                 flash("login", "Password Incorrect");
@@ -118,18 +115,19 @@ class Users
             redirect("../views/user login.php");
         }
     }
+   
 
-    public function createUserSession($user)
+    public function createUserSession($User)
     {
-        $_SESSION['UsersId'] = $user->usersId;
-        $_SESSION['UsersName'] = $user->usersName;
-        $_SESSION['UsersEmail'] = $user->usersEmail;
+        $_SESSION['UsersUid'] = $User->UsersUid;
+        $_SESSION['UsersName'] = $User->UsersName;
+        $_SESSION['UsersEmail'] = $User->UsersEmail;
         redirect("../views/Userprofile.php");
     }
 
     public function logout()
     {
-        unset($_SESSION['UsersId']);
+        unset($_SESSION['UsersUid']);
         unset($_SESSION['UsersName']);
         unset($_SESSION['UsersEmail']);
         session_destroy();
