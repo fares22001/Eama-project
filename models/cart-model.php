@@ -5,6 +5,7 @@ require_once ("../models/model.php");
 class Cart extends Model{
     protected $id;
     protected $Usersid;
+    public $productsQuantity;
 
     public function __construct($id=null,$Usersid="")
     {
@@ -50,5 +51,22 @@ class Cart extends Model{
             return false;
         }
     }
+    function addProduct($productID,$q){		
+		if(array_key_exists((string)$productID,$this->productsQuantity)){
+			$this->productsQuantity[(string)$productID] += $q;
+		}
+		else{
+			$this->productsQuantity[(string)$productID] = $q;
+		}
+	}
+
+	function removeProduct($productID){
+		unset($this->productsQuantity[(string)$productID]);
+	}
+    
+    function emptyCart(){
+		unset($this->productsQuantity);
+		$this->productsQuantity=array();
+	}
 }
 
