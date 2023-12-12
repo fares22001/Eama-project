@@ -59,7 +59,7 @@ $productController = new products;
             }
         };
 
-            xml.open("GET", "cart-controller.php?action=addToCart&id=" + id, true);
+            xml.open("GET", "cart-controller.php?action=addCart&id=" + id, true);
             xml.send();
         });
     });
