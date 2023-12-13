@@ -75,45 +75,13 @@ class Users
 
         //Register User
         if ($this->userModel->register($data)) {
-            header("location:" . "../views/users.php");
+          //  header("location:" . "../views/users.php");
+            redirec_t('../views/users.php','user added successfully');
         } else {
-            die("Something went wrong");
+            redirec_t('../views/users.php','some thing went wrong ');
         }
     }
 
-    public function login()
-    {
-        //Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-        //Init data
-        $data = [
-            'UsersUid/UsersEmail' => trim($_POST['UsersUid/UsersEmail']),
-            'UsersPwd' => trim($_POST['UsersPwd'])
-        ];
-
-        if (empty($data['UsersUid/UsersEmail']) || empty($data['UsersPwd'])) {
-            //   flash("login", "Please fill out all inputs");
-            header("location: ../views/user login.php");
-            exit();
-        }
-
-        //Check for user/email
-        if ($this->userModel->findUserByEmailOrUsername($data['UsersUid/UsersEmail'], $data['UsersUid/UsersEmail'])) {
-            //User Found
-            $loggedInUser = $this->userModel->login($data['UsersUid/UsersEmail'], $data['UsersPwd']);
-            if ($loggedInUser) {
-                //Create session
-                $this->createUserSession($loggedInUser);
-            } else {
-                //     flash("login", "Password Incorrect");
-                header("location:" . "../views/index.php");
-            }
-        } else {
-            // flash("login", "No user found");
-            header("location:" . "../views/index.php");
-        }
-    }
 
     public function createUserSession($user)
     {
@@ -129,7 +97,7 @@ class Users
         unset($_SESSION['UsersName']);
         unset($_SESSION['UsersEmail']);
         session_destroy();
-        header("location:" . "../views/index.php");
+        redirec_t( "../views/index.php",'');
     }
     public function fetchUsers()
     {
@@ -202,6 +170,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
             case 'delete':
                 $init->delete();
+            case 'logout';
+            $init->logout();
         default:
             header("location:" . "../views/admin-db.php");
     }

@@ -1,11 +1,14 @@
 <?php
+// Include necessary files
 include_once('admin-header.php');
 include_once('../controllers/admin-Controller.php');
 include_once('../models/admin-model.php');
+include_once('../helpers/session-helper.php');
 $usersController = new Users;
 $usermodel = new User;
 ?>
 
+<!-- Rest of your HTML code -->
 
 <div class="row">
     <div class="col-md-12">
@@ -13,7 +16,9 @@ $usermodel = new User;
             <div class="card-header">
                 <h4>User List <a href="user-create.php" class="btn btn-primary float-end">Add User</a></h4>
             </div>
-            <div class="card-body">
+<?php 
+alertmessage()
+?>            <div class="card-body">
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -24,6 +29,7 @@ $usermodel = new User;
                             <th>action</th>
                         </tr>
                     </thead>
+                    <!-- ... your table headers ... -->
                     <tbody>
                         <?php
                         // Call the fetchUsers method from the controller
@@ -36,9 +42,8 @@ $usermodel = new User;
                             echo '<td>' . (isset($user->UsersEmail) ? $user->UsersEmail : '') . '</td>';
                             echo '<td>' . (isset($user->UsersRole) ? $user->UsersRole : '') . '</td>';
                             echo '<td>
-                            <a class="btn btn-success btn-sm" href="users-edit.php?id=' . (isset($user->UsersUid) ? $user->UsersUid : '') . '">Edit</a>';
-                            echo '
-                            <form action="../controllers/admin-controller.php" method="post" style="display:inline;">
+                            <a class="btn btn-success btn-sm" href="user-edit.php?id=' . (isset($user->UsersUid) ? $user->UsersUid : '') . '">Edit</a>
+                            <form action="../controllers/Users-controller.php" method="post" style="display:inline;">
                                 <input type="hidden" name="userId" value="' . (isset($user->UsersUid) ? $user->UsersUid : '') . '">
                                 <input type="hidden" name="type" value="delete">
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this user?\')">Delete</button>

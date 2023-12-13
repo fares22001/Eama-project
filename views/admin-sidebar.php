@@ -108,7 +108,7 @@
 
     </div>
     <div class="sidenav-footer mx-3 ">
-
-        <a class="btn bg-gradient-primary mt-4 w-100" href="https://www.creative-tim.com/product/soft-ui-dashboard-pro?ref=sidebarfree" type="button">Log Out</a>
-    </div>
+<form action="../controllers/admin-controller.php">
+        <a class="btn bg-gradient-primary mt-4 w-100" href="../controllers/admin-controller.php?type=logout" type="button">Log Out</a>
+   </form> </div>
 </aside>

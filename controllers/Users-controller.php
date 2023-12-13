@@ -73,7 +73,7 @@ class Users
 
         //Register User
         if ($this->userModel->register($data)) {
-            // redirect("../views/user login.php");
+             redirect("../views/user login.php");
             echo "done";
         } else {
             die("Something went wrong");

@@ -13,7 +13,16 @@ include_once('../helpers/session-helper.php');
     <title>
         EMMA </title>
 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+
+<script>
+ 
+ alertify.set('notifier', 'position', 'top-right');
+    alertify.success('hello world');
+</script>
 
 
     <!--     Fonts and icons     -->
