@@ -16,7 +16,7 @@ include_once('admin-header.php');
             </div>
 
             <div class="card-body">
-                <form action="../controllers/Users-controller.php" method="post">
+                <form action="../controllers/admin-controller.php" method="post">
                     <input type="hidden" name="type" value="register">
                     <div class="row">
                         <div class="col-md-6">

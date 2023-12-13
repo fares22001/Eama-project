@@ -1,6 +1,6 @@
 <?php
- include_once('../controllers/Users-controller.php');
- include_once('../models/User.php');
+ include_once('../controllers/admin-controller.php');
+ include_once('../models/admin-model.php');
 $init=new Users();
 $userId = isset($_GET['id']) ? $_GET['id'] : '';
 $userName = isset($_GET['name']) ? $_GET['name'] : '';
@@ -36,7 +36,7 @@ $userData=$init->getUserModel()->getUserById($userId);
                 </h4>
             </div>
             <div class="card-body">
-                <form action="../controllers/Users-controller.php" method="post">
+                <form action="../controllers/admin-controller.php" method="post">
               
                 <input type="hidden"  name="type" value="update">
 
