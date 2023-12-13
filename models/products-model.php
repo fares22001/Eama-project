@@ -10,14 +10,14 @@ class product
     public function addproducts($data,$imagePath)
     {
         $this->db->query('INSERT INTO products (pname,pquantity,pdescription,pbrand,pcategory,pprice,psize,pimage)
-        VALUES(:pname,:pquantity,:pdescription,:pbrand,:pcategory,:pprice,:psize,:pimage)');
-        $this->db->bind(':pname', $data['pname']);
-        $this->db->bind(':pquantity', $data['pquantity']);
-        $this->db->bind(':pdescription', $data['pdescription']);
-        $this->db->bind(':pbrand', $data['pbrand']);
-        $this->db->bind(':pcategory', $data['pcategory']);
-        $this->db->bind(':pprice', $data['pprice']);
-        $this->db->bind(':psize', $data['psize']);
+        VALUES(:name,:quantity,:description,:brand,:category,:price,:size,:pimage)');
+        $this->db->bind(':name', $data['pname']);
+        $this->db->bind(':quantity', $data['pquantity']);
+        $this->db->bind(':description', $data['pdescription']);
+        $this->db->bind(':brand', $data['pbrand']);
+        $this->db->bind(':category', $data['pcategory']);
+        $this->db->bind(':price', $data['pprice']);
+        $this->db->bind(':size', $data['psize']);
         $this->db->bind(':pimage', $imagePath);
         if ($this->db->execute()) {
             return true;
@@ -29,9 +29,10 @@ class product
     {
         try {
             $this->db->query('SELECT * FROM products');
-            return $this->db->resultSet();
+            return $this->db->resultSet(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             return false;
         }
     }
+    
 }

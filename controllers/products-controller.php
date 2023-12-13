@@ -39,9 +39,6 @@ class products
 
     public function addproducts()
     {
-        var_dump($_POST);
-        var_dump($_FILES);
-
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $selectedCategory = $_POST['pcategory'];
         $data = [
@@ -52,21 +49,22 @@ class products
             'pbrand' => trim($_POST['pbrand']),
             'pcategory' => trim($_POST['pcategory']),
             'pprice' => trim($_POST['pprice']),
-            'pprice' => trim($_POST['psize']),
+            'psize' => trim($_POST['psize']),
         ];
-        echo $data;
         if (
             empty($data['pname']) || empty($data['pquantity']) || empty($data['pdescription']) || empty($data['pbrand']) ||
             empty($data['pcategory']) || empty($data['pprice']) || empty($data['psize'])
         ) {
-            redirec_t("../views/product-create.php", "please fill out all inputs");
+            flash("addproducts", "please fill out all inputs");
+            redirect("../views/product-create.php");
         }
         if ($data['pquantity'] > 50) {
-            redirec_t("../views/product-create.php", "Max 10 products");
+            flash("addproducts", "Max 10 products");
+            redirect("../views/product-create.php");
         }
         $imagePath = $this->saveImage($_FILES['pimage']);
         if ($this->productModel->addproducts($data, $imagePath)) {
-            redirec_t("../views/product-create.php", 'product added ');
+            redirect("../views/product-create.php");
         } else {
             die("something went wrong");
         }

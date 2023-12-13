@@ -1,5 +1,12 @@
-<?php include('admin-header.php'); ?>
-
+<?php
+// Include necessary files
+include_once('admin-header.php');
+include_once('../controllers/products-Controller.php');
+include_once('../models/products-model.php');
+include_once('../helpers/session-helper.php');
+$product_controller = new products;
+$product_model = new product;
+?>
 
 <div class="row">
 
@@ -18,39 +25,48 @@
                     <thead>
                         <tr>
                             <!-- <th>image</th> -->
-                            <th>image</th>
+                            <th>num</th>
                             <th>name</th>
-                            <th>brand</th>
-                            <th>regular price</th>
-                            <th>resellerprice</th>
                             <th>quantity</th>
+                            <th>description</th>
+                            <th>brand</th>
+                            <th>category</th>
+                            <th>price</th>
+                            <th>size</th>
                             <th>action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        
-                                <tr>
-                                    <td><img src="../uploades/1698279757.jpeg" alt=""></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                    <tbody> 
+                         <?php
+                        // Call the fetchUsers method from the controller
+                        $products = $product_controller->getAllProducts();
+                        $i = 1;
+                        foreach ($products as $product) {
+                            echo '<tr>';
+                            echo '<td>' .$i . '</td>';
+                            echo '<td>' . (isset($product->pname) ? $product->pname : '') . '</td>';
+                            echo '<td>' . (isset($product->pquantity) ? $product->pquantity : '') . '</td>';
+                            echo '<td>' . (isset($product->pdescription) ? $product->pdescription : '') . '</td>';
+                            echo '<td>' . (isset($product->pbrand) ? $product->pbrand : '') . '</td>';
+                            echo '<td>' . (isset($product->pcategory) ? $product->pcategory : '') . '</td>';
+                            echo '<td>' . (isset($product->pprice) ? $product->pprice : '') . '</td>';
+                            echo '<td>' . (isset($product->psize) ? $product->psize : '') . '</td>';
+                            echo '<img class="img-fluid max-width:100 height:auto" src="' . $product->pimage . '" alt="Product Image">';
+
+                            echo '<td>
+                            <a class="btn btn-success btn-sm" href="user-edit.php?id=' . (isset($user->UsersUid) ? $user->UsersUid : '') . '">Edit</a>
+                            <form action="../controllers/Users-controller.php" method="post" style="display:inline;">
+                                <input type="hidden" name="userId" value="' . (isset($user->UsersUid) ? $user->UsersUid : '') . '">
+                                <input type="hidden" name="type" value="delete">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this user?\')">Delete</button>
+                            </form>
+                          </td>';
+                            echo '</tr>';
+                       $i++;
+                     }
 
 
-                                    <td>
-                                        <a class="btn btn-success btn-sm" href="product-edit.php">edit</a>
-                                        <a class="btn btn-danger btn-sm" href="product-delete.php" onclick="return confirm('are you want to delete data ')">
-
-                                            delete</a>
-                                    </td>
-                                </tr>
-                          
-                            <tr>
-                                <td colspan="7">no record found</td>
-                            </tr>
-                        
-
+                        ?>
                     </tbody>
                 </table>
             </div>
