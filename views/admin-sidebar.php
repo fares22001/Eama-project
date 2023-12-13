@@ -32,7 +32,7 @@
 
     
             <li class="nav-item">
-                <a class="nav-link  " href="productss.php">
+                <a class="nav-link  " href="admin-products.php">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <!-- <i class="fa fa-brands fa-shopify text-green test-lg"></i>
                         <i class="fa fa-brands fa-shopify" style="color: #000000;"></i>
