@@ -33,6 +33,7 @@ $product_model = new product;
                             <th>category</th>
                             <th>price</th>
                             <th>size</th>
+                            <th>image</th>
                             <th>action</th>
                         </tr>
                     </thead>
@@ -44,20 +45,20 @@ $product_model = new product;
                         foreach ($products as $product) {
                             echo '<tr>';
                             echo '<td>' .$i . '</td>';
-                            echo '<td>' . (isset($product->pname) ? $product->pname : '') . '</td>';
+                            echo '<td>' . (isset($product->Pname) ? $product->Pname : '') . '</td>';
                             echo '<td>' . (isset($product->pquantity) ? $product->pquantity : '') . '</td>';
                             echo '<td>' . (isset($product->pdescription) ? $product->pdescription : '') . '</td>';
                             echo '<td>' . (isset($product->pbrand) ? $product->pbrand : '') . '</td>';
                             echo '<td>' . (isset($product->pcategory) ? $product->pcategory : '') . '</td>';
                             echo '<td>' . (isset($product->pprice) ? $product->pprice : '') . '</td>';
                             echo '<td>' . (isset($product->psize) ? $product->psize : '') . '</td>';
-                            echo '<img class="img-fluid max-width:100 height:auto" src="' . $product->pimage . '" alt="Product Image">';
+                            echo '<td><img width=50px height=50px src="' . $product->pimage . '" alt="Product Image"></td>';
 
                             echo '<td>
-                            <a class="btn btn-success btn-sm" href="user-edit.php?id=' . (isset($user->UsersUid) ? $user->UsersUid : '') . '">Edit</a>
-                            <form action="../controllers/Users-controller.php" method="post" style="display:inline;">
-                                <input type="hidden" name="userId" value="' . (isset($user->UsersUid) ? $user->UsersUid : '') . '">
-                                <input type="hidden" name="type" value="delete">
+                            <a class="btn btn-success btn-sm" href="product-edit.php?id=' . (isset($product->id) ? $product->id : '') . '">Edit</a>
+                            <form action="../controllers/products-controller.php" method="post" style="display:inline;">
+                                <input type="hidden" name="productId" value="' . (isset($product->id) ? $product->id : '') . '">
+                                <input type="hidden" name="type" value="deleteproduct">
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this user?\')">Delete</button>
                             </form>
                           </td>';

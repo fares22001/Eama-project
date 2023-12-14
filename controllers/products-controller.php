@@ -69,17 +69,68 @@ class products
             die("something went wrong");
         }
     }
+    public function getproductcontroller(){
+        return $this->productModel;
+    }
+    public function editProduct()
+    {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        $data = [
+            'product_id' => trim($_POST['product_id']),
+            'pname' => trim($_POST['pname']),
+            'pquantity' => trim($_POST['pquantity']),
+            'pdescription' => trim($_POST['pdescription']),
+            'pbrand' => trim($_POST['pbrand']),
+            'pcategory' => trim($_POST['pcategory']),
+            'pprice' => trim($_POST['pprice']),
+            'psize' => trim($_POST['psize']),
+        ];
+
+        // Validate and update the product data
+        if ($this->productModel->editProduct($data)) {
+            flash("editproduct", "Product updated successfully");
+            redirect("../views/product-edit.php?id=" . $data['product_id']);
+        } else {
+            flash("editproduct", "Failed to update product");
+            redirect("../views/product-edit.php?id=" . $data['product_id']);
+        }
+    }
+
+    public function deleteProduct()
+    {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        $product_id = trim($_POST['product_id']);
+
+        // Delete the product
+        if ($this->productModel->deleteProduct($product_id)) {
+            redirec_t("../views/admin-products.php","Product deleted successfully");
+        } else {
+            redirec_t("../views/admin-products.php","Failed to delete product");
+        }
+    }
+
     public function getAllProducts()
     {
         return $this->productModel->getAllProducts();
     }
+    
 }
 
 $init = new products;
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     switch ($_POST['type']) {
         case 'addproducts':
-            $init->addproducts();
+            $init->addProducts();
+            break;
+        case 'editproduct':
+            $init->editProduct();
+            break;
+        case 'deleteproduct':
+            $init->deleteProduct();
             break;
     }
 }
