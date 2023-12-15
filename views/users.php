@@ -43,7 +43,7 @@ alertmessage()
                             echo '<td>' . (isset($user->UsersRole) ? $user->UsersRole : '') . '</td>';
                             echo '<td>
                             <a class="btn btn-success btn-sm" href="user-edit.php?id=' . (isset($user->UsersUid) ? $user->UsersUid : '') . '">Edit</a>
-                            <form action="../controllers/Users-controller.php" method="post" style="display:inline;">
+                            <form action="../controllers/admin-controller.php" method="post" style="display:inline;">
                                 <input type="hidden" name="userId" value="' . (isset($user->UsersUid) ? $user->UsersUid : '') . '">
                                 <input type="hidden" name="type" value="delete">
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this user?\')">Delete</button>

@@ -25,6 +25,7 @@ class product
             return false;
         }
     }
+    //,imagePath$
 
     public function editProduct($data)
     {
@@ -37,8 +38,13 @@ class product
         $this->db->bind(':category', $data['pcategory']);
         $this->db->bind(':price', $data['pprice']);
         $this->db->bind(':size', $data['psize']);
+        //$this->db->bind(':pimage',$imagePath);
 
-        return $this->db->execute();
+       if($this->db->execute()){
+        return true;
+       }else{
+        return false;
+       }
     }
     public function getProductDetailsById($product_id)
     {

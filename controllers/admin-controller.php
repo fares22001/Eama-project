@@ -143,11 +143,11 @@ class Users
         // Perform deletion logic
         if ($this->userModel->deleteUser($userId)) {
             // Successful deletion
-            header("location: ../views/users.php");
+       redirec_t('../views/users.php','user deleted ');
         } else {
             // Handle deletion failure
             // flash("delete", "Failed to delete user");
-            header("location: ../views/productss.php");
+            redirec_t('../views/users.php','user not  deleted ');
         }
     }
     

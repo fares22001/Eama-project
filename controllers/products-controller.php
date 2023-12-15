@@ -69,8 +69,13 @@ class products
             die("something went wrong");
         }
     }
-    public function getproductcontroller(){
+    public function getproductmodel()
+    {
         return $this->productModel;
+    }
+    public function getProductDetailsById($id)
+    {
+        return $this->productModel->getProductDetailsById($id);
     }
     public function editProduct()
     {
@@ -88,9 +93,11 @@ class products
         ];
 
         // Validate and update the product data
+        $imagePath = $this->saveImage($_FILES['pimage']);
+//,$imagePath
         if ($this->productModel->editProduct($data)) {
-            flash("editproduct", "Product updated successfully");
-            redirect("../views/product-edit.php?id=" . $data['product_id']);
+                       redirec_t("../views/admin-products.php?id=" . $data['product_id'],"pruduct updated");
+// flash("editproduct", "Product updated successfully");
         } else {
             flash("editproduct", "Failed to update product");
             redirect("../views/product-edit.php?id=" . $data['product_id']);
@@ -105,9 +112,9 @@ class products
 
         // Delete the product
         if ($this->productModel->deleteProduct($product_id)) {
-            redirec_t("../views/admin-products.php","Product deleted successfully");
+            redirec_t("../views/admin-products.php", "Product deleted successfully");
         } else {
-            redirec_t("../views/admin-products.php","Failed to delete product");
+            redirec_t("../views/admin-products.php", "Failed to delete product");
         }
     }
 
@@ -115,7 +122,6 @@ class products
     {
         return $this->productModel->getAllProducts();
     }
-    
 }
 
 $init = new products;
