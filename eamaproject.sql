@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2023 at 03:08 PM
+-- Generation Time: Dec 15, 2023 at 05:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,17 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `eamaproject`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cart`
---
-
-CREATE TABLE `cart` (
-  `user_id` int(255) NOT NULL,
-  `id` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -61,7 +50,7 @@ INSERT INTO `products` (`id`, `Pname`, `pquantity`, `pdescription`, `pbrand`, `p
 (46, 'cotoneve', 10, 'High quality', 'cotoneve', 'Makeup remover', 85, 20, '../public/img/image_65746db681b1a.png'),
 (47, 'Banat', 10, 'Amazing', 'Banat', 'Tooth brush', 110, 20, '../public/img/image_65746ded3e34c.jpg'),
 (48, 'silvercare', 10, 'amazing', 'silvercare', 'Tooth brush', 200, 21, '../public/img/image_65746e133ce57.jpg'),
-(49, 'sunbright', 10, 'very good', 'sunbright', 'Wipes', 30, 20, '../public/img/image_65746e48604da.jpg');
+(50, 'silvercare', 10, 'verygood', 'silvercare', 'Tooth brush', 20, 90, '../public/img/image_657c711654e5d.jpg');
 
 -- --------------------------------------------------------
 
@@ -83,19 +72,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`Usersid`, `UsersName`, `UsersEmail`, `UsersUid`, `UsersPwd`, `UsersRole`) VALUES
-(1, 'mohamed', 'mohamed@gmail.com', 'mooo', '$2y$10$oxT7EDXLuo4DxZWUmfaaVO4JVYo.fIKKSG6ke3Fu.I7JeylYSLp/G', 'user'),
-(3, 'jana', 'jana@gmail.com', 'janaa', '$2y$10$SO9ASWrfkFbNv5IPDKrwEeAtFOfIlAc4dkmIObxVBILUNEnja0QjG', 'user'),
-(4, 'fares', 'fares@gmail.com', 'fess', '$2y$10$oqn2e6twiVGU5HN9I/8af.IUE37GVnTSw5EH6c/TvYQ8NA2b/rlra', 'pharmacy'),
-(5, 'bebo', 'bebo@gmail.com', 'bulk', '$2y$10$h.Cz6vNAbgGVTd1HagTw9u1/8Smn37S2ct3uu48IA88yeH4uFTR4q', 'user'),
-(6, 'omar', 'omar@gmail.com', 'bakary', '$2y$10$zPDuf2zufiyRG7YMc/W1i.dHxEI0eB/lQgUSiOb7Wog6QfVvXQ8JK', 'company'),
-(7, 'khaled', 'khaled@gmail.com', 'zatona', '$2y$10$1CMrHEBdv.atf0fNeVYo5eoK8sKhK7CTCXMzyb9noNaOp96wPTi2G', 'company'),
-(8, 'fares', 'fares2100380@miuegypt.edu.eg', 'fares1', '$2y$10$m4gBCG.qkddiMfP5wurQOeodgEGucS0u4ldFBOqxOLlJbGQBRMpd.', 'user'),
-(9, 'elbebo', 'elbebo@gmail.com', 'elbebo2', 'bebo1234', 'company'),
-(10, 'menna', 'menna@gmail.com', 'menna1', 'menna12345', 'user'),
-(11, 'mohamed12', 'mo@gmail.com', 'mo123', '$2y$10$fUqDtjH.7dpR8PSkrtxJzuRJT9SS/8NBs/vcqrNHlc.hNNwsy1x7C', 'pharmacy'),
-(12, 'farooos', 'farooos@gmail.com', 'farooos12', '12345678', 'company'),
-(13, 'yassin', 'yassin@gmail.com', 'yassin12', '12345678', 'user'),
-(14, 'hameed', 'hameed@gmail.com', 'hameed1', '$2y$10$EzmZvucTBSL1UwVUGNRPkuOqIdZAA2GKW0SvI4FzVa0AfkmnHy9NO', 'company');
+(16, 'fares', 'fares@gmail.com', 'fares12', '$2y$10$qhlOS5J2utYE80efj3fGfO0SNVrYDlB/dUR575SQ60I3Ryz4.2HIe', 'user');
 
 --
 -- Indexes for dumped tables
@@ -121,13 +98,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Usersid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Usersid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
