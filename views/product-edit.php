@@ -98,16 +98,16 @@ if (!empty($productId)) {
                         </div>
 
 
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="pimage">Image</label>
-                                <img width=50px height=50px src=<?php echo $pimage?> alt="Product Image">
+                                <img width=50px height=50px src=?php echo $pimage?> alt="Product Image">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="pimage">Image</label>
-                                <input type="file" name="pimage" accept=".jpg, .jpeg, .png" class="form-control" value="<?php echo $pimage?>">
+                                <label for="pimage">image</label>
+                                <input type="file" name="pimage" accept=".jpg, .jpeg ,.png" class="form-control">
                             </div>
                         </div>
 

@@ -57,7 +57,7 @@ $product_model = new product;
                             echo '<td>
                             <a class="btn btn-success btn-sm" href="product-edit.php?id=' . (isset($product->id) ? $product->id : '') . '">Edit</a>
                             <form action="../controllers/products-controller.php" method="post" style="display:inline;">
-                                <input type="hidden" name="productId" value="' . (isset($product->id) ? $product->id : '') . '">
+                                <input type="hidden" name="id" value="' . (isset($product->id) ? $product->id : '') . '">
                                 <input type="hidden" name="type" value="deleteproduct">
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this user?\')">Delete</button>
                             </form>

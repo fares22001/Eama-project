@@ -27,9 +27,9 @@ class product
     }
     //,imagePath$
 
-    public function editProduct($data)
+    public function editProduct($data,$imagePath)
     {
-        $this->db->query('UPDATE products SET pname = :name, pquantity = :quantity, pdescription = :description, pbrand = :brand, pcategory = :category, pprice = :price, psize = :size WHERE id = :product_id');
+        $this->db->query('UPDATE products SET pname = :name, pquantity = :quantity, pdescription = :description, pbrand = :brand, pcategory = :category, pprice = :price, psize = :size, pimage= :pimage WHERE id = :product_id');
         $this->db->bind(':product_id', $data['product_id']);
         $this->db->bind(':name', $data['pname']);
         $this->db->bind(':quantity', $data['pquantity']);
@@ -38,13 +38,9 @@ class product
         $this->db->bind(':category', $data['pcategory']);
         $this->db->bind(':price', $data['pprice']);
         $this->db->bind(':size', $data['psize']);
-        //$this->db->bind(':pimage',$imagePath);
+        $this->db->bind(':pimage',$imagePath);
 
-       if($this->db->execute()){
-        return true;
-       }else{
-        return false;
-       }
+       return $this->db->execute();
     }
     public function getProductDetailsById($product_id)
     {
@@ -56,8 +52,8 @@ class product
 
     public function deleteProduct($product_id)
     {
-        $this->db->query('DELETE FROM products WHERE id = :product_id');
-        $this->db->bind(':product_id', $product_id);
+        $this->db->query('DELETE FROM products WHERE id = :id');
+        $this->db->bind(':id', $product_id);
 
         return $this->db->execute();
     }
