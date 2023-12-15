@@ -28,3 +28,18 @@ function redirect($location)
     header("location: " . $location);
     exit();
 }
+function alertmessage()
+{
+    if (isset($_SESSION['status'])) {
+        echo '<div class="alert alert-sccuess">
+        <h4>' . $_SESSION['status'] . '
+        </h4></div>';
+        unset($_SESSION['status']);
+    }
+}
+function redirec_t($url, $status)
+{
+    $_SESSION['status'] = $status;
+    header('location:' . $url);
+    exit(0);
+}
