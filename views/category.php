@@ -1,11 +1,11 @@
 <?php
 // Include necessary files
 include_once('admin-header.php');
-include_once('../controllers/admin-Controller.php');
-include_once('../models/admin-model.php');
+include_once('../controllers/category-Controller.php');
+include_once('../models/category-model.php');
 include_once('../helpers/session-helper.php');
-$usersController = new Users;
-$usermodel = new User;
+$categortyController = new categorys;
+$categoryModel = new category;
 ?>
 
 <!-- Rest of your HTML code -->
@@ -14,7 +14,7 @@ $usermodel = new User;
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4>User List <a href="user-create.php" class="btn btn-primary float-end">Add User</a></h4>
+                <h4>category List <a href="creat-category.php" class="btn btn-primary float-end">Add category</a></h4>
             </div>
 <?php 
 alertmessage()
@@ -24,6 +24,7 @@ alertmessage()
                         <tr>
                             <th>num</th>
                             <th>name</th>
+                            <th>action</th>
                          
                         </tr>
                     </thead>
@@ -31,15 +32,16 @@ alertmessage()
                     <tbody>
                         <?php
                         // Call the fetchUsers method from the controller
-                        $users = $usersController->fetchUsers();
+                        $categortyController = $categortyController->getAllcategories();
                         $i = 1;
-                        foreach ($users as $user) {
+                        foreach ($categortyController as $category) {
                             echo '<tr>';
                             echo '<td>' .$i . '</td>';
-                            echo '<td>' . (isset($user->UsersName) ? $user->UsersName : '') . '</td>';
+                            echo '<td>' . (isset($category->name) ? $category->name : '') . '</td>';
                             echo '<td>
-                            <form action="../controllers/admin-controller.php" method="post" style="display:inline;">
-                                <input type="hidden" name="userId" value="' . (isset($user->UsersUid) ? $user->UsersUid : '') . '">
+                            <a class="btn btn-success btn-sm" href="edit-category.php?id=' . (isset($category->id) ? $category->id : '') . '">Edit</a>
+                            <form action="../controllers/category-controller.php" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="' .  (isset($category->id) ? $category->id : '')  . '">
                                 <input type="hidden" name="type" value="delete">
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this user?\')">Delete</button>
                             </form>
