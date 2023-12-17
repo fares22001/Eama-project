@@ -61,10 +61,33 @@ class product
 
         return $this->db->execute();
     }
-    public function getAllProducts()
+    public function getAllProducts($name = null, $price = null, $category = null)
     {
         try {
-            $this->db->query('SELECT * FROM products');
+            $query = 'SELECT * FROM products';
+            $params = [];
+
+            // Check if filters are provided and add them to the query
+            if ($name !== null) {
+                $query .= ' WHERE pname LIKE :pname';
+                $params[':pname'] = '%' . $name . '%';
+            }
+
+            if ($price !== null) {
+                $query .= ($name !== null) ? ' AND' : ' WHERE';
+                $query .= ' pprice = :pprice';
+                $params[':pprice'] = $price;
+            }
+
+            if ($category !== null) {
+                $query .= ($name !== null || $price !== null) ? ' AND' : ' WHERE';
+                $query .= ' pcategory = :pcategory';
+                $params[':pcategory'] = $category;
+            }
+
+            $this->db->query($query);
+            $this->db->bindMultiple($params);
+
             return $this->db->resultSet(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             return false;
