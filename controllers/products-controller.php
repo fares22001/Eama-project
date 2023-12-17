@@ -56,19 +56,80 @@ class products
             empty($data['pcategory']) || empty($data['pprice']) || empty($data['psize'])
         ) {
             flash("addproducts", "please fill out all inputs");
-            redirect("../admin/product-create.php");
+            redirect("../views/product-create.php");
         }
         if ($data['pquantity'] > 50) {
             flash("addproducts", "Max 10 products");
-            redirect("../admin/product-create.php");
+            redirect("../views/product-create.php");
         }
         $imagePath = $this->saveImage($_FILES['pimage']);
         if ($this->productModel->addproducts($data, $imagePath)) {
-            redirect("../admin/product-create.php");
+            redirect("../views/product-create.php");
         } else {
             die("something went wrong");
         }
+
+        $productDetails = $this->productModel->getAllProducts($data['pname'], $data['pprice'], $data['pcategory']);
+
+    if ($productDetails) {
+        $cartController = new CartController();
+        $cartController->addToCart($productDetails[0]['id'], $productDetails[0]['pname'], $productDetails[0]['pprice'], $imagePath);
+
+
+        redirect("../views/product-create.php");
+    } else {
+        die("Failed to get product details");
     }
+    }
+    public function getproductmodel()
+    {
+        return $this->productModel;
+    }
+    public function getProductDetailsById($id)
+    {
+        return $this->productModel->getProductDetailsById($id);
+    }
+    public function editProduct()
+    {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        $data = [
+            'product_id' => trim($_POST['product_id']),
+            'pname' => trim($_POST['pname']),
+            'pquantity' => trim($_POST['pquantity']),
+            'pdescription' => trim($_POST['pdescription']),
+            'pbrand' => trim($_POST['pbrand']),
+            'pcategory' => trim($_POST['pcategory']),
+            'pprice' => trim($_POST['pprice']),
+            'psize' => trim($_POST['psize']),
+        ];
+
+        // Validate and update the product data
+        $imagePath = $this->saveImage($_FILES['pimage']);
+//,$imagePath
+        if ($this->productModel->editProduct($data)) {
+                       redirec_t("../views/admin-products.php?id=" . $data['product_id'],"pruduct updated");
+// flash("editproduct", "Product updated successfully");
+        } else {
+            flash("editproduct", "Failed to update product");
+            redirect("../views/product-edit.php?id=" . $data['product_id']);
+        }
+    }
+
+    public function deleteProduct()
+    {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        $product_id = trim($_POST['product_id']);
+
+        // Delete the product
+        if ($this->productModel->deleteProduct($product_id)) {
+            redirec_t("../views/admin-products.php", "Product deleted successfully");
+        } else {
+            redirec_t("../views/admin-products.php", "Failed to delete product");
+        }
+    }
+
     public function getAllProducts()
     {
         return $this->productModel->getAllProducts();
@@ -76,10 +137,18 @@ class products
 }
 
 $init = new products;
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     switch ($_POST['type']) {
         case 'addproducts':
-            $init->addproducts();
+            $init->addProducts();
+            break;
+        case 'editproduct':
+            $init->editProduct();
+            break;
+        case 'deleteproduct':
+            $init->deleteProduct();
             break;
     }
 }

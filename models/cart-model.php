@@ -14,6 +14,89 @@ class Cart extends Model{
         $this->Usersid=$Usersid;
     }
 
+    public function addProductToCart($productId, $quantity)
+    {
+        // Assuming you have a table named 'cart_products' to store products in the cart
+        $this->db->query('INSERT INTO cart(cart_id, id, quantity)
+        VALUES(:cart_id, :id, :quantity)');
+        $this->db->bind(':cart_id', $this->id); // Assuming you have a cart_id in your cart table
+        $this->db->bind(':id', $productId);
+        $this->db->bind(':quantity', $quantity);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getTotalQuantity()
+    {
+        return array_sum($this->productsQuantity);
+    }
+
+    public function getProductDetailsById($id)
+    {
+        $this->db->query('SELECT * FROM products WHERE id = :id');
+        $this->db->bind(':id', $id);
+    
+        $result = $this->db->single(); 
+
+        if ($result) {
+            return [
+                'id' => $result['id'],
+                'Pname' => $result['Pname'],
+                'pprice' => $result['pprice'],
+                'pquantity' => $result['pquantity'],
+                'pimage' => $result['pimage'],
+            ];
+        } else {
+            return false; 
+        }
+    }
+
+    public function getProductPriceById($id){
+    $this->db->query('SELECT pprice FROM products WHERE id = :id');
+    $this->db->bind(':id', $id);
+    
+    $result = $this->db->single();
+
+    if ($result) {
+        return $result['pprice'];
+    } else {
+        return false; 
+    }
+    }
+
+    public function getTotalPrice()
+    {
+        $totalPrice = 0;
+
+        foreach ($this->productsQuantity as $id => $quantity) {
+            $productPrice = $this->getProductPriceById($id);
+            $totalPrice += $productPrice * $quantity;
+        }
+
+        return $totalPrice;
+    }
+
+    
+
+    public function displayCartContent()
+    {
+        echo "<h2>Shopping Cart</h2>";
+
+        foreach ($this->productsQuantity as $id => $quantity) {
+            $productDetails = $this->getProductDetailsById($id);
+
+            echo "<p>{$productDetails['Pname']} - Quantity: $quantity - Price: {$productDetails['pprice']}</p>";
+        }
+
+        echo "<p>Total Quantity: {$this->getTotalQuantity()}</p>";
+        echo "<p>Total Price: {$this->getTotalPrice()}</p>";
+    }
+
+
     public function addcart($data){
         $this->db->query('INSERT INTO cart(id, Usersid)
         VALUES(:id, :Usersid)');

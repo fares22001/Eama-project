@@ -24,7 +24,8 @@ $productController = new products;
                     <div class="descr_and_add">
                         <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
                         <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
-                        <img src="../public/img/add.png" alt="" class="icons" data-id="<?php echo $product->id; ?>">>
+                        <img src="../public/img/add.png" alt="" class="icons" data-product="<?php echo json_encode($product); ?>">>
+                        <button class="add-to-cart" data-id="<?php echo $product->id; ?>">Add to Cart</button>
                         <div class="description">
                             <span class="names"><?php echo $product->Pname ?></span>
                             <br>
@@ -46,22 +47,26 @@ $productController = new products;
 
 </body>
 <script>
-    var addToCartButtons = document.querySelectorAll('.icons');
+    document.addEventListener('DOMContentLoaded', function () {
+    var addToCartButtons = document.querySelectorAll('.add-to-cart');
 
     addToCartButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
-        var id = event.target.getAttribute('data-id');
-        var xml = new XMLHttpRequest();
-        xml.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var data = JSON.parse(this.responseText);
-                console.log(data);
-            }
-        };
+            var productId = event.target.getAttribute('data-id');
+            var xml = new XMLHttpRequest();
+            xml.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    console.log(data);
+                    // You can update the UI or handle the response as needed
+                }
+            };
 
-            xml.open("GET", "cart-controller.php?action=addCart&id=" + id, true);
+            xml.open("GET", "cart-controller.php?action=addtoCart&id=" + productId, true);
             xml.send();
         });
     });
+});
+
    </script>
 </html>

@@ -88,4 +88,12 @@ class Database
     {
         return $this->stmt->rowCount();
     }
+
+
+    public function bindMultiple($params)
+    {
+        foreach ($params as $param => $value) {
+            $this->bind($param, $value);
+        }
+    }
 }
