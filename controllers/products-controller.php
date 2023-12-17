@@ -68,6 +68,18 @@ class products
         } else {
             die("something went wrong");
         }
+
+        $productDetails = $this->productModel->getAllProducts($data['pname'], $data['pprice'], $data['pcategory']);
+
+    if ($productDetails) {
+        $cartController = new CartController();
+        $cartController->addToCart($productDetails[0]['id'], $productDetails[0]['pname'], $productDetails[0]['pprice'], $imagePath);
+
+
+        redirect("../views/product-create.php");
+    } else {
+        die("Failed to get product details");
+    }
     }
     public function getproductmodel()
     {
