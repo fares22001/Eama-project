@@ -20,7 +20,8 @@ $productController = new products;
         <?php $products = $productController->getAllProducts(); ?>
         <?php if (!empty($products)) : ?>
             <?php foreach ($products as $product) : ?>
-                <div class="menu_items"><img src="<?php echo $product->pimage ?>" alt="" width="100%" height="100%" class="menu_img">
+                <div class="menu_items">
+                    <img src="<?php echo $product->pimage ?>" alt="" width="100%" height="100%" class="menu_img">
                     <div class="descr_and_add">
                         <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
                         <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
@@ -37,6 +38,7 @@ $productController = new products;
         <?php else : ?>
             <p>No products available.</p>
         <?php endif; ?>
+        <br>
         <script src="../public/js/products.js"></script>
         <?php include '../views/footer.php'; ?>
 
