@@ -1,3 +1,10 @@
+<?php
+include '../views/header.php';
+include_once('../controllers/products-controller.php');
+include_once('../models/products-model.php');
+include_once('../helpers/session-helper.php');
+$productController = new products;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,12 +15,13 @@
     <link rel="stylesheet" href="../public/css/products.css">
     <script src="../public/js/products.js"></script>
 </head>
-<?php
-include '../views/header.php';
-include_once('../controllers/products-controller.php');
-include_once('../models/products-model.php');
-$productController = new products;
-?>
+<?php if (isset($_SESSION['UsersUid'])) {
+                                    echo explode(" ", $_SESSION['UsersName'])[0];
+                                } else {
+                                    echo 'Guest';
+                                }
+
+                                ?>
 
 <body>
     <div id="menubody" onclick="favorites(event.target)">
@@ -21,26 +29,25 @@ $productController = new products;
         <?php if (!empty($products)) : ?>
             <?php foreach ($products as $product) : ?>
                 <div class="menu_items">
-                    <img src="<?php echo $product->pimage ?>" alt="" width="100%" height="100%" class="menu_img">
-                    <div class="descr_and_add">
-                        <img src="../public/img/favourite.png" class="favrs" alt="" title="remove from favourite">
-                        <img src="../public/img/love.png" class="favs" alt="" title="add to favourite">
-                        <img src="../public/img/add.png" alt="" class="icons" data-id="<?php echo $product->id; ?>">>
-                        <div class="description">
-                            <span class="names"><?php echo $product->Pname ?></span>
-                            <br>
-                            <p class="ingred"><?php echo $product->pdescription ?></p>
-                            <span class="prices"><?php echo $product->pprice ?></span>
-                        </div>
-                    </div>
+                    <img src="<?php echo $product->pimage ?>" width="100%" height="100%">
                 </div>
+                <label for=""><?php echo $product->Pname ?>//</label><br>
+                <label for=""><?php echo $_SESSION['UsersUid'];?>u id //   </label>
+              <br>  <label for="">  p id  <?php echo $product->id;?></label>
+                <form action="../controllers/cart-controller.php" method="post">
+                    <input type="hidden" name="type" value="addtocart">
+                    <input type="hidden" name="UsersUid" value="<?php echo $_SESSION['UsersUid'];?>">
+                    <input type="hidden" name="id" value="<?php echo $product->id;?>">
+
+                    <button type="submit" name="submit">add to cart</button>
+                </form>
             <?php endforeach; ?>
         <?php else : ?>
             <p>No products available.</p>
         <?php endif; ?>
         <br>
+        <?php alertmessage();?>
         <script src="../public/js/products.js"></script>
-        <?php include '../views/footer.php'; ?>
 
 
 
@@ -50,20 +57,22 @@ $productController = new products;
 <script>
     var addToCartButtons = document.querySelectorAll('.icons');
 
-    addToCartButtons.forEach(function (button) {
-        button.addEventListener('click', function (event) {
-        var id = event.target.getAttribute('data-id');
-        var xml = new XMLHttpRequest();
-        xml.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var data = JSON.parse(this.responseText);
-                console.log(data);
-            }
-        };
+    addToCartButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            var id = event.target.getAttribute('data-id');
+            var xml = new XMLHttpRequest();
+            xml.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    console.log(data);
+                }
+            };
 
             xml.open("GET", "cart-controller.php?action=addCart&id=" + id, true);
             xml.send();
         });
     });
-   </script>
+</script>
+
 </html>
+<?php //include '../views/footer.php'; ?>
