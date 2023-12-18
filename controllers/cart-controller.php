@@ -20,20 +20,21 @@ class CartController
         ];
     }
 
-    public function displayCart()
+    public function displayCart($userId)
     {
-        $carts = $this->cart->getAllCarts();
-        if (is_array($carts)) {
-            include '../views/cart.php';
-        } else {
-            echo "Error fetching cart data.";
-        }
+       // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+    //     $data = [
+    //         'UsersUid' => trim($_POST['UsersUid']),
+    // //        'id' => trim($_POST['id'])
+    //     ];
+    //     $userId = $data['UsersUid'];
+    //    // $productId = trim($_POST['id']);
+       return $this->cart->getCartProductsByUserId($userId);
+        
     }
 
-    public function getAllCarts()
-    {
-        return $this->cart->getAllcarts();
-    }
+
 
     public function AddProductToCart($data)
     {
@@ -45,13 +46,13 @@ class CartController
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         // Init data
-$data = [
+        $data = [
             'UsersUid' => trim($_POST['UsersUid']),
             'id' => trim($_POST['id'])
         ];
         $userId = $data['UsersUid'];
         $productId = trim($_POST['id']);
-               
+
 
         // Check if the user has a cart
         if ($cartData = $this->cart->checkcart($userId)) {
@@ -67,9 +68,10 @@ $data = [
         } else {
             // User does not have a cart, create a new cart and add the product
             $cartId = $this->cart->addcart($data);
-
             // Check if the cart creation was successful
             if ($cartId) {
+                sleep(1);
+
                 if ($this->cart->productExists($productId)) {
                     if ($this->cart->addProductToCart($cartId, $productId)) {
                         redirec_t('../views/products.php', 'Added to cart.');

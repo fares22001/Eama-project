@@ -9,46 +9,41 @@
     <title>In Cart Products</title>
     <script src="https://kit.fontawesome.com/a98ac1f71c.js" crossorigin="anonymous"></script>
 </head>
+<?php
+include '../views/header.php';
+include_once('../controllers/cart-controller.php');
+include_once('../models/cart-model.php');
+include_once('../helpers/session-helper.php');
+$cartController = new CartController;
+$cartmodel = new Cart();
+$userId = $_SESSION['UsersUid'];
+$carts = $cartController->displayCart($userId);
+?>
 
 <body>
-    <?php
-    include '../views/header.php';
-    ?>
-    <?php
 
-    require_once '../controllers/cart-controller.php';
-    require_once '../helpers/session-helper.php';
 
-   $cartController = new CartController();
-   $carts = $cartController->getAllCarts();
-    ?>
-    <main>  
-    <?php if (!empty($carts)) : ?>     
-        <h1><?php echo count($carts); ?> Items</h1>
-        <hr>
-        <?php foreach ($carts as $cart) { ?>
-            <div class="card">
-                <div class="images">
-                    <img src="<?php echo $cart->pimage ?>" alt="">
+    <main>
+        <?php if (!empty($carts)) : ?>
+            <h1> Items</h1>
+            <hr>
+            <?php foreach ($carts as $cart) { ?>
+                <div class="card">
+                    <div class="images">
+                        <img src="<?php echo $cart->pimage ?>" alt="">
+                    </div>
+                    <div class="caption">
+                        <label for=""><?php echo $cart->Pname ?></label>
+                        <label for=""><?php $cart->pprice; ?></label> 
+                        <button class="remove" data-id="<?php echo $cart->id ?>">Remove From Cart</button>
+                    </div>
                 </div>
-                <div class="caption">
-                    <p class="rate">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </p>
-                    <p class="product_name"><?php echo $cart->Pname ?></p>
-                    <p class="price"><b>$<?php echo $cart->pprice ?></b></p>
-                    <p class="discount"><b><del>$<?php echo $cart->pdiscount ?></del></b></p>
-                    <button class="remove" data-id="<?php echo $cart->id ?>">Remove From Cart</button>
-                </div>
-            </div>
-         <?php } ?>
-         <?php else : ?>
-        <p>No items in the cart.</p>
-    <?php endif; ?>
+            <?php } ?>
+        <?php else : ?>
+            <p>No items in the cart.</p>
+            <label for=""><?php echo $_SESSION['UsersUid']; ?>u id // </label>
+
+        <?php endif; ?>
     </main>
 
 
@@ -60,7 +55,7 @@
 
 
 
-     <script>
+    <!-- <script>
         var remove = document.getElementsByClassName("remove");
         for (var i = 0; i < remove.length; i++) {
             remove[i].addEventListener("click", function(event) {
@@ -77,7 +72,7 @@
                 xml.send();
             })
         }
-    </script> 
+    </script>  -->
     <?php
     include '../views/footer.php';
     ?>

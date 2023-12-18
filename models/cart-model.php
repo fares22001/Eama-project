@@ -66,49 +66,38 @@ class Cart extends Model
         }
     }
 
-    public function delete($data)
-    {
-        $sql = "DELETE FROM cart WHERE id=$this->id;";
-        $this->db->query($sql);
-        $this->db->bind(':id', $this->id);
-        if ($this->db->execute()) {
-            echo "deleted successfully.";
-        } else {
-            echo "ERROR: Could not able to execute" . $this->db->error();
-        }
-    }
+    // public function delete($data)
+    // {
+    //     $sql = "DELETE FROM cart WHERE id=$this->id;";
+    //     $this->db->query($sql);
+    //     $this->db->bind(':id', $this->id);
+    //     if ($this->db->execute()) {
+    //         echo "deleted successfully.";
+    //     } else {
+    //         echo "ERROR: Could not able to execute" . $this->db->error();
+    //     }
+    // }
 
-    public function checkout($data)
-    {
-    }
+   
 
-    public function getAllCarts()
+    public function getCartProductsByUserId($data)
     {
-        try {
-            $this->db->query('SELECT * FROM cart');
+        $this->db->query('SELECT products.id, products.Pname,products.pprice ,products.pimage
+        FROM users
+        JOIN cart ON users.UsersUid = cart.UsersUid
+        JOIN cart_product ON cart.cart_id = cart_product.cart_id
+        JOIN products ON cart_product.id = products.id
+        WHERE users.UsersUid = :userId');
+        $this->db->bind(':userId',$data);
+        $this->db->execute();
+
+        if ($this->db->rowCount() > 0) {
             return $this->db->resultSet();
-            return $this->db->result();
-        } catch (PDOException $e) {
+        } else {
+            // Print SQL errors
+            print_r($this->db->errorInfo());
             return false;
         }
     }
-    function addProduct($productID, $q)
-    {
-        if (array_key_exists((string)$productID, $this->productsQuantity)) {
-            $this->productsQuantity[(string)$productID] += $q;
-        } else {
-            $this->productsQuantity[(string)$productID] = $q;
-        }
-    }
-
-    function removeProduct($productID)
-    {
-        unset($this->productsQuantity[(string)$productID]);
-    }
-
-    function emptyCart()
-    {
-        unset($this->productsQuantity);
-        $this->productsQuantity = array();
-    }
+   
 }
