@@ -26,7 +26,7 @@
     <form action="../controllers/Users-controller.php" method="post">
     <input type="hidden" name="type" value="login">
 
-        <input type="text" id="UsersUid/UsersEmail" name="UsersUid/UsersEmail" placeholder="Username / Email" required>
+        <input type="text" id="Usersn/UsersEmail" name="Usersn/UsersEmail" placeholder="Username / Email" required>
         <input type="password" id="UsersPwd" name="UsersPwd" placeholder="Enter your password" required>
 
         <b> <button type="submit">Login </button></b> <br><br>

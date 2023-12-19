@@ -25,7 +25,7 @@ class Users
         $data = [
             'UsersName' => trim($_POST['UsersName']),
             'UsersEmail' => trim($_POST['UsersEmail']),
-            'UsersUid' => trim($_POST['UsersUid']),
+            'Usersn' => trim($_POST['Usersn']),
             'UsersPwd' => trim($_POST['UsersPwd']),
             'pwdRepeat' => trim($_POST['pwdRepeat']),
             'UsersRole' => trim($_POST['UsersRole'])
@@ -36,14 +36,14 @@ class Users
 
         //Validate inputs
         if (
-            empty($data['UsersName']) || empty($data['UsersEmail']) || empty($data['UsersUid']) ||
+            empty($data['UsersName']) || empty($data['UsersEmail']) || empty($data['Usersn']) ||
             empty($data['UsersPwd']) || empty($data['pwdRepeat'])
         ) {
             flash("register", "Please fill out all inputs");
             redirect("../views/Rgeister.php");
         }
 
-        if (!preg_match("/^[a-zA-Z0-9]*$/", $data['UsersUid'])) {
+        if (!preg_match("/^[a-zA-Z0-9]*$/", $data['Usersn'])) {
             flash("register", "Invalid username");
             redirect("../views/Register.php");
         }
@@ -62,7 +62,7 @@ class Users
         }
 
         // User with the same email or password already exists
-        if ($this->userModel->findUserByEmailOrUsername($data['UsersEmail'], $data['UsersName'])) {
+        if ($this->userModel->findUserByEmailOrUsername($data['UsersEmail'], $data['Usersn'])) {
             flash("register", "Username or email already taken");
             redirect("../views/Register.php");
         }
@@ -87,20 +87,20 @@ class Users
 
         //Init data
         $data = [
-            'UsersUid/UsersEmail' => trim($_POST['UsersUid/UsersEmail']),
+            'Usersn/UsersEmail' => trim($_POST['Usersn/UsersEmail']),
             'UsersPwd' => trim($_POST['UsersPwd'])
         ];
 
-        if (empty($data['UsersUid/UsersEmail']) || empty($data['UsersPwd'])) {
+        if (empty($data['Usersn/UsersEmail']) || empty($data['UsersPwd'])) {
             flash("login", "Please fill out all inputs");
             header("location: ../views/user login.php");
             exit();
         }
 
         //Check for user/email
-        if ($this->userModel->findUserByEmailOrUsername($data['UsersUid/UsersEmail'], $data['UsersUid/UsersEmail'])) {
+        if ($this->userModel->findUserByEmailOrUsername($data['Usersn/UsersEmail'], $data['Usersn/UsersEmail'])) {
             //User Found
-            $loggedInUser = $this->userModel->login($data['UsersUid/UsersEmail'], $data['UsersPwd']);
+            $loggedInUser = $this->userModel->login($data['Usersn/UsersEmail'], $data['UsersPwd']);
             if ($loggedInUser) {
                 //Create session
                 session_start();
@@ -184,7 +184,7 @@ redirect('../views/Userprofile.php');
         unset($_SESSION['UsersName']);
         unset($_SESSION['UsersEmail']);
         session_destroy();
-        redirect("../views/views/Userprofile.php");
+        redirect("../views/index.php");
     }
 }
 

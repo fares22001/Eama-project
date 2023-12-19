@@ -29,9 +29,8 @@
 
 
             <input type="text" id="UsersName" name="UsersName" placeholder="Enter your Full Name" size="15" required>
-            <!-- <input type="tel" id="inputphone" name="phone" placeholder="Enter 11-digit phone number" pattern="[0-9]{11}" required> -->
             <input type="email" id="UsersEmail" placeholder="Enter your email" name="UsersEmail" required>
-            <input type="text" id="UsersUid" placeholder="Enter your Username" name="UsersUid" required>
+            <input type="text" id="Usersn" placeholder="Enter your Username" name="Usersn" required>
             <input type="password" name="UsersPwd" id="UsersPwd" placeholder="Enter your Password" required>
             <input type="password" name="pwdRepeat" id="pwdRepeat" placeholder="Confirm your Password" required>
             <div class="role">
