@@ -15,13 +15,7 @@ $productController = new products;
     <link rel="stylesheet" href="../public/css/products.css">
     <script src="../public/js/products.js"></script>
 </head>
-<?php if (isset($_SESSION['UsersUid'])) {
-                                    echo explode(" ", $_SESSION['UsersName'])[0];
-                                } else {
-                                    echo 'Guest';
-                                }
 
-                                ?>
 
 <body>
     <div id="menubody" onclick="favorites(event.target)">

@@ -38,7 +38,8 @@ class Cart extends Model
             return $row;
         } else {
             return false;
-        }    }
+        }
+    }
 
 
     // In your model
@@ -52,7 +53,13 @@ class Cart extends Model
     }
 
 
-
+    public function getCartId($userid)
+    {
+        $this->db->query('SELECT * FROM cart where UsersUid=:UsersUid');
+        $this->db->bind(':UsersUid', $userid);
+        $row = $this->db->single();
+        return $row;
+    }
     public function checkcart($userid)
     {
         $this->db->query('SELECT * FROM cart where UsersUid=:userid');
@@ -78,17 +85,24 @@ class Cart extends Model
     //     }
     // }
 
-   
+    public function DeleteCartProduct($cartId, $productId)
+    {
+        $this->db->query('DELETE FROM cart_product WHERE cart_id = :cartId AND id = :productId');
+        $this->db->bind(':cartId', $cartId);
+        $this->db->bind(':productId', $productId);
+
+        return $this->db->execute();
+    }
 
     public function getCartProductsByUserId($data)
     {
-        $this->db->query('SELECT products.id, products.Pname,products.pprice ,products.pimage
+        $this->db->query('SELECT products.id, products.Pname,products.pdescription,products.pbrand,products.pprice ,products.pimage,products.comp_discount,products.regular_discount,cart_product.cart_id
         FROM users
         JOIN cart ON users.UsersUid = cart.UsersUid
         JOIN cart_product ON cart.cart_id = cart_product.cart_id
         JOIN products ON cart_product.id = products.id
         WHERE users.UsersUid = :userId');
-        $this->db->bind(':userId',$data);
+        $this->db->bind(':userId', $data);
         $this->db->execute();
 
         if ($this->db->rowCount() > 0) {
@@ -99,5 +113,4 @@ class Cart extends Model
             return false;
         }
     }
-   
 }

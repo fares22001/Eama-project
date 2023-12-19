@@ -5,7 +5,7 @@ class CartController
 {
     private $cart;
     protected $db;
-    
+
     public function __construct()
     {
         $this->cart = new Cart();
@@ -13,24 +13,31 @@ class CartController
     }
 
 
-
+    public function getCartModel()
+    {
+        return $this->cart;
+    }
 
     public function displayCart($userId)
     {
-       // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-    //     $data = [
-    //         'UsersUid' => trim($_POST['UsersUid']),
-    // //        'id' => trim($_POST['id'])
-    //     ];
-    //     $userId = $data['UsersUid'];
-    //    // $productId = trim($_POST['id']);
-       return $this->cart->getCartProductsByUserId($userId);
-        
+        //     $data = [
+        //         'UsersUid' => trim($_POST['UsersUid']),
+        // //        'id' => trim($_POST['id'])
+        //     ];
+        //     $userId = $data['UsersUid'];
+        //    // $productId = trim($_POST['id']);
+        return $this->cart->getCartProductsByUserId($userId);
     }
 
 
+    public function getcartid($data)
+    {
+        
+        $this->cart->getCartId($data);
 
+    }
     public function AddProductToCart($data)
     {
     }
@@ -82,6 +89,22 @@ class CartController
         }
     }
 
+    public function DeleteCartProduct()
+    {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        // Init data
+        $data = [
+            'cart_id' => trim($_POST['cart_id']), // assuming you have the cart_id
+            'id' => trim($_POST['id']), // assuming you have the product_id
+        ];
+
+        if ($this->cart->DeleteCartProduct($data['cart_id'], $data['id'])) {
+            redirec_t('../views/newcart.php', 'Product removed from cart.');
+        } else {
+            redirec_t('../views/newcart.php', 'Failed to remove product from cart.');
+        }
+    }
 
     // public function addcart()
     // {
@@ -114,9 +137,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         case 'addtocart':
             $init->addcart();
             break;
+        case 'DeleteCartProduct';
+            $init->DeleteCartProduct();
+            break;
     }
 }
-
-
-
-?>

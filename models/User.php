@@ -10,6 +10,13 @@ class User
     {
         $this->db = new Database;
     }
+public function getUserRole($userid){
+    $this->db->query('SELECT UsersRole FROM users Where UsersUid=:userid');
+    $this->db->bind('userid',$userid);
+    $role=$this->db->single();
+    return $role;
+
+}
 
     //Find user by email or username
     public function findUserByEmailOrUsername($email, $username)
@@ -17,16 +24,20 @@ class User
         $this->db->query('SELECT * FROM users WHERE UsersUid = :username OR UsersEmail = :email');
         $this->db->bind(':username', $username);
         $this->db->bind(':email', $email);
-        $_SESSION['UsersName'] = $username;
         $row = $this->db->single();
-
-        //Check row
+    
+        // Check row
         if ($this->db->rowCount() > 0) {
+            // Set both username and role in the session
+            $_SESSION['UsersName'] = $row->UsersUid;
+            $_SESSION['UsersRole'] = $row->UsersRole;
+    
             return $row;
         } else {
             return false;
         }
     }
+    
 
     //Register User
     public function register($data)

@@ -22,7 +22,7 @@
                     <li><a href="../views/user login.php">Login</a></li>
                     <li><a href="../views/Register.php">Register</a></li>
                     <li><a href="../views/products.php">Products</a></li>
-                    <li><a href="../views/cart.php">Cart</a></li>
+                    <li><a href="../views/newcart.php">Cart</a></li>
                 </ul>
             </nav>
         </div>
