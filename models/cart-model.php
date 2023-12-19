@@ -109,7 +109,7 @@ class Cart extends Model
             return $this->db->resultSet();
         } else {
             // Print SQL errors
-            print_r($this->db->errorInfo());
+            // print_r($this->db->errorInfo());
             return false;
         }
     }
