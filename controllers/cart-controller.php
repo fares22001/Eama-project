@@ -1,8 +1,8 @@
 <?php
 require_once '../models/cart-model.php';
 require_once '../helpers/session-helper.php';
-
-class CartController{
+class CartController
+{
     private $cart;
     protected $db;
     
@@ -12,69 +12,111 @@ class CartController{
         $this->db = new Database();
     }
 
-    public function orders(){
+
+
+
+    public function displayCart($userId)
+    {
+       // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+    //     $data = [
+    //         'UsersUid' => trim($_POST['UsersUid']),
+    // //        'id' => trim($_POST['id'])
+    //     ];
+    //     $userId = $data['UsersUid'];
+    //    // $productId = trim($_POST['id']);
+       return $this->cart->getCartProductsByUserId($userId);
+        
+    }
+
+
+
+    public function AddProductToCart($data)
+    {
+    }
+
+
+    public function addcart()
+    {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        $data = [
-            'id' => trim($_POST['id']),  
-            'Usersid' => trim($_POST['Usersid']),  
-        ];
-            if ($this->cart->addcart($data)) {
-                redirec_t('your_redirect_url', 'Item added to the cart successfully');
-            } else {
-                
-                redirec_t('your_redirect_url', 'Error adding item to the cart');
-            }
-    }
 
-    public function displayCart() {
-        try {
-            $this->db->query('SELECT * FROM cart');
-            $carts = $this->db->resultSet();
-    
-            if (is_array($carts)) {
-                include '../views/cart.php';
+        // Init data
+        $data = [
+            'UsersUid' => trim($_POST['UsersUid']),
+            'id' => trim($_POST['id'])
+        ];
+        $userId = $data['UsersUid'];
+        $productId = trim($_POST['id']);
+
+
+        // Check if the user has a cart
+        if ($cartData = $this->cart->checkcart($userId)) {
+            if ($this->cart->productExists($productId)) {
+                if ($this->cart->addProductToCart($cartData->cart_id, $productId)) {
+                    redirec_t('../views/products.php', 'Added to cart.');
+                } else {
+                    redirec_t('../views/products.php', 'Something went wrong while adding the product to cart.');
+                }
             } else {
-                echo "Error fetching cart data.";
+                redirec_t('../views/products.php', 'The selected product does not exist.');
             }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+        } else {
+            // User does not have a cart, create a new cart and add the product
+            $cartId = $this->cart->addcart($data);
+            // Check if the cart creation was successful
+            if ($cartId) {
+                sleep(1);
+
+                if ($this->cart->productExists($productId)) {
+                    if ($this->cart->addProductToCart($cartId, $productId)) {
+                        redirec_t('../views/products.php', 'Added to cart.');
+                    } else {
+                        redirec_t('../views/products.php', 'Something went wrong while adding the product to cart.');
+                    }
+                } else {
+                    redirec_t('../views/products.php', 'Something went wrong while creating a new cart.');
+                }
+            } else {
+                redirec_t('../views/products.php', 'Something went wrong while creating a new cart.');
+            }
         }
     }
 
-    public function addToCart($productId, $quantity)
-    {
-        $data = [
-            'id' => 1,  // Replace with the actual user ID
-            'Usersid' => 'user123',  // Replace with the actual user ID
-        ];
-        $this->cart->addcart($data);
-        $result = $this->cart->addProductToCart($productId, $quantity);
 
-    return $result;
-    }
+    // public function addcart()
+    // {
+    //     $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-    public function getAllCarts()
-    {
-        try {
-            $this->db->query('SELECT * FROM cart');
-            return $this->db->resultSet();
-        } catch (PDOException $e) {
-            return false;
-        }
-    }
+    //     // Init data
+    //     $data = [
+    //         'UsersUid' => trim($_POST['UsersUid']),
+    //         'id' => trim($_POST['id'])
+    //     ];
+    //     $userId = $data['UsersUid'];
+
+    //     if ($this->cart->checkcart($userId)) {
+    //         redirec_t('../views/products.php', 'You already have a cart.');
+    //     } else {
+    //         // return $this->AddProductToCart($data);
+    //         if ($this->cart->addcart($data)) {
+    //             redirec_t('../views/products.php', 'Added to cart.');
+    //         } else {
+    //             redirec_t('../views/products.php', 'Something went wrong.');
+    //         }
+    //     }
+    // }
+
 }
 $init = new CartController;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     switch ($_POST['type']) {
-        case 'orders':
-            $init->orders();
+        case 'addtocart':
+            $init->addcart();
             break;
     }
 }
 
-$cartController = new CartController();
-$cart = new Cart();
 
 
 ?>

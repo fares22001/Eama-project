@@ -1,155 +1,103 @@
-<?php 
-require_once ('../libraries/Database.php');
-require_once ("../models/model.php");
+<?php
+require_once('../libraries/Database.php');
+require_once("../models/model.php");
 
-class Cart extends Model{
+class Cart extends Model
+{
     protected $id;
     protected $Usersid;
     public $productsQuantity;
 
-    public function __construct($id=null,$Usersid="")
+    public function __construct($id = null, $Usersid = "")
     {
         $this->id = $id;
         $this->db = $this->connect();
-        $this->Usersid=$Usersid;
+        $this->Usersid = $Usersid;
     }
 
-    public function addProductToCart($productId, $quantity)
+    public function addcart($data)
     {
-        // Assuming you have a table named 'cart_products' to store products in the cart
-        $this->db->query('INSERT INTO cart(cart_id, id, quantity)
-        VALUES(:cart_id, :id, :quantity)');
-        $this->db->bind(':cart_id', $this->id); // Assuming you have a cart_id in your cart table
-        $this->db->bind(':id', $productId);
-        $this->db->bind(':quantity', $quantity);
+        $this->db->query('INSERT INTO cart(UsersUid)
+        VALUES( :UsersUid)');
+        $this->db->bind(':UsersUid', $data['UsersUid']);
 
         if ($this->db->execute()) {
             return true;
+        } else {
+
+            return false;
+        }
+    }
+    public function productExists($productId)
+    {
+        $this->db->query('SELECT id FROM products WHERE id = :productId');
+        $this->db->bind(':productId', $productId);
+        $row = $this->db->single();
+
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }    }
+
+
+    // In your model
+    public function addProductToCart($cartId, $productId)
+    {
+        $this->db->query('INSERT INTO cart_product(cart_id, id) VALUES(:cartId, :productId)');
+        $this->db->bind(':cartId', $cartId);
+        $this->db->bind(':productId', $productId);
+
+        return $this->db->execute();
+    }
+
+
+
+    public function checkcart($userid)
+    {
+        $this->db->query('SELECT * FROM cart where UsersUid=:userid');
+        $this->db->bind(':userid', $userid);
+        $row = $this->db->single();
+
+        if ($this->db->rowCount() > 0) {
+            return $row;
         } else {
             return false;
         }
     }
 
-    public function getTotalQuantity()
+    // public function delete($data)
+    // {
+    //     $sql = "DELETE FROM cart WHERE id=$this->id;";
+    //     $this->db->query($sql);
+    //     $this->db->bind(':id', $this->id);
+    //     if ($this->db->execute()) {
+    //         echo "deleted successfully.";
+    //     } else {
+    //         echo "ERROR: Could not able to execute" . $this->db->error();
+    //     }
+    // }
+
+   
+
+    public function getCartProductsByUserId($data)
     {
-        return array_sum($this->productsQuantity);
-    }
+        $this->db->query('SELECT products.id, products.Pname,products.pprice ,products.pimage
+        FROM users
+        JOIN cart ON users.UsersUid = cart.UsersUid
+        JOIN cart_product ON cart.cart_id = cart_product.cart_id
+        JOIN products ON cart_product.id = products.id
+        WHERE users.UsersUid = :userId');
+        $this->db->bind(':userId',$data);
+        $this->db->execute();
 
-    public function getProductDetailsById($id)
-    {
-        $this->db->query('SELECT * FROM products WHERE id = :id');
-        $this->db->bind(':id', $id);
-    
-        $result = $this->db->single(); 
-
-        if ($result) {
-            return [
-                'id' => $result['id'],
-                'Pname' => $result['Pname'],
-                'pprice' => $result['pprice'],
-                'pquantity' => $result['pquantity'],
-                'pimage' => $result['pimage'],
-            ];
-        } else {
-            return false; 
-        }
-    }
-
-    public function getProductPriceById($id){
-    $this->db->query('SELECT pprice FROM products WHERE id = :id');
-    $this->db->bind(':id', $id);
-    
-    $result = $this->db->single();
-
-    if ($result) {
-        return $result['pprice'];
-    } else {
-        return false; 
-    }
-    }
-
-    public function getTotalPrice()
-    {
-        $totalPrice = 0;
-
-        foreach ($this->productsQuantity as $id => $quantity) {
-            $productPrice = $this->getProductPriceById($id);
-            $totalPrice += $productPrice * $quantity;
-        }
-
-        return $totalPrice;
-    }
-
-    
-
-    public function displayCartContent()
-    {
-        echo "<h2>Shopping Cart</h2>";
-
-        foreach ($this->productsQuantity as $id => $quantity) {
-            $productDetails = $this->getProductDetailsById($id);
-
-            echo "<p>{$productDetails['Pname']} - Quantity: $quantity - Price: {$productDetails['pprice']}</p>";
-        }
-
-        echo "<p>Total Quantity: {$this->getTotalQuantity()}</p>";
-        echo "<p>Total Price: {$this->getTotalPrice()}</p>";
-    }
-
-
-    public function addcart($data){
-        $this->db->query('INSERT INTO cart(id, Usersid)
-        VALUES(:id, :Usersid)');
-        $this->db->bind(':id', $data['id']);
-        $this->db->bind(':Usersid', $data['Usersid']);
-
-        if ($this->db->execute()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function delete($data){
-        $sql="DELETE FROM cart WHERE id=$this->id;";
-        $this->db->query($sql);
-        $this->db->bind(':id', $this->id);
-	  if($this->db->execute()){
-      echo "deleted successfully.";
-    } else{
-        echo "ERROR: Could not able to execute" . $this->db->error();
-    }
-    }
-
-    public function checkout($data){
-
-    }
-
-    public function getAllCarts() {
-        try {
-            $this->db->query('SELECT * FROM cart');
+        if ($this->db->rowCount() > 0) {
             return $this->db->resultSet();
-            return $this->db->result();
-        } catch (PDOException $e) {
+        } else {
+            // Print SQL errors
+            print_r($this->db->errorInfo());
             return false;
         }
     }
-    function addProduct($productID,$q){		
-		if(array_key_exists((string)$productID,$this->productsQuantity)){
-			$this->productsQuantity[(string)$productID] += $q;
-		}
-		else{
-			$this->productsQuantity[(string)$productID] = $q;
-		}
-	}
-
-	function removeProduct($productID){
-		unset($this->productsQuantity[(string)$productID]);
-	}
-    
-    function emptyCart(){
-		unset($this->productsQuantity);
-		$this->productsQuantity=array();
-	}
+   
 }
-

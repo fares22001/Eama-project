@@ -106,8 +106,8 @@ class products
 
         // Validate and update the product data
         $imagePath = $this->saveImage($_FILES['pimage']);
-//,$imagePath
-        if ($this->productModel->editProduct($data)) {
+//
+        if ($this->productModel->editProduct($data,$imagePath)) {
                        redirec_t("../views/admin-products.php?id=" . $data['product_id'],"pruduct updated");
 // flash("editproduct", "Product updated successfully");
         } else {
@@ -120,7 +120,7 @@ class products
     {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-        $product_id = trim($_POST['product_id']);
+        $product_id = trim($_POST['id']);
 
         // Delete the product
         if ($this->productModel->deleteProduct($product_id)) {
