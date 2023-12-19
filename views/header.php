@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/header.css">
+    <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+    <script src='../public/js/search.js'></script>
+
     <title>YourStore - Online Shopping</title>
     <?php 
     include_once '../helpers/session-helper.php';
@@ -37,6 +40,11 @@
             </nav>
 
         </div>
+        <div>
+            <input type='text' name='search_text' id='search_text' placeholder='Search...' />
+        </div>
+        <div id='result'></div>
+
     </header>
 </body>
 </html>
