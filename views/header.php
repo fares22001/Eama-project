@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/header.css">
     <title>YourStore - Online Shopping</title>
+    <?php 
+    include_once '../helpers/session-helper.php';
+    ?>
 </head>
+
 
 <body>
     <header class="animated-header">
@@ -17,16 +20,23 @@
                 <a href="index.php" class="text-logo animated-text">Eama Group</a>
             </div>
             <nav class="navigation">
-                <ul class="nav-links">
-                    <li><a href="../views/index.php">Home</a></li>
+            <ul class="nav-links">
+            <li><a href="../views/index.php">Home</a></li>
+                    <li><a href="../views/products.php">Products</a></li>
+                    <?php if(!isset($_SESSION['UsersUid'])) : ?>
                     <li><a href="../views/user login.php">Login</a></li>
                     <li><a href="../views/Register.php">Register</a></li>
-                    <li><a href="../views/products.php">Products</a></li>
-                    <li><a href="../views/newcart.php">Cart</a></li>
-                </ul>
+                    <?php else: ?>
+                        <li><a href="../views/newcart.php">Cart</a></li>
+                    <a href="../controllers/Users-controller.php?q=logout"><li>Logout</li></a>
+                    <?php endif; ?>   
+   
+       
+    
+</ul>
             </nav>
+
         </div>
     </header>
 </body>
-
 </html>
