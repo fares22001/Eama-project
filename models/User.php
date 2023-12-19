@@ -21,7 +21,7 @@ public function getUserRole($userid){
     //Find user by email or username
     public function findUserByEmailOrUsername($email, $username)
     {
-        $this->db->query('SELECT * FROM users WHERE UsersUid = :username OR UsersEmail = :email');
+        $this->db->query('SELECT * FROM users WHERE Usersn = :username OR UsersEmail = :email');
         $this->db->bind(':username', $username);
         $this->db->bind(':email', $email);
         $row = $this->db->single();
@@ -42,12 +42,12 @@ public function getUserRole($userid){
     //Register User
     public function register($data)
     {
-        $this->db->query('INSERT INTO users (UsersName, UsersEmail, UsersUid, UsersPwd,UsersRole) 
-        VALUES (:name, :email, :Uid, :password,:role)');
+        $this->db->query('INSERT INTO users (UsersName, UsersEmail, Usersn, UsersPwd,UsersRole) 
+        VALUES (:name, :email, :Usersn, :password,:role)');
         //Bind values
         $this->db->bind(':name', $data['UsersName']);
         $this->db->bind(':email', $data['UsersEmail']);
-        $this->db->bind(':Uid', $data['UsersUid']);
+        $this->db->bind(':Usersn', $data['Usersn']);
         $this->db->bind(':password', $data['UsersPwd']);
         $this->db->bind(':role', $data['UsersRole']);
 
