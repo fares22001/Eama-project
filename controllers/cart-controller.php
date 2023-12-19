@@ -34,13 +34,10 @@ class CartController
 
     public function getcartid($data)
     {
-        
-        $this->cart->getCartId($data);
 
+        $this->cart->getCartId($data);
     }
-    public function AddProductToCart($data)
-    {
-    }
+
 
 
     public function addcart()
@@ -58,14 +55,14 @@ class CartController
 
         // Check if the user has a cart
         if ($cartData = $this->cart->checkcart($userId)) {
-            if ($this->cart->productExists($productId)) {
+            if ($this->cart->productExistInCart($productId)) {
+                redirec_t('../views/products.php', 'The selected product already exist.');
+            } else {
                 if ($this->cart->addProductToCart($cartData->cart_id, $productId)) {
                     redirec_t('../views/products.php', 'Added to cart.');
                 } else {
                     redirec_t('../views/products.php', 'Something went wrong while adding the product to cart.');
                 }
-            } else {
-                redirec_t('../views/products.php', 'The selected product does not exist.');
             }
         } else {
             // User does not have a cart, create a new cart and add the product
@@ -128,7 +125,7 @@ class CartController
     //         }
     //     }
     // }
-
+ 
 }
 $init = new CartController;
 

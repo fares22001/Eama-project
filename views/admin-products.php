@@ -34,6 +34,9 @@ $product_model = new product;
                             <th>category</th>
                             <th>price</th>
                             <th>size</th>
+                            <th>copmanies discount</th>
+                            <th>regular discount</th>
+                            <th>minimum purchase</th>
                             <th>image</th>
                             <th>action</th>
                         </tr>
@@ -53,6 +56,10 @@ $product_model = new product;
                             echo '<td>' . (isset($product->categoryName) ? $product->categoryName :'') . '</td>';
                             echo '<td>' . (isset($product->pprice) ? $product->pprice : '') . '</td>';
                             echo '<td>' . (isset($product->psize) ? $product->psize : '') . '</td>';
+                            echo '<td>' . (isset($product->Minimum_Purchase) ? $product->Minimum_Purchase : '') . '</td>';
+                            echo '<td>' . (isset($product->regular_discount) ? $product->regular_discount : '') . '</td>';
+                            echo '<td>' . (isset($product->comp_discount) ? $product->comp_discount : '') . '</td>';
+
                             echo '<td><img width=50px height=50px src="' . $product->pimage . '" alt="Product Image"></td>';
 
                             echo '<td>

@@ -9,6 +9,7 @@ include_once('../helpers/session-helper.php');
 $cartController = new CartController;
 $cartmodel = new Cart();
 $userId = $_SESSION['UsersUid'];
+
 $carts = $cartController->displayCart($userId);
 ?>
 <br><br><br><br><br>
@@ -29,7 +30,7 @@ $carts = $cartController->displayCart($userId);
                                     <div>
                                         <p class="mb-1">Shopping cart</p>
                                     </div>
-<?alertmessage();?>
+                                    <? alertmessage(); ?>
 
                                 </div>
                                 <?php if (!empty($carts)) : ?>
@@ -48,16 +49,18 @@ $carts = $cartController->displayCart($userId);
 
                                                             <p class="small mb-0"><?php echo $cart->pdescription ?></p>
                                                             <p class="small mb-0"><?php echo $cart->pbrand ?></p>
-                                                            <p class="small mb-0"><?php echo $cart->cart_id?></p>
+                                                            <p class="small mb-0"><?php echo $cart->cart_id ?></p>
 
                                                         </div>
                                                     </div>
                                                     <div class="d-flex flex-row align-items-center">
                                                         <div style="width: 50px;">
                                                             <form action="/action_page.php">
-                                                                <label for="quantity">quantity</label>
-                                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                                                <input type="submit" class="btn btn-success btn-sm" value="Submit">
+                                                                <input type="hidden" name="type" value="">
+                                                                <input type="hidden" name="id" value="<?php echo $cart->id ?>">
+                                                                <input type="hidden" name="UsersUid" value="<?php echo $userId ?>">
+                                                                <input type="hidden" name="cart_id" value="<?php echo $cart->cart_id ?>"> <label for="quantity">quantity</label>
+                                                                <input type="number" id="quantity" name="pquantity" min="1" max="<?php echo $cart->pquantity?>">
                                                             </form>
                                                         </div>
                                                         <div style="width: 80px;">
@@ -82,37 +85,11 @@ $carts = $cartController->displayCart($userId);
 
                                 <?php endif; ?>
                             </div>
-                            <div class="col-lg-5">
-
-                                <div class="card bg-primary text-white rounded-3">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center mb-4">
-                                            <h5 class="mb-0">address</h5>
-                                        </div>
-
-                                    
-                                        <form class="mt-4">
-                                            <div class="form-outline form-white mb-4">
-                                                <input type="text" id="typeName" class="form-control form-control-lg" siez="17" value="<?php echo$userId; ?>" />
-                                                <label class="form-label" for="typeName">address</label>
-                                            </div>
-
-
-                                        </form>
-
-                                        <hr class="my-4">
-
-                                      
-                                        <button type="button" class="btn btn-info btn-block btn-lg">
+                            <a href="./checkout.php" type="button" class="btn btn-info btn-block btn-lg">
                                             <div class="d-flex justify-content-between">
                                                 <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                                             </div>
-                                        </button>
-
-                                    </div>
-                                </div>
-
-                            </div>
+                                        </a>
 
                         </div>
 

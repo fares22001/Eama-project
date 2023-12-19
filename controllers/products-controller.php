@@ -53,6 +53,9 @@ class products
             'pcategory' => trim($_POST['pcategory']), // Replace 'category_property' with the actual property name
             'pprice' => trim($_POST['pprice']),
             'psize' => trim($_POST['psize']),
+            'comp_discount' => trim($_POST['comp_discount']),
+            'regular_discount' => trim($_POST['regular_discount']),
+            'Minimum_Purchase' => trim($_POST['Minimum_Purchase'])
         ];
         if (
             empty($data['pname']) || empty($data['pquantity']) || empty($data['pdescription']) || empty($data['pbrand']) ||

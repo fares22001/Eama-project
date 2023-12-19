@@ -40,6 +40,18 @@ class Cart extends Model
             return false;
         }
     }
+    public function productExistInCart($productId)
+    {
+        $this->db->query('SELECT id FROM cart_product where id=:productid');
+        $this->db->bind(':productid',$productId);
+        $row=$this->db->single();
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
 
 
     // In your model
@@ -72,7 +84,18 @@ class Cart extends Model
             return false;
         }
     }
+public function getProductQuantity($productId){
+    $this->db->query('SELECT pquantity FROM products WHERE id=:productId');
+    $this->db->bind(':productId',$productId);
+    $row = $this->db->single();
 
+    if ($this->db->rowCount() > 0) {
+        return $row;
+    } else {
+        return false;
+    }
+
+}
     // public function delete($data)
     // {
     //     $sql = "DELETE FROM cart WHERE id=$this->id;";
@@ -96,7 +119,7 @@ class Cart extends Model
 
     public function getCartProductsByUserId($data)
     {
-        $this->db->query('SELECT products.id, products.Pname,products.pdescription,products.pbrand,products.pprice ,products.pimage,products.comp_discount,products.regular_discount,cart_product.cart_id
+        $this->db->query('SELECT users.UserAddress, products.id,products.pquantity, products.Pname,products.pdescription,products.pbrand,products.pprice ,products.pimage,products.comp_discount,products.regular_discount,cart_product.cart_id
         FROM users
         JOIN cart ON users.UsersUid = cart.UsersUid
         JOIN cart_product ON cart.cart_id = cart_product.cart_id

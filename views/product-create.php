@@ -60,6 +60,24 @@ $cates = $category_controller->getAllcategories();
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
+                                <label>companies discount</label>
+                                <input type="text" name="comp_discount" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label>regular users discount</label>
+                                <input type="text" name="regular_discount" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label>minimum purchase</label>
+                                <input type="text" name="Minimum_Purchase" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
                                 <label>size</label>
                                 <input type="text" name="psize" class="form-control">
                             </div>
