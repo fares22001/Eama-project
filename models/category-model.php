@@ -30,6 +30,7 @@ class category
             return false;
         }
     }
+    
     public function getcategoryDetailsById($category_id)
     {
         $this->db->query('SELECT * FROM category WHERE id=:id');
@@ -45,7 +46,15 @@ class category
 
         return $this->db->execute();
     }
-
+    
+    public function deleteProductsByCategory($category_id)
+    {
+        $this->db->query('DELETE FROM products WHERE pcategory = :category_id');
+        $this->db->bind(':category_id', $category_id);
+    
+        return $this->db->execute();
+    }
+    
     public function getAllcategories()
     {
         try {

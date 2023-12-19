@@ -1,12 +1,15 @@
 <?php
 require_once '../models/products-model.php';
+require_once '../models/category-model.php';
 require_once '../helpers/session-helper.php';
 class products
 {
     private $productModel;
+    private $catmodel;
     public function __construct()
     {
         $this->productModel = new product();
+        $this->catmodel = new category();
     }
 
     private function saveImage($file)
@@ -41,13 +44,13 @@ class products
     {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $selectedCategory = $_POST['pcategory'];
+        $category = $this->catmodel->getcategoryDetailsById($selectedCategory);
         $data = [
-
             'pname' => trim($_POST['pname']),
             'pquantity' => trim($_POST['pquantity']),
             'pdescription' => trim($_POST['pdescription']),
             'pbrand' => trim($_POST['pbrand']),
-            'pcategory' => trim($_POST['pcategory']),
+            'pcategory' => trim($_POST['pcategory']), // Replace 'category_property' with the actual property name
             'pprice' => trim($_POST['pprice']),
             'psize' => trim($_POST['psize']),
         ];
@@ -58,28 +61,13 @@ class products
             flash("addproducts", "please fill out all inputs");
             redirect("../views/product-create.php");
         }
-        if ($data['pquantity'] > 50) {
-            flash("addproducts", "Max 10 products");
-            redirect("../views/product-create.php");
-        }
+
         $imagePath = $this->saveImage($_FILES['pimage']);
         if ($this->productModel->addproducts($data, $imagePath)) {
             redirect("../views/product-create.php");
         } else {
             die("something went wrong");
         }
-
-        $productDetails = $this->productModel->getAllProducts($data['pname'], $data['pprice'], $data['pcategory']);
-
-    if ($productDetails) {
-        $cartController = new CartController();
-        $cartController->addToCart($productDetails[0]['id'], $productDetails[0]['pname'], $productDetails[0]['pprice'], $imagePath);
-
-
-        redirect("../views/product-create.php");
-    } else {
-        die("Failed to get product details");
-    }
     }
     public function getproductmodel()
     {
@@ -89,38 +77,73 @@ class products
     {
         return $this->productModel->getProductDetailsById($id);
     }
-    public function editProduct()
-    {
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+   // products-controller.php
 
-        $data = [
-            'product_id' => trim($_POST['product_id']),
-            'pname' => trim($_POST['pname']),
-            'pquantity' => trim($_POST['pquantity']),
-            'pdescription' => trim($_POST['pdescription']),
-            'pbrand' => trim($_POST['pbrand']),
-            'pcategory' => trim($_POST['pcategory']),
-            'pprice' => trim($_POST['pprice']),
-            'psize' => trim($_POST['psize']),
-        ];
+public function editproduct()
+{
+    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-        // Validate and update the product data
-        $imagePath = $this->saveImage($_FILES['pimage']);
-//
-        if ($this->productModel->editProduct($data,$imagePath)) {
-                       redirec_t("../views/admin-products.php?id=" . $data['product_id'],"pruduct updated");
-// flash("editproduct", "Product updated successfully");
-        } else {
-            flash("editproduct", "Failed to update product");
-            redirect("../views/product-edit.php?id=" . $data['product_id']);
-        }
+    $data = [
+        'id' => trim($_POST['id']),
+        'pname' => trim($_POST['pname']),
+        'pquantity' => trim($_POST['pquantity']),
+        'pdescription' => trim($_POST['pdescription']),
+        'pbrand' => trim($_POST['pbrand']),
+        'pcategory' => trim($_POST['pcategory']),
+        'pprice' => trim($_POST['pprice']),
+        'psize' => trim($_POST['psize']),
+    ];
+
+    // Validate and update the product data
+    $imagePath = $this->saveImage($_FILES['pimage']);
+
+    // Validate pcategory value
+    $categoryModel = new category(); // Assuming Category is your category model
+    $allCategories = $categoryModel->getAllcategories();
+
+    if (!in_array($data['pcategory'], array_column($allCategories, 'id'))) {
+        flash("editproduct", "Invalid category selected");
+        redirect("../views/product-edit.php?id=" . $data['id']);
     }
+
+    if ($this->productModel->editProduct($data, $imagePath)) {
+        redirec_t("../views/admin-products.php?id=" . $data['product_id'],"Product updated");
+    } else {
+        flash("editproduct", "Failed to update product");
+        redirect("../views/product-edit.php?id=" . $data['product_id']);
+    }
+}
+// public function editproducts()
+// {
+//     $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+//     $selectedCategory = $_POST['pcategory'];
+//     $category = $this->catmodel->getcategoryDetailsById($selectedCategory);
+//     $data = [
+//         'pname' => trim($_POST['pname']),
+//         'pquantity' => trim($_POST['pquantity']),
+//         'pdescription' => trim($_POST['pdescription']),
+//         'pbrand' => trim($_POST['pbrand']),
+//         'pcategory' => trim($_POST['pcategory']), // Replace 'category_property' with the actual property name
+//         'pprice' => trim($_POST['pprice']),
+//         'psize' => trim($_POST['psize']),
+//     ];
+   
+
+//     $imagePath = $this->saveImage($_FILES['pimage']);
+//     if ($this->productModel->editProduct($data, $imagePath)) {
+//         redirect("../views/product-create.php");
+//     } else {
+//         die("something went wrong");
+//     }
+// }
 
     public function deleteProduct()
     {
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         $product_id = trim($_POST['id']);
+        //delet product form cart first 
+        $this->productModel->removeProductFromCarts($product_id);
 
         // Delete the product
         if ($this->productModel->deleteProduct($product_id)) {
@@ -145,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $init->addProducts();
             break;
         case 'editproduct':
-            $init->editProduct();
+            $init->editproduct();
             break;
         case 'deleteproduct':
             $init->deleteProduct();

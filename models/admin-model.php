@@ -36,7 +36,11 @@ class User
     return $this->db->execute();
 }
 
-    
+    public function deletUsercart($UsersUid){
+        $this->db->query('DELETE FROM cart WHERE UsersUid = :UsersUid');
+        $this->db->bind(':UsersUid', $UsersUid);
+        $this->db->execute();
+    }
     //Register User
     public function register($data)
     {

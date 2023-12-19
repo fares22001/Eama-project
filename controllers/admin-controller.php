@@ -75,10 +75,10 @@ class Users
 
         //Register User
         if ($this->userModel->register($data)) {
-          //  header("location:" . "../views/users.php");
-            redirec_t('../views/users.php','user added successfully');
+            //  header("location:" . "../views/users.php");
+            redirec_t('../views/users.php', 'user added successfully');
         } else {
-            redirec_t('../views/users.php','some thing went wrong ');
+            redirec_t('../views/users.php', 'some thing went wrong ');
         }
     }
 
@@ -91,14 +91,7 @@ class Users
         header("location:" . "../views/index.php");
     }
 
-    public function logout()
-    {
-        unset($_SESSION['UsersId']);
-        unset($_SESSION['UsersName']);
-        unset($_SESSION['UsersEmail']);
-        session_destroy();
-        redirec_t( "../views/index.php",'');
-    }
+
     public function fetchUsers()
     {
         return $this->userModel->fetchUsers();
@@ -136,22 +129,30 @@ class Users
     {
         // Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-    
+
         // Get the user ID from the form submission
         $userId = trim($_POST['userId']);
-    
+        //delete cart first 
+        $this->userModel->deletUsercart($userId);
         // Perform deletion logic
         if ($this->userModel->deleteUser($userId)) {
             // Successful deletion
-       redirec_t('../views/users.php','user deleted ');
+            redirec_t('../views/users.php', 'user deleted ');
         } else {
             // Handle deletion failure
             // flash("delete", "Failed to delete user");
-            redirec_t('../views/users.php','user not  deleted ');
+            redirec_t('../views/users.php', 'user not  deleted ');
         }
     }
-    
-    
+
+    public function logout()
+    {
+        unset($_SESSION['UsersId']);
+        unset($_SESSION['UsersName']);
+        unset($_SESSION['UsersEmail']);
+        session_destroy();
+        redirec_t("../views/index.php", '');
+    }
 }
 
 $init = new Users;
@@ -168,9 +169,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         case 'update':
             $init->update();
             break;
-            case 'delete':
-                $init->delete();
-            case 'logout';
+        case 'delete':
+            $init->delete();
+            break;
+        case 'logout';
             $init->logout();
         default:
             header("location:" . "../views/admin-db.php");

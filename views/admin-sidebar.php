@@ -100,7 +100,10 @@
 
     </div>
     <div class="sidenav-footer mx-3 ">
-<form action="../controllers/admin-controller.php">
-        <a class="btn bg-gradient-primary mt-4 w-100" href="../controllers/admin-controller.php?type=logout" type="button">Log Out</a>
+<form action="../controllers/admin-controller.php" method="post">
+    <input type="hidden" name="type" value="<?php  echo $_SESSION['UsersUid'] ?>" id="">
+    <input type="hidden" name="type" value="logout" id="">
+
+        <button type="submit" name="submit" class="btn bg-gradient-primary mt-4 w-100" href="../controllers/admin-controller.php?type=logout" type="button">Log Out</button>
    </form> </div>
 </aside>

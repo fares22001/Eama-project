@@ -27,7 +27,7 @@ class product
     }
     //,imagePath$
 
-    public function editProduct($data,$imagePath)
+    public function editProduct($data, $imagePath)
     {
         $this->db->query('UPDATE products SET pname = :name, pquantity = :quantity, pdescription = :description, pbrand = :brand, pcategory = :category, pprice = :price, psize = :size, pimage= :pimage WHERE id = :product_id');
         $this->db->bind(':product_id', $data['product_id']);
@@ -38,9 +38,9 @@ class product
         $this->db->bind(':category', $data['pcategory']);
         $this->db->bind(':price', $data['pprice']);
         $this->db->bind(':size', $data['psize']);
-        $this->db->bind(':pimage',$imagePath);
+        $this->db->bind(':pimage', $imagePath);
 
-       return $this->db->execute();
+        return $this->db->execute();
     }
     public function getProductDetailsById($product_id)
     {
@@ -49,7 +49,13 @@ class product
         $row = $this->db->single();
         return $row;
     }
-
+    public function removeProductFromCarts($product_id)
+    {
+        // Delete the product from all carts
+        $this->db->query('DELETE FROM cart_product WHERE id = :product_id');
+        $this->db->bind(':product_id', $product_id);
+        $this->db->execute();
+    }
     public function deleteProduct($product_id)
     {
         $this->db->query('DELETE FROM products WHERE id = :id');
@@ -57,36 +63,29 @@ class product
 
         return $this->db->execute();
     }
-    public function getAllProducts($name = null, $price = null, $category = null)
+    public function getAllProducts()
     {
-        try {
-            $query = 'SELECT * FROM products';
-            $params = [];
+        $this->db->query('SELECT products.*, category.name AS categoryName 
+                      FROM products
+                      LEFT JOIN category ON products.pcategory = category.id');
+        $this->db->execute();
 
-            // Check if filters are provided and add them to the query
-            if ($name !== null) {
-                $query .= ' WHERE pname LIKE :pname';
-                $params[':pname'] = '%' . $name . '%';
-            }
-
-            if ($price !== null) {
-                $query .= ($name !== null) ? ' AND' : ' WHERE';
-                $query .= ' pprice = :pprice';
-                $params[':pprice'] = $price;
-            }
-
-            if ($category !== null) {
-                $query .= ($name !== null || $price !== null) ? ' AND' : ' WHERE';
-                $query .= ' pcategory = :pcategory';
-                $params[':pcategory'] = $category;
-            }
-
-            $this->db->query($query);
-            $this->db->bindMultiple($params);
-
-            return $this->db->resultSet(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
+        if ($this->db->rowCount() > 0) {
+            return $this->db->resultSet();
+        } else {
+            // Print SQL errors
             return false;
         }
     }
+    
+
+    public function deleteProductsByCategory($category_id)
+    {
+        $this->db->query('DELETE FROM products WHERE pcategory = :category_id');
+        $this->db->bind(':category_id', $category_id);
+    
+        return $this->db->execute();
+    }
+    
+   
 }

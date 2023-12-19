@@ -3,6 +3,13 @@ include_once '../helpers/session-helper.php';
 include('admin-header.php');
 include_once('../models/products-model.php');
 include_once('../controllers/products-controller.php');
+include_once('../controllers/category-controller.php');
+
+include_once('../models/category-model.php');
+
+$category_controller = new categorys;
+$category_model = new category;
+$cates = $category_controller->getAllcategories();
 $init = new products();
 $productId = isset($_GET['id']) ? $_GET['id'] : '';
 $pname = isset($_GET['Pname']) ? $_GET['Pname'] : '';
@@ -45,7 +52,7 @@ if (!empty($productId)) {
                 <form action="../controllers/products-controller.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="type" value="editproduct">
                     <!-- Assuming you have the product data, you can pre-fill the form fields -->
-                    <input type="hidden" name="product_id" value="<?php echo $productId ?>">
+                    <input type="hidden" name="id" value="<?php echo $productId ?>">
 
                     <div class="row">
                         <div class="col-md-6">
@@ -64,11 +71,11 @@ if (!empty($productId)) {
                             <div class="mb-3">
                                 <label>select category </label>
                                 <select name="pcategory" class="form-select" id="pcategory">
-                                    <option value="Tooth brush" <?php echo ($pcategory === 'Tooth brush') ? 'selected' : ''; ?>>Tooth brush</option>
-                                    <option value="Wipes">Wipes</option>
-                                    <option value="Cotton buds">Cotton buds</option>
-                                    <option value="Makeup remover">Makeup remover</option>
+                                   
+                                <?php foreach ($cates as $cats) { ?>
+                                        <option value="<?php echo $cats->id ?>"><?php echo $cats->name ?></option>
 
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -93,7 +100,7 @@ if (!empty($productId)) {
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>description</label>
-                                <input type="text" name="pdescription" class="form-control" value="<?php echo $pdescriptio ?>">
+                                <input type="text" name="pdescription" class="form-control" value="<?php echo $pdescription ?>">
                             </div>
                         </div>
 

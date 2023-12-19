@@ -6,6 +6,7 @@ include_once('../models/products-model.php');
 include_once('../helpers/session-helper.php');
 $product_controller = new products;
 $product_model = new product;
+
 ?>
 
 <div class="row">
@@ -49,7 +50,7 @@ $product_model = new product;
                             echo '<td>' . (isset($product->pquantity) ? $product->pquantity : '') . '</td>';
                             echo '<td>' . (isset($product->pdescription) ? $product->pdescription : '') . '</td>';
                             echo '<td>' . (isset($product->pbrand) ? $product->pbrand : '') . '</td>';
-                            echo '<td>' . (isset($product->pcategory) ? $product->pcategory : '') . '</td>';
+                            echo '<td>' . (isset($product->categoryName) ? $product->categoryName :'') . '</td>';
                             echo '<td>' . (isset($product->pprice) ? $product->pprice : '') . '</td>';
                             echo '<td>' . (isset($product->psize) ? $product->psize : '') . '</td>';
                             echo '<td><img width=50px height=50px src="' . $product->pimage . '" alt="Product Image"></td>';

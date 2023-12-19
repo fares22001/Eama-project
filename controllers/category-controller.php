@@ -4,15 +4,17 @@
 require_once '../models/category-model.php';
 require_once '../helpers/session-helper.php';
 require_once '../libraries/Database.php';
-
+require_once '../controllers/products-controller.php';
+require_once '../models/products-model.php';
 
 class categorys
 {
 
     private $categorymodel;
-
+    private $productModel;
     public function __construct()
     {
+        $this->productModel = new product;
         $this->categorymodel = new category;
     }
     public function getUserModel()
@@ -70,10 +72,10 @@ class categorys
         // Validate and update the user
         if ($this->categorymodel->editcategory($data)) {
             // Successful update
-            redirec_t("../views/category.php?id=" . $data['id'],'updated done ');
+            redirec_t("../views/category.php?id=" . $data['id'], 'updated done ');
         } else {
-         
-            redirec_t("../views/category.php?id=" . $data['id'],'updated failed ');
+
+            redirec_t("../views/category.php?id=" . $data['id'], 'updated failed ');
         }
     }
 
@@ -84,7 +86,7 @@ class categorys
 
         // Get the user ID from the form submission
         $categoryid = trim($_POST['id']);
-
+        $this->productModel->deleteProductsByCategory($categoryid);
         // Perform deletion logic
         if ($this->categorymodel->deletecategory($categoryid)) {
             // Successful deletion
