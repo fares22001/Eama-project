@@ -58,7 +58,7 @@ class CartController
             if ($this->cart->productExistInCart($productId)) {
                 redirec_t('../views/products.php', 'The selected product already exist.');
             } else {
-                if ($this->cart->addProductToCart($cartData->cart_id, $productId)) {
+                if ($this->cart->addProductToCart($cartData->cart_id, $productId,1)) {
                     redirec_t('../views/products.php', 'Added to cart.');
                 } else {
                     redirec_t('../views/products.php', 'Something went wrong while adding the product to cart.');
@@ -67,24 +67,23 @@ class CartController
         } else {
             // User does not have a cart, create a new cart and add the product
             $cartId = $this->cart->addcart($data);
-            // Check if the cart creation was successful
+            sleep(1); // Check if the cart creation was successful
             if ($cartId) {
-                sleep(1);
+               
 
-                if ($this->cart->productExists($productId)) {
-                    if ($this->cart->addProductToCart($cartId, $productId)) {
+               
+                    if ($this->cart->addProductToCart($cartId, $productId,1)) {
                         redirec_t('../views/products.php', 'Added to cart.');
                     } else {
                         redirec_t('../views/products.php', 'Something went wrong while adding the product to cart.');
                     }
-                } else {
-                    redirec_t('../views/products.php', 'Something went wrong while creating a new cart.');
-                }
+               
             } else {
                 redirec_t('../views/products.php', 'Something went wrong while creating a new cart.');
             }
         }
     }
+   
 
     public function DeleteCartProduct()
     {
@@ -125,7 +124,37 @@ class CartController
     //         }
     //     }
     // }
- 
+    // cart-controller.php
+
+    public function updateProductQuantity()
+    {
+
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        // Init data
+        $data = [
+            'cart_id' => trim($_POST['cart_id']),
+            'id' => trim($_POST['id']),
+            'pquantity' => trim($_POST['pquantity']),
+            // Add other form fields if needed
+        ];
+
+        $this->cart->updateProductQuantity( $data);
+
+        // Optionally, you can redirect or send a response as needed.
+
+    }
+    public function getTotalCartPrice($userId)
+    {
+        // Check if the user has a cart
+        if ($cartData = $this->cart->checkcart($userId)) {
+            $cartId = $cartData->cart_id;
+            $totalPrice = $this->cart->getTotalCartPrice($cartId);
+            echo "Total Cart Price: $totalPrice";
+        } else {
+            echo "User does not have a cart.";
+        }
+    }
 }
 $init = new CartController;
 
@@ -136,6 +165,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         case 'DeleteCartProduct';
             $init->DeleteCartProduct();
+            break;
+        case 'updateProductQuantity':
+            $init->updateProductQuantity();
             break;
     }
 }

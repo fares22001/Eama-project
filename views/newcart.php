@@ -49,22 +49,23 @@ $carts = $cartController->displayCart($userId);
 
                                                             <p class="small mb-0"><?php echo $cart->pdescription ?></p>
                                                             <p class="small mb-0"><?php echo $cart->pbrand ?></p>
-                                                            <p class="small mb-0"><?php echo $cart->cart_id ?></p>
+                                                            <h5 class="mb-0"><?php echo     $cart->pprice; ?></h5>
+
 
                                                         </div>
                                                     </div>
                                                     <div class="d-flex flex-row align-items-center">
                                                         <div style="width: 50px;">
-                                                            <form action="/action_page.php">
-                                                                <input type="hidden" name="type" value="">
+                                                            <form action="../controllers/cart-controller.php" method="POST">
+                                                                <input type="hidden" name="type" value="updateProductQuantity">
                                                                 <input type="hidden" name="id" value="<?php echo $cart->id ?>">
-                                                                <input type="hidden" name="UsersUid" value="<?php echo $userId ?>">
-                                                                <input type="hidden" name="cart_id" value="<?php echo $cart->cart_id ?>"> <label for="quantity">quantity</label>
-                                                                <input type="number" id="quantity" name="pquantity" min="1" max="<?php echo $cart->pquantity?>">
+                                                                <input type="hidden" name="cart_id" value="<?php echo $cart->cart_id ?>">
+                                                                <label for="quantity">quantity</label>
+                                                                <input type="number" name="pquantity"  min="1" max="<?php echo $cart->pquantity ?>">
+                                                                <button type="submit" name="submit">update</button>
                                                             </form>
                                                         </div>
                                                         <div style="width: 80px;">
-                                                            <h5 class="mb-0"><?php $cart->pprice; ?></h5>
                                                         </div>
                                                         <form action="../controllers/cart-controller.php" method="post">
                                                             <input type="hidden" name="type" value="DeleteCartProduct">
@@ -85,12 +86,13 @@ $carts = $cartController->displayCart($userId);
 
                                 <?php endif; ?>
                             </div>
-                            <a href="./checkout.php" type="button" class="btn btn-info btn-block btn-lg">
-                                            <div class="d-flex justify-content-between">
-                                                <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                                            </div>
-                                        </a>
 
+                            <button type="submit" name="submit" class="btn btn-info btn-block btn-lg width=50%">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                                </div>
+                            </button>
+                            </form>
                         </div>
 
                     </div>

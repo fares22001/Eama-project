@@ -22,9 +22,7 @@
 
                 <div class="card">
                     <address>
-                        Adam Johnson<br />
-                        403 Oakland Ave Street, A city, Florida, 32104,<br />
-                        United States of America
+                       
                     </address>
                 </div>
             </div>
@@ -37,27 +35,27 @@
                         <label for="visa"><svg class="icon">
                                 <use xlink:href="#icon-visa" />
                             </svg>Visa Payment</label>
-                        <input checked id="visa" name="payment-method" type="radio" />
+                        <input checked id="visa" name="payment_method" type="radio" />
                     </div>
 
                     <div class="form__radio">
                         <label for="paypal"><svg class="icon">
                                 <use xlink:href="#icon-paypal" />
                             </svg>PayPal</label>
-                        <input id="paypal" name="payment-method" type="radio" />
+                        <input id="paypal" name="payment_method" type="radio" />
                     </div>
 
                     <div class="form__radio">
                         <label for="mastercard"><svg class="icon">
                                 <use xlink:href="#icon-mastercard" />
                             </svg>Master Card</label>
-                        <input id="mastercard" name="payment-method" type="radio" />
+                        <input id="mastercard" name="payment_method" type="radio" />
                     </div>
                     <div class="form__radio">
                         <label for="mastercard"><svg class="icon">
                                
                             </svg>cash on delievry </label>
-                        <input id="mastercard" name="payment-method" type="radio" />
+                        <input id="mastercard" name="payment_method" value="cash" type="radio" />
                     </div>
                 </div>
             </fieldset>
