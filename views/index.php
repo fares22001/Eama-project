@@ -50,32 +50,28 @@
             <img src="../public/img/firstbrush.jpg" alt="Product 1" class="images">
             <h3>Silvercare brush</h3>
             <p>Silver Care System Hard Toothbrush. The head is coated with 999 silver, which provides activation of silver ions and a natural antibacterial process during brushing of teeth upon contact with water</p>
-            <a href="#" class="btn">Buy Now</a>
+
         </div>
         <div class="product-card">
             <img src="../public/img/secbrush.jpg" alt="Product 2" class="images">
             <h3>Banat brush</h3>
             <p>Special cut whitening bristles for nicotine, coffee and tea stains,Special teeth polisher helps to brighten teeth surface,Round tip bristles prevents teeth and gums from injuring,Timer cap helps to keep track</p>
-            <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
             <img src="../public/img/thirdimg.jpg" alt="Product 3" class="images">
             <h3>Cotoneve</h3>
             <p>Make-up remover cotton pads with Aloe Vera and Vitamin B5, ingredients especially appreciated for their soothing properties,Soft, super absorbent and resistant,make-up removal cotton pads</p>
-            <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
             <img src="../public/img/forthimg.jpeg" alt="Product 4" class="images">
-            <h3>Cotoneve cotton buds</h3>
+            <h3>Cotoneve buds</h3>
             <p>Cotton buds ideal for everyday personal hygiene of the entire family, in full safety.
                 Protector special safety shape, softer and more delicate, is perfect for children hygiene</p>
-            <a href="#" class="btn">Buy Now</a>
         </div>
         <div class="product-card">
             <img src="../public/img/fifthimg.jpg" alt="Product 4" class="images">
             <h3>Sunbright wet wipes</h3>
             <p>100% cotton wipes with the best quality and best fragrance </p>
-            <a href="#" class="btn">Buy Now</a>
         </div>
     </div>
 
