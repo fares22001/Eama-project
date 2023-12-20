@@ -121,7 +121,7 @@ class Cart extends Model
 
     public function getCartProductsByUserId($data)
     {
-        $this->db->query('SELECT users.UserAddress, products.id,products.pquantity, products.Pname,products.pdescription,products.pbrand,products.pprice ,products.pimage,products.comp_discount,products.regular_discount,cart_product.cart_id
+        $this->db->query('SELECT cart_product.quantity, users.UserAddress, products.id,products.pquantity, products.Pname,products.pdescription,products.pbrand,products.pprice ,products.pimage,products.comp_discount,products.regular_discount,cart_product.cart_id
         FROM users
         JOIN cart ON users.UsersUid = cart.UsersUid
         JOIN cart_product ON cart.cart_id = cart_product.cart_id

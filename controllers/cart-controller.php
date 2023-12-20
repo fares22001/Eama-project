@@ -58,7 +58,7 @@ class CartController
             if ($this->cart->productExistInCart($productId)) {
                 redirec_t('../views/products.php', 'The selected product already exist.');
             } else {
-                if ($this->cart->addProductToCart($cartData->cart_id, $productId,1)) {
+                if ($this->cart->addProductToCart($cartData->cart_id, $productId, 1)) {
                     redirec_t('../views/products.php', 'Added to cart.');
                 } else {
                     redirec_t('../views/products.php', 'Something went wrong while adding the product to cart.');
@@ -69,21 +69,20 @@ class CartController
             $cartId = $this->cart->addcart($data);
             sleep(1); // Check if the cart creation was successful
             if ($cartId) {
-               
 
-               
-                    if ($this->cart->addProductToCart($cartId, $productId,1)) {
-                        redirec_t('../views/products.php', 'Added to cart.');
-                    } else {
-                        redirec_t('../views/products.php', 'Something went wrong while adding the product to cart.');
-                    }
-               
+
+
+                if ($this->cart->addProductToCart($cartId, $productId, 1)) {
+                    redirec_t('../views/products.php', 'Added to cart.');
+                } else {
+                    redirec_t('../views/products.php', 'Something went wrong while adding the product to cart.');
+                }
             } else {
                 redirec_t('../views/products.php', 'Something went wrong while creating a new cart.');
             }
         }
     }
-   
+
 
     public function DeleteCartProduct()
     {
@@ -139,8 +138,8 @@ class CartController
             // Add other form fields if needed
         ];
 
-        $this->cart->updateProductQuantity( $data);
-
+        $this->cart->updateProductQuantity($data);
+        redirec_t('../views/newcart.php', 'quantity updated ');
         // Optionally, you can redirect or send a response as needed.
 
     }

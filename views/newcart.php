@@ -22,6 +22,7 @@ $carts = $cartController->displayCart($userId);
                     <div class="card-body p-4">
 
                         <div class="row">
+                            <?alertmessage()?>
                             <div class="col-lg-7">
                                 <h5 class="mb-3"><a href="./products.php" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
                                 <hr>
@@ -61,7 +62,7 @@ $carts = $cartController->displayCart($userId);
                                                                 <input type="hidden" name="id" value="<?php echo $cart->id ?>">
                                                                 <input type="hidden" name="cart_id" value="<?php echo $cart->cart_id ?>">
                                                                 <label for="quantity">quantity</label>
-                                                                <input type="number" name="pquantity"  min="1" max="<?php echo $cart->pquantity ?>">
+                                                                <input type="number" name="pquantity" value="<?php echo $cart->quantity?>"  min="1" max="<?php echo $cart->pquantity ?>">
                                                                 <button type="submit" name="submit">update</button>
                                                             </form>
                                                         </div>

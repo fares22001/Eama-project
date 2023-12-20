@@ -169,12 +169,11 @@ class Users
         $_SESSION['UsersUid'] = $User->UsersUid;
         $_SESSION['UsersName'] = $User->UsersName;
         $_SESSION['UsersEmail'] = $User->UsersEmail;
-        $_SESSION['UsersRole']=$User->UsersRole;
-        if($User->UsersRole==='A'){
-                    redirect("../views/admin-db.php");
-
-        }else{
-redirect('../views/Userprofile.php');
+        $_SESSION['UsersRole'] = $User->UsersRole;
+        if ($User->UsersRole === 'A') {
+            redirect("../views/admin-db.php");
+        } else {
+            redirect('../views/Userprofile.php');
         }
     }
 
