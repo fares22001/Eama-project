@@ -3,7 +3,7 @@
 </head>
 <?php
 include '../views/header.php';
-include_once('../controllers/User-controller.php');
+include_once('../controllers/admin-controller.php');
 include_once('../controllers/cart-controller.php');
 include_once('../models/cart-model.php');
 include_once('../helpers/session-helper.php');
@@ -12,6 +12,7 @@ $cartmodel = new Cart();
 $usercontroller=new Users;
 $userId = $_SESSION['UsersUid'];
 $user=$usercontroller->getUserDetailsById($userId);
+$useraddress=$user->UserAddress;
 $carts = $cartController->displayCart($userId);
 $cid = $cartController->getcartid($userId);
 $totprice = $cartController->getTotalCartPrice($userId);
@@ -95,10 +96,11 @@ $totprice = $cartController->getTotalCartPrice($userId);
 
 
                     <form action=class="mt-4">
-                      <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeName" name="UserAddress" class="form-control form-control-lg" siez="17" placeholder="Cardholder's Name" />
-                        <label class="form-label" for="typeName">userAddress </label>
-                      </div>
+                    <div class="form-outline form-white mb-4">
+    <input type="text" id="typeName" name="UserAddress" class="form-control form-control-lg" siez="17" placeholder="Cardholder's Name" />
+    <label class="form-label" for="typeName"><?php echo isset($user->UserAddress) ? $user->UserAddress : ""; ?> </label>
+</div>
+
 
                       <div class="form-outline form-white mb-4">
                         <select name="payment_method" class="form-select" id="">

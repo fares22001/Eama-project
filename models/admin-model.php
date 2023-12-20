@@ -10,7 +10,13 @@ class User
     {
         $this->db = new Database;
     }
-
+    public function getUserDetailsById($userid)
+    {
+        $this->db->query('SELECT * FROM users WHERE UsersUid=:id');
+        $this->db->bind(':id', $userid);
+        $row = $this->db->single();
+        return $row;
+    }
     //Find user by email or username
     public function findUserByEmailOrUsername($email, $username)
     {

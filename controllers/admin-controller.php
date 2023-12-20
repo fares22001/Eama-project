@@ -124,7 +124,10 @@ class Users
             header("location: ../views/user-edit.php?id=" . $data['UsersUid']);
         }
     }
-
+    public function getUserDetailsById($userid)
+    {
+       $this->userModel->getUserDetailsById($userid);
+    }
     public function delete()
     {
         // Sanitize POST data
