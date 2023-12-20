@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,8 +8,24 @@
     <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
     <script src='../public/js/search.js'></script>
 
+
+    <link id="pagestyle" href="../public/css/soft-ui-dashboard.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="../public/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="../public/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="../public/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <!-- CSS Files -->   
+     <!-- <link rel="stylesheet" href="../public/css/checkout.css"> -->
+
+    <link rel="stylesheet" href="../public/css/cart.css">
+    <link rel="stylesheet" href="../public/css/style.css">
     <title>YourStore - Online Shopping</title>
-    <?php 
+    <?php
     include_once '../helpers/session-helper.php';
     ?>
 </head>
@@ -23,20 +38,22 @@
                 <a href="index.php" class="text-logo animated-text">Eama Group</a>
             </div>
             <nav class="navigation">
-            <ul class="nav-links">
-            <li><a href="../views/index.php">Home</a></li>
+                <ul class="nav-links">
+                    <li><a href="../views/index.php">Home</a></li>
                     <li><a href="../views/products.php">Products</a></li>
-                    <?php if(!isset($_SESSION['UsersUid'])) : ?>
-                    <li><a href="../views/user login.php">Login</a></li>
-                    <li><a href="../views/Register.php">Register</a></li>
-                    <?php else: ?>
-                        <li><a href="../views/newcart.php">Cart</a></li>
-                    <a href="../controllers/Users-controller.php?q=logout"><li>Logout</li></a>
-                    <?php endif; ?>   
-   
-       
-    
-</ul>
+                    <?php if (!isset($_SESSION['UsersUid'])) : ?>
+                        <li><a href="../views/user login.php">Login</a></li>
+                        <li><a href="../views/Register.php">Register</a></li>
+                    <?php else : ?>
+                        <li><a href="../views/cart.php">Cart</a></li>
+                        <a href="../controllers/Users-controller.php?q=logout">
+                            <li>Logout</li>
+                        </a>
+                    <?php endif; ?>
+
+
+
+                </ul>
             </nav>
 
         </div>
@@ -47,4 +64,5 @@
 
     </header>
 </body>
+
 </html>

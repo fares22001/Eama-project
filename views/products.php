@@ -26,9 +26,9 @@ $productController = new products;
                 <div class="menu_items">
                     <img src="<?php echo $product->pimage ?>" width="100%" height="100%">
                 </div>
-                <label for=""><?php echo $product->Pname ?>//</label><br>
-                <label for=""><?php echo $_SESSION['UsersUid'];?>u id //   </label>
-              <br>  <label for="">  p id  <?php echo $product->id;?></label>
+                <label for=""><?php echo $product->Pname ?></label><br>
+                
+              <br>  
                 <form action="../controllers/cart-controller.php" method="post">
                     <input type="hidden" name="type" value="addtocart">
                     <input type="hidden" name="UsersUid" value="<?php echo $_SESSION['UsersUid'];?>">
@@ -52,4 +52,4 @@ $productController = new products;
 
 
 </html>
-<?php //include '../views/footer.php'; ?>
+<?php // include '../views/footer.php'; ?>

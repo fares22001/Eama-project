@@ -57,6 +57,17 @@ class product
         $this->db->bind(':product_id', $product_id);
         $this->db->execute();
     }
+    public function removecategoryProductFromCarts($category_id)
+    {
+        // Delete the product from all carts
+        $this->db->query('DELETE cp
+        FROM cart_product cp
+        JOIN products p ON cp.id = p.id
+        WHERE p.pcategory = :category_id;
+        ');
+        $this->db->bind(':category_id', $category_id);
+        $this->db->execute();
+    }
     public function deleteProduct($product_id)
     {
         $this->db->query('DELETE FROM products WHERE id = :id');

@@ -79,7 +79,10 @@ class Users
             die("Something went wrong");
         }
     }
-
+    public function getUserDetailsById($userid)
+    {
+       $this->userModel->getUserDetailsById($userid);
+    }
     public function login()
     {
         //Sanitize POST data
@@ -116,52 +119,7 @@ class Users
         }
     }
 
-    // public function llogin()
-    // {
-    //     // Sanitize POST data
-    //     $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-    //     // Init data
-    //     $data = [
-    //         'UsersUid/UsersEmail' => trim($_POST['UsersUid/UsersEmail']),
-    //         'UsersPwd' => trim($_POST['UsersPwd'])
-    //     ];
-
-    //     if (empty($data['UsersUid/UsersEmail']) || empty($data['UsersPwd'])) {
-    //         flash("login", "Please fill out all inputs");
-    //         header("location: ../views/user login.php");
-    //         exit();
-    //     }
-
-    //     // Check for user/email
-    //     if ($this->userModel->findUserByEmailOrUsername($data['UsersUid/UsersEmail'], $data['UsersUid/UsersEmail'])) {
-    //         // User Found
-    //         $loggedInUser = $this->userModel->login($data['UsersUid/UsersEmail'], $data['UsersPwd']);
-    //        // $userrole = $this->userModel->getUserRole();
-
-    //         if ($loggedInUser) {
-    //             // Create session
-    //             session_start();
-
-    //             $this->createUserSession($loggedInUser);
-
-    //             // Check user role after login
-    //             if ($userrole->UsersRole === 'A') {
-    //                 // Redirect user to admin page
-    //                 header("location: ../views/admin-db.php");
-    //             } else {
-    //                 // Redirect user to regular user page
-    //                 header("location: ../views/.php");
-    //             }
-    //         } else {
-    //             flash("login", "Password Incorrect");
-    //             redirect("../views/user login.php");
-    //         }
-    //     } else {
-    //         flash("login", "No user found");
-    //         redirect("../views/user login.php");
-    //     }
-    // }
 
 
     public function createUserSession($User)

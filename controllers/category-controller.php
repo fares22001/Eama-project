@@ -86,6 +86,8 @@ class categorys
 
         // Get the user ID from the form submission
         $categoryid = trim($_POST['id']);
+
+       $this->productModel->removecategoryProductFromCarts($categoryid);
         $this->productModel->deleteProductsByCategory($categoryid);
         // Perform deletion logic
         if ($this->categorymodel->deletecategory($categoryid)) {

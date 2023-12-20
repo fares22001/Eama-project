@@ -52,19 +52,28 @@ class Cart extends Model
         }
     }
 
+    public function checkquantity($productId)
+    {
+        $this->db->query("SELECT pquantity FROM products WHERE id = :productId");
+        $this->db->bind(':productId', $productId);
+        $row = $this->db->single();
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 
-
-    // In your model
     public function addProductToCart($cartId, $productId, $quantity)
     {
         $this->db->query('INSERT INTO cart_product(cart_id, id, quantity) VALUES(:cartId, :productId, :quantity)');
         $this->db->bind(':cartId', $cartId);
         $this->db->bind(':productId', $productId);
         $this->db->bind(':quantity', $quantity);
-    
+
         return $this->db->execute();
     }
-    
+
 
 
     public function getCartId($userid)
@@ -141,27 +150,26 @@ class Cart extends Model
     // cart-model.php
 
     public function updateProductQuantity($data)
-{
-    $this->db->query('UPDATE cart_product SET quantity = :pquantity WHERE id = :id AND cart_id = :cart_id');
-    $this->db->bind(':id', $data['id']);
-    $this->db->bind(':cart_id', $data['cart_id']);
-    $this->db->bind(':pquantity', $data['pquantity']);
+    {
+        $this->db->query('UPDATE cart_product SET quantity = :cquantity WHERE id = :id AND cart_id = :cart_id');
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':cart_id', $data['cart_id']);
+        $this->db->bind(':cquantity', $data['cquantity']);
 
-    return $this->db->execute();
-}
-
+        return $this->db->execute();
+    }
+   
 
     public function getTotalCartPrice($cartId)
     {
-        $this->db->query('SELECT SUM(products.pprice) AS total_price
-                          FROM cart_product
-                          JOIN products ON cart_product.id = products.id
-                          WHERE cart_id = :cartId');
-        $this->db->bind(':cartId', $cartId);
+        $this->db->query('SELECT cart_id, SUM(price) AS total_price
+        FROM cart_product
+        WHERE cart_id = :cart_id;
+        ');
+        $this->db->bind(':cart_id', $cartId);
 
         $result = $this->db->single(); // Assuming single() retrieves a single row
 
-        return $result ? $result->total_price : 0; // Return total price or 0 if no products
+        return  $result->total_price; // Return total price or 0 if no products
     }
-    
 }

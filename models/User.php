@@ -37,7 +37,13 @@ public function getUserRole($userid){
             return false;
         }
     }
-    
+    public function getUserDetailsById($userid)
+    {
+        $this->db->query('SELECT * FROM products WHERE UsersUid=:id');
+        $this->db->bind(':id', $userid);
+        $row = $this->db->single();
+        return $row;
+    }
 
     //Register User
     public function register($data)
