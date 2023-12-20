@@ -3,13 +3,15 @@
 </head>
 <?php
 include '../views/header.php';
+include_once('../controllers/User-controller.php');
 include_once('../controllers/cart-controller.php');
 include_once('../models/cart-model.php');
 include_once('../helpers/session-helper.php');
 $cartController = new CartController;
 $cartmodel = new Cart();
+$usercontroller=new Users;
 $userId = $_SESSION['UsersUid'];
-
+$user=$usercontroller->getUserDetailsById($userId);
 $carts = $cartController->displayCart($userId);
 $cid = $cartController->getcartid($userId);
 $totprice = $cartController->getTotalCartPrice($userId);
@@ -59,7 +61,7 @@ $totprice = $cartController->getTotalCartPrice($userId);
                                 <input type="hidden" name="id" value="<?php echo $cart->id ?>">
                                 <input type="hidden" name="cart_id" value="<?php echo $cart->cart_id ?>">
                                 <label for="quantity">quantity</label>
-                                <input  type="number" name="cquantity" value="<?php echo $cart->quantity ?>" min="1" max="<?php echo $cart->pquantity ?>">
+                                <input type="number" name="cquantity" value="<?php echo $cart->quantity ?>" min="1" max="<?php echo $cart->pquantity ?>">
                                 <button type="submit" class="btn btn-success btn-sm mr-1 mt-2 " name="submit">update</button>
                               </form>
                             </div>
@@ -88,19 +90,22 @@ $totprice = $cartController->getTotalCartPrice($userId);
                 <div class="card bg-primary text-white rounded-3">
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                      <h5 class="mb-0">Card details</h5>
+                      <h5 class="mb-0">Address</h5>
                     </div>
 
 
-                    <form class="mt-4">
+                    <form action=class="mt-4">
                       <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeName" class="form-control form-control-lg" siez="17" placeholder="Cardholder's Name" />
-                        <label class="form-label" for="typeName">Cardholder's Name</label>
+                        <input type="text" id="typeName" name="UserAddress" class="form-control form-control-lg" siez="17" placeholder="Cardholder's Name" />
+                        <label class="form-label" for="typeName">userAddress </label>
                       </div>
 
                       <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeText" class="form-control form-control-lg" siez="17" placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                        <label class="form-label" for="typeText">Card Number</label>
+                        <select name="payment_method" class="form-select" id="">
+                          <option value="">Select payment_method</option>
+                          <option value="cash">cash</option>
+                          <option value="visa">visa</option>
+                        </select> <label class="form-label" for="typeText">payment method</label>
                       </div>
 
                     </form>

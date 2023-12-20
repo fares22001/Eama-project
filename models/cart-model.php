@@ -148,17 +148,36 @@ class Cart extends Model
         }
     }
     // cart-model.php
-
+    public  function getProductPriceById($productId)
+    {
+        $this->db->query("SELECT pprice FROM products WHERE id = :productId");
+        $this->db->bind(':productId', $productId);
+        $row = $this->db->single();
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
     public function updateProductQuantity($data)
     {
-        $this->db->query('UPDATE cart_product SET quantity = :cquantity WHERE id = :id AND cart_id = :cart_id');
+        // Assuming you have a function to get the product price by product ID
+        $productPrice = $this->getProductPriceById($data['id']);
+
+        // Calculate the new price based on the updated quantity
+        $newPrice =$this-> getTotalCartPrice($data['cart_it']);
+//$productPrice * $data['cquantity'];
+        // Update the quantity and recalculated price
+        $this->db->query('UPDATE cart_product SET quantity = :cquantity, price = :newPrice WHERE id = :id AND cart_id = :cart_id');
         $this->db->bind(':id', $data['id']);
         $this->db->bind(':cart_id', $data['cart_id']);
         $this->db->bind(':cquantity', $data['cquantity']);
+        $this->db->bind(':newPrice', $newPrice);
 
         return $this->db->execute();
     }
-   
+
+
 
     public function getTotalCartPrice($cartId)
     {
